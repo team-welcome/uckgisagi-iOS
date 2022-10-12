@@ -16,6 +16,8 @@
 		DD9ACCA928F6DA5100B13E9C /* uckgisagi_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCA828F6DA5100B13E9C /* uckgisagi_iOSTests.swift */; };
 		DD9ACCB328F6DA5100B13E9C /* uckgisagi_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCB228F6DA5100B13E9C /* uckgisagi_iOSUITests.swift */; };
 		DD9ACCB528F6DA5100B13E9C /* uckgisagi_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCB428F6DA5100B13E9C /* uckgisagi_iOSUITestsLaunchTests.swift */; };
+		DD9ACCCC28F6DE8100B13E9C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCCB28F6DE8100B13E9C /* API.swift */; };
+		DD9ACCD028F6DEAF00B13E9C /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCCF28F6DEAF00B13E9C /* FirebaseService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		DD9ACCAE28F6DA5100B13E9C /* uckgisagi-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "uckgisagi-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD9ACCB228F6DA5100B13E9C /* uckgisagi_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uckgisagi_iOSUITests.swift; sourceTree = "<group>"; };
 		DD9ACCB428F6DA5100B13E9C /* uckgisagi_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uckgisagi_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DD9ACCCB28F6DE8100B13E9C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		DD9ACCCF28F6DEAF00B13E9C /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				DD9ACCC228F6DBFA00B13E9C /* Application */,
+				DD9ACCCD28F6DE9000B13E9C /* External */,
+				DD9ACCCA28F6DE7400B13E9C /* Network */,
 				DD9ACCC428F6DC2E00B13E9C /* Global */,
 				DD9ACCC628F6DC4600B13E9C /* Screen */,
 			);
@@ -189,6 +195,30 @@
 				DD9ACC9F28F6DA5100B13E9C /* Info.plist */,
 			);
 			path = PropertyList;
+			sourceTree = "<group>";
+		};
+		DD9ACCCA28F6DE7400B13E9C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				DD9ACCCB28F6DE8100B13E9C /* API.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		DD9ACCCD28F6DE9000B13E9C /* External */ = {
+			isa = PBXGroup;
+			children = (
+				DD9ACCCE28F6DE9C00B13E9C /* Firebase */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
+		DD9ACCCE28F6DE9C00B13E9C /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				DD9ACCCF28F6DEAF00B13E9C /* FirebaseService.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,7 +353,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD9ACC9628F6DA5000B13E9C /* ViewController.swift in Sources */,
+				DD9ACCD028F6DEAF00B13E9C /* FirebaseService.swift in Sources */,
 				DD9ACC9228F6DA5000B13E9C /* AppDelegate.swift in Sources */,
+				DD9ACCCC28F6DE8100B13E9C /* API.swift in Sources */,
 				DD9ACC9428F6DA5000B13E9C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
