@@ -10,7 +10,6 @@
 		DD9ACC9228F6DA5000B13E9C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACC9128F6DA5000B13E9C /* AppDelegate.swift */; };
 		DD9ACC9428F6DA5000B13E9C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACC9328F6DA5000B13E9C /* SceneDelegate.swift */; };
 		DD9ACC9628F6DA5000B13E9C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACC9528F6DA5000B13E9C /* ViewController.swift */; };
-		DD9ACC9928F6DA5000B13E9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD9ACC9728F6DA5000B13E9C /* Main.storyboard */; };
 		DD9ACC9B28F6DA5100B13E9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD9ACC9A28F6DA5100B13E9C /* Assets.xcassets */; };
 		DD9ACC9E28F6DA5100B13E9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD9ACC9C28F6DA5100B13E9C /* LaunchScreen.storyboard */; };
 		DD9ACCA928F6DA5100B13E9C /* uckgisagi_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCA828F6DA5100B13E9C /* uckgisagi_iOSTests.swift */; };
@@ -42,7 +41,6 @@
 		DD9ACC9128F6DA5000B13E9C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD9ACC9328F6DA5000B13E9C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		DD9ACC9528F6DA5000B13E9C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DD9ACC9828F6DA5000B13E9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DD9ACC9A28F6DA5100B13E9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD9ACC9D28F6DA5100B13E9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD9ACC9F28F6DA5100B13E9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 			isa = PBXGroup;
 			children = (
 				DD9ACC9528F6DA5000B13E9C /* ViewController.swift */,
-				DD9ACC9728F6DA5000B13E9C /* Main.storyboard */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -327,7 +324,6 @@
 			files = (
 				DD9ACC9E28F6DA5100B13E9C /* LaunchScreen.storyboard in Resources */,
 				DD9ACC9B28F6DA5100B13E9C /* Assets.xcassets in Resources */,
-				DD9ACC9928F6DA5000B13E9C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,14 +389,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		DD9ACC9728F6DA5000B13E9C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DD9ACC9828F6DA5000B13E9C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DD9ACC9C28F6DA5100B13E9C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -536,10 +524,9 @@
 				DEVELOPMENT_TEAM = PBLH2V4923;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "uckgisagi-iOS/Application/PropertyList/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "억지사지";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -566,10 +553,9 @@
 				DEVELOPMENT_TEAM = PBLH2V4923;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "uckgisagi-iOS/Application/PropertyList/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "억지사지";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
