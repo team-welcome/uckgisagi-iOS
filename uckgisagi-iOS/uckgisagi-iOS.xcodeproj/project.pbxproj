@@ -15,6 +15,10 @@
 		DD0CCA54290BEBAF00264543 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = DD0CCA53290BEBAF00264543 /* FirebaseRemoteConfig */; };
 		DD0CCA56290BF06100264543 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD0CCA55290BF06100264543 /* GoogleService-Info.plist */; };
 		DD0CCA59290C0BF100264543 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CCA58290C0BF100264543 /* Color.swift */; };
+		DD0CCA5E290C0F5000264543 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CCA5D290C0F5000264543 /* SearchBar.swift */; };
+		DD0CCA61290C12D700264543 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CCA60290C12D700264543 /* Image.swift */; };
+		DD0CCA64290C14EC00264543 /* SearchUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CCA63290C14EC00264543 /* SearchUserViewController.swift */; };
+		DD0CCA67290C151400264543 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CCA66290C151400264543 /* BaseViewController.swift */; };
 		DD92E9B1290BC63F00D1A03D /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD92E9B0290BC63F00D1A03D /* ReactorKit */; };
 		DD98FD18290AC473002EAB2A /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DD98FD17290AC473002EAB2A /* RxMoya */; };
 		DD98FD1B290AC48B002EAB2A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD98FD1A290AC48B002EAB2A /* SnapKit */; };
@@ -77,6 +81,10 @@
 		DD0CCA55290BF06100264543 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DD0CCA57290BF26A00264543 /* uckgisagi-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "uckgisagi-iOS.entitlements"; sourceTree = "<group>"; };
 		DD0CCA58290C0BF100264543 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		DD0CCA5D290C0F5000264543 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		DD0CCA60290C12D700264543 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		DD0CCA63290C14EC00264543 /* SearchUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserViewController.swift; sourceTree = "<group>"; };
+		DD0CCA66290C151400264543 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		DD98FD28290AC4F5002EAB2A /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
 		DD98FD2B290AC54C002EAB2A /* NotificationCenterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterHandler.swift; sourceTree = "<group>"; };
 		DD98FD2D290AC5E0002EAB2A /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -153,6 +161,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD0CCA5A290C0EB700264543 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				DD0CCA5D290C0F5000264543 /* SearchBar.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		DD0CCA62290C14DC00264543 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				DD0CCA63290C14EC00264543 /* SearchUserViewController.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		DD0CCA65290C150900264543 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DD0CCA66290C151400264543 /* BaseViewController.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		DD98FD26290AC4E3002EAB2A /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +328,7 @@
 		DD9ACCC428F6DC2E00B13E9C /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				DD0CCA5A290C0EB700264543 /* Component */,
 				DD98FD27290AC4EE002EAB2A /* Util */,
 				DD98FD26290AC4E3002EAB2A /* Extension */,
 				DD9ACCC528F6DC3500B13E9C /* Resource */,
@@ -308,6 +341,7 @@
 			children = (
 				DD9ACC9A28F6DA5100B13E9C /* Assets.xcassets */,
 				DD0CCA58290C0BF100264543 /* Color.swift */,
+				DD0CCA60290C12D700264543 /* Image.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -315,8 +349,10 @@
 		DD9ACCC628F6DC4600B13E9C /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				DD0CCA65290C150900264543 /* Common */,
 				DD9ACCC828F6DC8900B13E9C /* Launch */,
 				DD9ACCC728F6DC8100B13E9C /* Home */,
+				DD0CCA62290C14DC00264543 /* User */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -535,6 +571,7 @@
 				DD9ACC9628F6DA5000B13E9C /* ViewController.swift in Sources */,
 				DD9ACCD028F6DEAF00B13E9C /* FirebaseService.swift in Sources */,
 				DD98FD36290AC667002EAB2A /* UIViewController+.swift in Sources */,
+				DD0CCA67290C151400264543 /* BaseViewController.swift in Sources */,
 				DD98FD38290AC69C002EAB2A /* Observable+.swift in Sources */,
 				DD98FD32290AC63E002EAB2A /* UIView+Rx.swift in Sources */,
 				DD9ACC9228F6DA5000B13E9C /* AppDelegate.swift in Sources */,
@@ -544,16 +581,19 @@
 				DD98FD58290ACA64002EAB2A /* BaseArrayResponse.swift in Sources */,
 				DD9ACCCC28F6DE8100B13E9C /* API.swift in Sources */,
 				DD98FD54290AC9E4002EAB2A /* StatusCase.swift in Sources */,
+				DD0CCA5E290C0F5000264543 /* SearchBar.swift in Sources */,
 				DD98FD52290AC9CC002EAB2A /* StatusHandler.swift in Sources */,
 				DD98FD29290AC4F5002EAB2A /* Then.swift in Sources */,
 				DD9ACC9428F6DA5000B13E9C /* SceneDelegate.swift in Sources */,
 				DD0CCA59290C0BF100264543 /* Color.swift in Sources */,
 				DD98FD4C290AC8AD002EAB2A /* RootSwitcher.swift in Sources */,
 				DD98FD3F290AC79F002EAB2A /* UIStackView+.swift in Sources */,
+				DD0CCA61290C12D700264543 /* Image.swift in Sources */,
 				DD98FD30290AC62B002EAB2A /* UIView+.swift in Sources */,
 				DD98FD2E290AC5E0002EAB2A /* NotificationManager.swift in Sources */,
 				DD98FD34290AC64E002EAB2A /* UIViewController+Rx.swift in Sources */,
 				DD98FD2C290AC54C002EAB2A /* NotificationCenterHandler.swift in Sources */,
+				DD0CCA64290C14EC00264543 /* SearchUserViewController.swift in Sources */,
 				DD98FD56290ACA52002EAB2A /* BaseResponse.swift in Sources */,
 				DD98FD5A290ACA74002EAB2A /* NullResponse.swift in Sources */,
 			);
