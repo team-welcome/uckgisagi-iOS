@@ -8,8 +8,24 @@
 import UIKit
 
 import SnapKit
+import ReactorKit
+import RxSwift
 
-class LoginViewController: BaseViewController {
+class LoginViewController: BaseViewController, View {
+    typealias Reactor = LoginReactor
+    
+    init(reactor: Reactor) {
+        super.init()
+        
+        self.reactor = reactor
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    var disposeBag = DisposeBag()
+    
     // MARK: - properties 
     private let ukgisagiLogo = UIImageView()
     private let ukgisagiLabel = UILabel()
@@ -51,5 +67,23 @@ class LoginViewController: BaseViewController {
         appleLoginButton.backgroundColor = .black
         appleLoginButton.layer.cornerRadius = 24
     }
+    
+    func bind(reactor: LoginReactor) {
+        appleLoginButton.rx
+            .tap
+            .map { .appleLogin }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        reactor.state
+            .map(\.appleLoginButtonDidTap)
+            .bind { [weak self] status in
+                if status {
+                    // TODO: - 화면 전환 코드 넣어두기
+                }
+            }
+            .disposed(by: disposeBag)
+    }
+    
 }
 
