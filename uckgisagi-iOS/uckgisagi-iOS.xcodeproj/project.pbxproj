@@ -19,6 +19,8 @@
 		DD0CCA61290C12D700264543 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CCA60290C12D700264543 /* Image.swift */; };
 		DD0CCA64290C14EC00264543 /* SearchUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CCA63290C14EC00264543 /* SearchUserViewController.swift */; };
 		DD0CCA67290C151400264543 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CCA66290C151400264543 /* BaseViewController.swift */; };
+		DD0CCA6B290C1DB300264543 /* UserFollowCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CCA6A290C1DB300264543 /* UserFollowCollectionViewCell.swift */; };
+		DD0CCA6E290C221600264543 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CCA6D290C221600264543 /* UserDTO.swift */; };
 		DD92E9B1290BC63F00D1A03D /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD92E9B0290BC63F00D1A03D /* ReactorKit */; };
 		DD98FD18290AC473002EAB2A /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DD98FD17290AC473002EAB2A /* RxMoya */; };
 		DD98FD1B290AC48B002EAB2A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD98FD1A290AC48B002EAB2A /* SnapKit */; };
@@ -85,6 +87,8 @@
 		DD0CCA60290C12D700264543 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		DD0CCA63290C14EC00264543 /* SearchUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserViewController.swift; sourceTree = "<group>"; };
 		DD0CCA66290C151400264543 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		DD0CCA6A290C1DB300264543 /* UserFollowCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFollowCollectionViewCell.swift; sourceTree = "<group>"; };
+		DD0CCA6D290C221600264543 /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
 		DD98FD28290AC4F5002EAB2A /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
 		DD98FD2B290AC54C002EAB2A /* NotificationCenterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterHandler.swift; sourceTree = "<group>"; };
 		DD98FD2D290AC5E0002EAB2A /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				DD0CCA63290C14EC00264543 /* SearchUserViewController.swift */,
+				DD0CCA6A290C1DB300264543 /* UserFollowCollectionViewCell.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -183,6 +188,14 @@
 				DD0CCA66290C151400264543 /* BaseViewController.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		DD0CCA6C290C220E00264543 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				DD0CCA6D290C221600264543 /* UserDTO.swift */,
+			);
+			path = DTO;
 			sourceTree = "<group>";
 		};
 		DD98FD26290AC4E3002EAB2A /* Extension */ = {
@@ -384,6 +397,7 @@
 		DD9ACCCA28F6DE7400B13E9C /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				DD0CCA6C290C220E00264543 /* DTO */,
 				DD98FD50290AC9B5002EAB2A /* BaseResponse */,
 				DD98FD4D290AC98F002EAB2A /* Plugin */,
 				DD9ACCCB28F6DE8100B13E9C /* API.swift */,
@@ -566,6 +580,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD0CCA6B290C1DB300264543 /* UserFollowCollectionViewCell.swift in Sources */,
 				DD98FD44290AC811002EAB2A /* UserDefaultHandler.swift in Sources */,
 				DD98FD42290AC7F5002EAB2A /* UserDefault.swift in Sources */,
 				DD9ACC9628F6DA5000B13E9C /* ViewController.swift in Sources */,
@@ -579,6 +594,7 @@
 				DD98FD3A290AC6FE002EAB2A /* UIImageView+Kingfisher.swift in Sources */,
 				DD98FD4F290AC99A002EAB2A /* MoyaLoggingPlugin.swift in Sources */,
 				DD98FD58290ACA64002EAB2A /* BaseArrayResponse.swift in Sources */,
+				DD0CCA6E290C221600264543 /* UserDTO.swift in Sources */,
 				DD9ACCCC28F6DE8100B13E9C /* API.swift in Sources */,
 				DD98FD54290AC9E4002EAB2A /* StatusCase.swift in Sources */,
 				DD0CCA5E290C0F5000264543 /* SearchBar.swift in Sources */,
