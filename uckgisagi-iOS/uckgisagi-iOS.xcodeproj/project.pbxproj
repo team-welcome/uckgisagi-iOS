@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD92E9B1290BC63F00D1A03D /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD92E9B0290BC63F00D1A03D /* ReactorKit */; };
 		DD98FD18290AC473002EAB2A /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DD98FD17290AC473002EAB2A /* RxMoya */; };
 		DD98FD1B290AC48B002EAB2A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD98FD1A290AC48B002EAB2A /* SnapKit */; };
 		DD98FD1E290AC49E002EAB2A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = DD98FD1D290AC49E002EAB2A /* RxCocoa */; };
@@ -110,6 +111,7 @@
 				DD98FD18290AC473002EAB2A /* RxMoya in Frameworks */,
 				DD98FD3D290AC771002EAB2A /* Kingfisher in Frameworks */,
 				DD98FD22290AC49E002EAB2A /* RxSwift in Frameworks */,
+				DD92E9B1290BC63F00D1A03D /* ReactorKit in Frameworks */,
 				DD98FD20290AC49E002EAB2A /* RxRelay in Frameworks */,
 				DD98FD25290AC4C2002EAB2A /* RxGesture in Frameworks */,
 				DD98FD47290AC854002EAB2A /* SwiftKeychainWrapper in Frameworks */,
@@ -375,6 +377,7 @@
 				DD98FD24290AC4C2002EAB2A /* RxGesture */,
 				DD98FD3C290AC771002EAB2A /* Kingfisher */,
 				DD98FD46290AC854002EAB2A /* SwiftKeychainWrapper */,
+				DD92E9B0290BC63F00D1A03D /* ReactorKit */,
 			);
 			productName = "uckgisagi-iOS";
 			productReference = DD9ACC8E28F6DA5000B13E9C /* uckgisagi-iOS.app */;
@@ -455,6 +458,7 @@
 				DD98FD23290AC4C2002EAB2A /* XCRemoteSwiftPackageReference "RxGesture" */,
 				DD98FD3B290AC771002EAB2A /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				DD98FD45290AC854002EAB2A /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+				DD92E9AF290BC63F00D1A03D /* XCRemoteSwiftPackageReference "ReactorKit" */,
 			);
 			productRefGroup = DD9ACC8F28F6DA5000B13E9C /* Products */;
 			projectDirPath = "";
@@ -860,6 +864,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DD92E9AF290BC63F00D1A03D /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactorKit/ReactorKit";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 3.2.0;
+			};
+		};
 		DD98FD16290AC473002EAB2A /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya";
@@ -911,6 +923,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DD92E9B0290BC63F00D1A03D /* ReactorKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD92E9AF290BC63F00D1A03D /* XCRemoteSwiftPackageReference "ReactorKit" */;
+			productName = ReactorKit;
+		};
 		DD98FD17290AC473002EAB2A /* RxMoya */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DD98FD16290AC473002EAB2A /* XCRemoteSwiftPackageReference "Moya" */;

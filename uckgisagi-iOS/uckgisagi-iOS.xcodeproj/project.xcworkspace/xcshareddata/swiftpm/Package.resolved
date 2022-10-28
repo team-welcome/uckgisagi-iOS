@@ -37,6 +37,15 @@
       }
     },
     {
+      "identity" : "reactorkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactorKit/ReactorKit",
+      "state" : {
+        "revision" : "8fa33f09c6f6621a2aa536d739956d53b84dd139",
+        "version" : "3.2.0"
+      }
+    },
+    {
       "identity" : "rxgesture",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/RxSwiftCommunity/RxGesture",
@@ -70,6 +79,15 @@
       "state" : {
         "revision" : "185a3165346a03767101c4f62e9a545a0fe0530f",
         "version" : "4.0.1"
+      }
+    },
+    {
+      "identity" : "weakmaptable",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactorKit/WeakMapTable.git",
+      "state" : {
+        "revision" : "cb05d64cef2bbf51e85c53adee937df46540a74e",
+        "version" : "1.2.1"
       }
     }
   ],
