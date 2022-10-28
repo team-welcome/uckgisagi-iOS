@@ -14,6 +14,7 @@
 		DD0CCA52290BEBAF00264543 /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = DD0CCA51290BEBAF00264543 /* FirebasePerformance */; };
 		DD0CCA54290BEBAF00264543 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = DD0CCA53290BEBAF00264543 /* FirebaseRemoteConfig */; };
 		DD0CCA56290BF06100264543 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD0CCA55290BF06100264543 /* GoogleService-Info.plist */; };
+		DD0CCA59290C0BF100264543 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CCA58290C0BF100264543 /* Color.swift */; };
 		DD92E9B1290BC63F00D1A03D /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD92E9B0290BC63F00D1A03D /* ReactorKit */; };
 		DD98FD18290AC473002EAB2A /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DD98FD17290AC473002EAB2A /* RxMoya */; };
 		DD98FD1B290AC48B002EAB2A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD98FD1A290AC48B002EAB2A /* SnapKit */; };
@@ -75,6 +76,7 @@
 /* Begin PBXFileReference section */
 		DD0CCA55290BF06100264543 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DD0CCA57290BF26A00264543 /* uckgisagi-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "uckgisagi-iOS.entitlements"; sourceTree = "<group>"; };
+		DD0CCA58290C0BF100264543 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		DD98FD28290AC4F5002EAB2A /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
 		DD98FD2B290AC54C002EAB2A /* NotificationCenterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterHandler.swift; sourceTree = "<group>"; };
 		DD98FD2D290AC5E0002EAB2A /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				DD9ACC9A28F6DA5100B13E9C /* Assets.xcassets */,
+				DD0CCA58290C0BF100264543 /* Color.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				DD98FD52290AC9CC002EAB2A /* StatusHandler.swift in Sources */,
 				DD98FD29290AC4F5002EAB2A /* Then.swift in Sources */,
 				DD9ACC9428F6DA5000B13E9C /* SceneDelegate.swift in Sources */,
+				DD0CCA59290C0BF100264543 /* Color.swift in Sources */,
 				DD98FD4C290AC8AD002EAB2A /* RootSwitcher.swift in Sources */,
 				DD98FD3F290AC79F002EAB2A /* UIStackView+.swift in Sources */,
 				DD98FD30290AC62B002EAB2A /* UIView+.swift in Sources */,
