@@ -62,13 +62,13 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         _ center: UNUserNotificationCenter,
         didReceive response: UNNotificationResponse
     ) async {
-        let userInfo = response.notification.request.content.userInfo
-        let deeplink = userInfo["deeplink"] as? String ?? ""
-        let aps = userInfo["aps"] as? [String: Any] ?? [:]
-        let alert = aps["alert"] as? [String: Any] ?? [:]
-        let body = alert["body"] as? String ?? ""
-        let title = alert["title"] as? String ?? ""
-        dump(userInfo)
+//        let userInfo = response.notification.request.content.userInfo
+//        let deeplink = userInfo["deeplink"] as? String ?? ""
+//        let aps = userInfo["aps"] as? [String: Any] ?? [:]
+//        let alert = aps["alert"] as? [String: Any] ?? [:]
+//        let body = alert["body"] as? String ?? ""
+//        let title = alert["title"] as? String ?? ""
+//        dump(userInfo)
     }
 
     func userNotificationCenter(
