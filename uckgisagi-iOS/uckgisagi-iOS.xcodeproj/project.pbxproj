@@ -25,6 +25,7 @@
 		DD0CCA6E290C221600264543 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CCA6D290C221600264543 /* UserDTO.swift */; };
 		DD25786929100DA800FB9BFD /* PostListReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD25786829100DA800FB9BFD /* PostListReactor.swift */; };
 		DD25786B291010C800FB9BFD /* PostListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD25786A291010C800FB9BFD /* PostListDataSource.swift */; };
+		DD25786D291022C800FB9BFD /* PostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD25786C291022C800FB9BFD /* PostDTO.swift */; };
 		DD319918290D416300070383 /* FeedMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD319917290D416300070383 /* FeedMainViewController.swift */; };
 		DD31991A290D443600070383 /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD319919290D443600070383 /* PostListViewController.swift */; };
 		DD31991E290D444500070383 /* PostListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31991D290D444500070383 /* PostListView.swift */; };
@@ -102,6 +103,7 @@
 		DD0CCA6D290C221600264543 /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
 		DD25786829100DA800FB9BFD /* PostListReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListReactor.swift; sourceTree = "<group>"; };
 		DD25786A291010C800FB9BFD /* PostListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListDataSource.swift; sourceTree = "<group>"; };
+		DD25786C291022C800FB9BFD /* PostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDTO.swift; sourceTree = "<group>"; };
 		DD319917290D416300070383 /* FeedMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedMainViewController.swift; sourceTree = "<group>"; };
 		DD319919290D443600070383 /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 		DD31991D290D444500070383 /* PostListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListView.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				DD0CCA6D290C221600264543 /* UserDTO.swift */,
+				DD25786C291022C800FB9BFD /* PostDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -676,6 +679,7 @@
 				DD25786B291010C800FB9BFD /* PostListDataSource.swift in Sources */,
 				DD98FD34290AC64E002EAB2A /* UIViewController+Rx.swift in Sources */,
 				DD98FD2C290AC54C002EAB2A /* NotificationCenterHandler.swift in Sources */,
+				DD25786D291022C800FB9BFD /* PostDTO.swift in Sources */,
 				DD31991A290D443600070383 /* PostListViewController.swift in Sources */,
 				DD0CCA64290C14EC00264543 /* SearchUserViewController.swift in Sources */,
 				DD98FD56290ACA52002EAB2A /* BaseResponse.swift in Sources */,
