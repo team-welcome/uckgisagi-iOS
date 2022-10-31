@@ -13,6 +13,7 @@ final class PostListView: UIView {
     private(set) lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: createLayout())
         collectionView.backgroundColor = .clear
+        collectionView.contentInset = UIEdgeInsets(top: 16, left: .zero, bottom: .zero, right: .zero)
         return collectionView
     }()
 
