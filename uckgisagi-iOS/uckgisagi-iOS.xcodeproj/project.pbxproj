@@ -23,6 +23,12 @@
 		DD0CCA67290C151400264543 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CCA66290C151400264543 /* BaseViewController.swift */; };
 		DD0CCA6B290C1DB300264543 /* UserFollowCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CCA6A290C1DB300264543 /* UserFollowCollectionViewCell.swift */; };
 		DD0CCA6E290C221600264543 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0CCA6D290C221600264543 /* UserDTO.swift */; };
+		DD319918290D416300070383 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD319917290D416300070383 /* FeedViewController.swift */; };
+		DD31991A290D443600070383 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD319919290D443600070383 /* ExploreViewController.swift */; };
+		DD31991C290D444000070383 /* ScrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31991B290D444000070383 /* ScrapViewController.swift */; };
+		DD31991E290D444500070383 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31991D290D444500070383 /* FeedView.swift */; };
+		DD319928291006C900070383 /* ShopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD319927291006C900070383 /* ShopListViewController.swift */; };
+		DD31992A2910081A00070383 /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3199292910081A00070383 /* FeedCollectionViewCell.swift */; };
 		DD92E9B1290BC63F00D1A03D /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD92E9B0290BC63F00D1A03D /* ReactorKit */; };
 		DD98FD18290AC473002EAB2A /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DD98FD17290AC473002EAB2A /* RxMoya */; };
 		DD98FD1B290AC48B002EAB2A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD98FD1A290AC48B002EAB2A /* SnapKit */; };
@@ -93,6 +99,12 @@
 		DD0CCA66290C151400264543 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		DD0CCA6A290C1DB300264543 /* UserFollowCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFollowCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD0CCA6D290C221600264543 /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
+		DD319917290D416300070383 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		DD319919290D443600070383 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		DD31991B290D444000070383 /* ScrapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapViewController.swift; sourceTree = "<group>"; };
+		DD31991D290D444500070383 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		DD319927291006C900070383 /* ShopListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListViewController.swift; sourceTree = "<group>"; };
+		DD3199292910081A00070383 /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD98FD28290AC4F5002EAB2A /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
 		DD98FD2B290AC54C002EAB2A /* NotificationCenterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterHandler.swift; sourceTree = "<group>"; };
 		DD98FD2D290AC5E0002EAB2A /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -209,6 +221,19 @@
 				DD0CCA6D290C221600264543 /* UserDTO.swift */,
 			);
 			path = DTO;
+			sourceTree = "<group>";
+		};
+		DD319916290D413C00070383 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				DD31991D290D444500070383 /* FeedView.swift */,
+				DD319917290D416300070383 /* FeedViewController.swift */,
+				DD319919290D443600070383 /* ExploreViewController.swift */,
+				DD31991B290D444000070383 /* ScrapViewController.swift */,
+				DD319927291006C900070383 /* ShopListViewController.swift */,
+				DD3199292910081A00070383 /* FeedCollectionViewCell.swift */,
+			);
+			path = Feed;
 			sourceTree = "<group>";
 		};
 		DD98FD26290AC4E3002EAB2A /* Extension */ = {
@@ -380,6 +405,7 @@
 				DD9ACCC828F6DC8900B13E9C /* Launch */,
 				DD9ACCC728F6DC8100B13E9C /* Home */,
 				DD0CCA62290C14DC00264543 /* User */,
+				DD319916290D413C00070383 /* Feed */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -595,12 +621,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD0CCA6B290C1DB300264543 /* UserFollowCollectionViewCell.swift in Sources */,
+				DD31991C290D444000070383 /* ScrapViewController.swift in Sources */,
+				DD31992A2910081A00070383 /* FeedCollectionViewCell.swift in Sources */,
 				DD98FD44290AC811002EAB2A /* UserDefaultHandler.swift in Sources */,
 				DD98FD42290AC7F5002EAB2A /* UserDefault.swift in Sources */,
 				DD9ACC9628F6DA5000B13E9C /* ViewController.swift in Sources */,
 				DD9ACCD028F6DEAF00B13E9C /* FirebaseService.swift in Sources */,
 				DD98FD36290AC667002EAB2A /* UIViewController+.swift in Sources */,
 				DD0CCA67290C151400264543 /* BaseViewController.swift in Sources */,
+				DD31991E290D444500070383 /* FeedView.swift in Sources */,
+				DD319918290D416300070383 /* FeedViewController.swift in Sources */,
 				DD98FD38290AC69C002EAB2A /* Observable+.swift in Sources */,
 				DD98FD32290AC63E002EAB2A /* UIView+Rx.swift in Sources */,
 				DD9ACC9228F6DA5000B13E9C /* AppDelegate.swift in Sources */,
@@ -623,8 +653,10 @@
 				DD0CCA61290C12D700264543 /* Image.swift in Sources */,
 				DD98FD30290AC62B002EAB2A /* UIView+.swift in Sources */,
 				DD98FD2E290AC5E0002EAB2A /* NotificationManager.swift in Sources */,
+				DD319928291006C900070383 /* ShopListViewController.swift in Sources */,
 				DD98FD34290AC64E002EAB2A /* UIViewController+Rx.swift in Sources */,
 				DD98FD2C290AC54C002EAB2A /* NotificationCenterHandler.swift in Sources */,
+				DD31991A290D443600070383 /* ExploreViewController.swift in Sources */,
 				DD0CCA64290C14EC00264543 /* SearchUserViewController.swift in Sources */,
 				DD98FD56290ACA52002EAB2A /* BaseResponse.swift in Sources */,
 				DD98FD5A290ACA74002EAB2A /* NullResponse.swift in Sources */,
