@@ -1,5 +1,5 @@
 //
-//  FeedCollectionViewCell.swift
+//  PostCollectionViewCell.swift
 //  uckgisagi-iOS
 //
 //  Created by 김윤서 on 2022/10/31.
@@ -7,17 +7,29 @@
 
 import UIKit
 
-final class FeedCollectionViewCell: UICollectionViewCell {
-
+final class PostCollectionViewCell: UICollectionViewCell {
     private let imageView = UIImageView()
     private let heartButton = UIButton()
     private let dimView = UIView()
-    private let titleLabel = UILabel()
+    private let contentLabel = UILabel()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setProperties()
         setLayouts()
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        contentLabel.text = nil
+        imageView.image = nil
+        heartButton.isSelected = false
+    }
+
+    func configure(content: String, imageURL: String, isSelected: Bool) {
+        contentLabel.text = content
+        imageView.image(url: imageURL)
+        heartButton.isSelected = isSelected
     }
 
     private func setProperties() {
@@ -31,10 +43,15 @@ final class FeedCollectionViewCell: UICollectionViewCell {
         dimView.do {
             $0.backgroundColor = Color.black.withAlphaComponent(0.5)
         }
-        titleLabel.do {
+        contentLabel.do {
             $0.font = .systemFont(ofSize: 16, weight: .medium)
+            $0.numberOfLines = 2
+            $0.lineBreakMode = .byCharWrapping
             $0.textColor = Color.white
         }
+
+        contentView.clipsToBounds = true
+        contentView.cornerRadius = 10
     }
 
     private func setLayouts() {
@@ -42,7 +59,7 @@ final class FeedCollectionViewCell: UICollectionViewCell {
             imageView,
             dimView,
             heartButton,
-            titleLabel
+            contentLabel
         )
         imageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -53,8 +70,9 @@ final class FeedCollectionViewCell: UICollectionViewCell {
         heartButton.snp.makeConstraints {
             $0.trailing.bottom.equalToSuperview().inset(20)
         }
-        titleLabel.snp.makeConstraints {
+        contentLabel.snp.makeConstraints {
             $0.leading.bottom.equalToSuperview().inset(20)
+            $0.trailing.equalToSuperview().inset(100)
         }
     }
 
