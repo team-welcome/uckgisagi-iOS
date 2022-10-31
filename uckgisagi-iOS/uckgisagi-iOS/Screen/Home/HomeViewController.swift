@@ -102,7 +102,14 @@ class HomeViewController: BaseViewController {
     }
 }
 
+// MARK: - collectionView
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func setupCollectionView() {
+        userProfileCollectionView.delegate = self
+        userProfileCollectionView.dataSource = self
+        userProfileCollectionView.register(UserProfileCollectionViewCell.self, forCellWithReuseIdentifier: UserProfileCollectionViewCell.identifier)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5 // MARK: - 서버에서 받는 값으로 수정하기
     }
@@ -120,11 +127,59 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 }
 
+// MARK: - FSCalendar
+extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
+    func setupCalendar() {
+        self.calendar.delegate = self
+        self.calendar.dataSource = self
+        self.calendar.locale = Locale(identifier: "en_EN")
+        self.calendar.backgroundColor = .white
+        self.calendar.scrollEnabled = false
+        
+        self.calendar.headerHeight = 0
+        self.calendar.appearance.weekdayTextColor = Color.black
+        self.calendar.appearance.titleFont = .systemFont(ofSize: 12, weight: .light)
+        self.calendar.appearance.headerTitleFont = .systemFont(ofSize: 12, weight: .regular)
+        self.calendar.appearance.todayColor = Color.green
+        self.calendar.appearance.selectionColor = .clear
+        self.calendar.appearance.titleSelectionColor = .black
+        
+        self.calendar.appearance.eventDefaultColor = Color.green
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        // MARK: - 터치시 이벤트
+        print(Calendar.current.date(byAdding: .hour, value: 9, to: date))
+    }
+    
+    func setupCalendarEvents(dates: [String]) -> [Date?] {
+        let dateFormatter = DateFormatter()
+        var eventDate: [Date?] = .init()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        dates.forEach { date in
+            eventDate.append(dateFormatter.date(from: date) ?? nil)
+        }
+        return eventDate
+    }
+
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        let events = setupCalendarEvents(dates: ["2022-11-26"])
+        if events.contains(date) {
+            return 1
+        } else {
+            return 0
+        }
+    }
+}
+
+// MARK: - custom method
 extension HomeViewController {
     func dateformat() -> String {
-        var formatter = DateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "yyyy년 MM월"
-        var dateString = formatter.string(from: Date())
+        let dateString = formatter.string(from: Date())
         return dateString
     }
 }
