@@ -27,6 +27,8 @@ class HomeViewController: BaseViewController {
         return collectionView
     }()
     
+    private let monthLabel = UILabel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
@@ -69,8 +71,13 @@ class HomeViewController: BaseViewController {
             $0.height.equalTo(54)
         }
         
+        monthLabel.snp.makeConstraints {
+            $0.top.equalTo(homeScrollView.snp.top).offset(10)
+            $0.leading.equalTo(30)
+        }
+        
         testView1.snp.makeConstraints {
-            $0.top.equalTo(userProfileCollectionView.snp.bottom).offset(10)
+            $0.top.equalTo(monthLabel.snp.bottom).offset(10)
             $0.width.equalTo(360)
             $0.height.equalTo(1200)
             $0.centerX.equalToSuperview()
@@ -81,17 +88,20 @@ class HomeViewController: BaseViewController {
     override func setProperties() {
         navigationView.addSubviews(ukgisagiLogo, surroundButton)
         view.addSubviews(navigationView, userProfileCollectionView, homeScrollView)
-        homeScrollView.addSubviews(testView1)
+        homeScrollView.addSubviews(monthLabel, testView1)
         
         ukgisagiLogo.image = Image.bigLogo
         surroundButton.setImage(Image.icSurround, for: .normal)
         testView1.backgroundColor = .blue
+        monthLabel.text = dateformat()
+        monthLabel.font = .systemFont(ofSize: 15, weight: UIFont.Weight(rawValue: 500))
+        monthLabel.textColor = Color.mediumGray
     }
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8 // MARK: - 서버에서 받는 값으로 수정하기
+        return 5 // MARK: - 서버에서 받는 값으로 수정하기
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -104,5 +114,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 48, height: 54)
+    }
+}
+
+extension HomeViewController {
+    func dateformat() -> String {
+        var formatter = DateFormatter()
+        formatter.dateFormat = "yyyy년 MM월"
+        var dateString = formatter.string(from: Date())
+        return dateString
     }
 }
