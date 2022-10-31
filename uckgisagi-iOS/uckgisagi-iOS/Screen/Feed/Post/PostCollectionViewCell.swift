@@ -37,14 +37,15 @@ final class PostCollectionViewCell: UICollectionViewCell {
             $0.contentMode = .scaleAspectFill
         }
         heartButton.do {
-            $0.setImage(Image.imgAddUser, for: .selected)
-            $0.setImage(Image.appleLogo, for: .normal)
+            $0.setImage(UIImage(systemName: "heart.fill"), for: .selected)
+            $0.setImage(UIImage(systemName: "heart"), for: .normal)
+            $0.tintColor = Color.white
         }
         dimView.do {
             $0.backgroundColor = Color.black.withAlphaComponent(0.5)
         }
         contentLabel.do {
-            $0.font = .systemFont(ofSize: 16, weight: .medium)
+            $0.font = .systemFont(ofSize: 18, weight: .semibold)
             $0.numberOfLines = 2
             $0.lineBreakMode = .byCharWrapping
             $0.textColor = Color.white
