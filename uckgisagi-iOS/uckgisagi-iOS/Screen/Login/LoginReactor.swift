@@ -11,7 +11,7 @@ import ReactorKit
 
 class LoginReactor: Reactor {
     enum Action {
-        case appleLogin
+        case doLogin
     }
     
     enum Mutation {
@@ -19,7 +19,7 @@ class LoginReactor: Reactor {
     }
     
     struct State {
-        var appleLoginButtonDidTap: Bool = false
+        var isAppleLoginSuccess: Bool = false
     }
     
     var initialState: State
@@ -30,7 +30,7 @@ class LoginReactor: Reactor {
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .appleLogin:
+        case .doLogin:
             return Observable.concat([
                 Observable.just(.doAppleLogin(true)),
                 Observable.just(.doAppleLogin(false))
@@ -43,7 +43,7 @@ class LoginReactor: Reactor {
         
         switch mutation {
         case .doAppleLogin(let status):
-            newState.appleLoginButtonDidTap = status
+            newState.isAppleLoginSuccess = status
         }
         
         return newState

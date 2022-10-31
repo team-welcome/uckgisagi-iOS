@@ -71,12 +71,12 @@ class LoginViewController: BaseViewController, View {
     func bind(reactor: LoginReactor) {
         appleLoginButton.rx
             .tap
-            .map { .appleLogin }
+            .map { .doLogin }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
         
         reactor.state
-            .map(\.appleLoginButtonDidTap)
+            .map(\.isAppleLoginSuccess)
             .bind { [weak self] status in
                 if status {
                     // TODO: - 화면 전환 코드 넣어두기
