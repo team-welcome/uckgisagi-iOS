@@ -9,13 +9,14 @@ import UIKit
 
 import SnapKit
 import RxSwift
+import FSCalendar
 
 class HomeViewController: BaseViewController {
+    // MARK: - Properties
     private let navigationView = UIView()
     private let ukgisagiLogo = UIImageView()
     private let surroundButton = UIButton()
     private let homeScrollView = UIScrollView()
-    private let testView1 = UIView()
     private var userProfileCollectionView: UICollectionView = {
         var layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
@@ -26,18 +27,14 @@ class HomeViewController: BaseViewController {
         collectionView.contentInset = UIEdgeInsets(top: .zero, left: 20, bottom: .zero, right: .zero)
         return collectionView
     }()
-    
     private let monthLabel = UILabel()
+    private let calendar = FSCalendar(frame: .zero)
+    private let testView1 = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-    }
-    
-    private func setupCollectionView() {
-        userProfileCollectionView.delegate = self
-        userProfileCollectionView.dataSource = self
-        userProfileCollectionView.register(UserProfileCollectionViewCell.self, forCellWithReuseIdentifier: UserProfileCollectionViewCell.identifier)
+        setupCalendar()
     }
     
     override func setLayouts() {
@@ -76,8 +73,14 @@ class HomeViewController: BaseViewController {
             $0.leading.equalTo(30)
         }
         
-        testView1.snp.makeConstraints {
+        calendar.snp.makeConstraints {
             $0.top.equalTo(monthLabel.snp.bottom).offset(10)
+            $0.leading.trailing.equalTo(self.view).inset(25)
+            $0.height.equalTo(250)
+        }
+        
+        testView1.snp.makeConstraints {
+            $0.top.equalTo(calendar.snp.bottom).offset(10)
             $0.width.equalTo(360)
             $0.height.equalTo(1200)
             $0.centerX.equalToSuperview()
@@ -88,7 +91,7 @@ class HomeViewController: BaseViewController {
     override func setProperties() {
         navigationView.addSubviews(ukgisagiLogo, surroundButton)
         view.addSubviews(navigationView, userProfileCollectionView, homeScrollView)
-        homeScrollView.addSubviews(monthLabel, testView1)
+        homeScrollView.addSubviews(monthLabel, calendar, testView1)
         
         ukgisagiLogo.image = Image.bigLogo
         surroundButton.setImage(Image.icSurround, for: .normal)
