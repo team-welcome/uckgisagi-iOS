@@ -1,5 +1,5 @@
 //
-//  FeedView.swift
+//  PostView.swift
 //  uckgisagi-iOS
 //
 //  Created by 김윤서 on 2022/10/29.
@@ -9,9 +9,10 @@ import UIKit
 
 import SnapKit
 
-final class FeedView: UIView {
-    private lazy var collectionView: UICollectionView = {
+final class PostListView: UIView {
+    private(set) lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: createLayout())
+        collectionView.backgroundColor = .clear
         return collectionView
     }()
 
@@ -35,10 +36,11 @@ final class FeedView: UIView {
     private func createLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
-            heightDimension: .absolute(400)
+            heightDimension: .absolute(190)
         )
+        
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = UIEdgeInsets(top: .zero, left: 16, bottom: .zero, right: 16)
+        item.contentInsets = .init(top: .zero, leading: 16, bottom: .zero, trailing: 16)
 
         let groupSize = NSCollectionLayoutSize(
             widthDimension: itemSize.widthDimension,
