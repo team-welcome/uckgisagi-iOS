@@ -27,7 +27,7 @@ final class RootSwitcher {
         case .login:
             delegate.window?.rootViewController = LoginViewController(reactor: .init())
         case .home:
-            delegate.window?.rootViewController = ViewController()
+            delegate.window?.rootViewController = HomeViewController()
         /// 테스트에만 사용할것
         case let .custom(viewController):
             delegate.window?.rootViewController = viewController
