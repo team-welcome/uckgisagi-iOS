@@ -258,8 +258,8 @@
 		DD25786629100CFA00FB9BFD /* Post */ = {
 			isa = PBXGroup;
 			children = (
-				DD31991D290D444500070383 /* PostListView.swift */,
-				DD3199292910081A00070383 /* PostCollectionViewCell.swift */,
+				DD6DA4E02911786F00BA3291 /* Cell */,
+				DD6DA4E12911787900BA3291 /* View */,
 				DD319919290D443600070383 /* PostListViewController.swift */,
 				DD25786829100DA800FB9BFD /* PostListReactor.swift */,
 				DD25786A291010C800FB9BFD /* PostListDataSource.swift */,
@@ -270,8 +270,8 @@
 		DD25786729100D0800FB9BFD /* Shop */ = {
 			isa = PBXGroup;
 			children = (
-				DD98CE5A291176BF000EBDB3 /* View */,
 				DD98CE59291176B6000EBDB3 /* Cell */,
+				DD98CE5A291176BF000EBDB3 /* View */,
 				DD319927291006C900070383 /* ShopListViewController.swift */,
 				DD98CE552911693D000EBDB3 /* ShopListDataSource.swift */,
 				DD98CE5729116D7C000EBDB3 /* ShopListReactor.swift */,
@@ -287,6 +287,22 @@
 				DD25786629100CFA00FB9BFD /* Post */,
 			);
 			path = Feed;
+			sourceTree = "<group>";
+		};
+		DD6DA4E02911786F00BA3291 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DD3199292910081A00070383 /* PostCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		DD6DA4E12911787900BA3291 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DD31991D290D444500070383 /* PostListView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		DD98CE59291176B6000EBDB3 /* Cell */ = {
