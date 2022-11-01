@@ -28,7 +28,8 @@ final class PostCollectionViewCell: UICollectionViewCell {
 
     func configure(content: String, imageURL: String, isSelected: Bool) {
         contentLabel.text = content
-        imageView.image(url: imageURL)
+        imageView.image = Image.imgDummy2
+//        imageView.image(url: imageURL)
         heartButton.isSelected = isSelected
     }
 

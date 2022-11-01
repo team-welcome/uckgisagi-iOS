@@ -38,7 +38,15 @@
 		DD31991E290D444500070383 /* PostListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31991D290D444500070383 /* PostListView.swift */; };
 		DD319928291006C900070383 /* ShopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD319927291006C900070383 /* ShopListViewController.swift */; };
 		DD31992A2910081A00070383 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3199292910081A00070383 /* PostCollectionViewCell.swift */; };
+		DD6DA4E329117A8400BA3291 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6DA4E229117A8400BA3291 /* SplashViewController.swift */; };
 		DD92E9B1290BC63F00D1A03D /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD92E9B0290BC63F00D1A03D /* ReactorKit */; };
+		DD98CE4C29115E6C000EBDB3 /* ShopInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98CE4B29115E6C000EBDB3 /* ShopInfoCollectionViewCell.swift */; };
+		DD98CE4E29115E9A000EBDB3 /* HotShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98CE4D29115E9A000EBDB3 /* HotShopCollectionViewCell.swift */; };
+		DD98CE5029115F96000EBDB3 /* ShopHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98CE4F29115F96000EBDB3 /* ShopHeaderView.swift */; };
+		DD98CE52291167AD000EBDB3 /* ShopListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98CE51291167AD000EBDB3 /* ShopListView.swift */; };
+		DD98CE542911687C000EBDB3 /* ShopDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98CE532911687C000EBDB3 /* ShopDTO.swift */; };
+		DD98CE562911693D000EBDB3 /* ShopListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98CE552911693D000EBDB3 /* ShopListDataSource.swift */; };
+		DD98CE5829116D7C000EBDB3 /* ShopListReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98CE5729116D7C000EBDB3 /* ShopListReactor.swift */; };
 		DD98FD18290AC473002EAB2A /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DD98FD17290AC473002EAB2A /* RxMoya */; };
 		DD98FD1B290AC48B002EAB2A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD98FD1A290AC48B002EAB2A /* SnapKit */; };
 		DD98FD1E290AC49E002EAB2A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = DD98FD1D290AC49E002EAB2A /* RxCocoa */; };
@@ -121,6 +129,14 @@
 		DD31991D290D444500070383 /* PostListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListView.swift; sourceTree = "<group>"; };
 		DD319927291006C900070383 /* ShopListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListViewController.swift; sourceTree = "<group>"; };
 		DD3199292910081A00070383 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
+		DD6DA4E229117A8400BA3291 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		DD98CE4B29115E6C000EBDB3 /* ShopInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopInfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		DD98CE4D29115E9A000EBDB3 /* HotShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotShopCollectionViewCell.swift; sourceTree = "<group>"; };
+		DD98CE4F29115F96000EBDB3 /* ShopHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopHeaderView.swift; sourceTree = "<group>"; };
+		DD98CE51291167AD000EBDB3 /* ShopListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListView.swift; sourceTree = "<group>"; };
+		DD98CE532911687C000EBDB3 /* ShopDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDTO.swift; sourceTree = "<group>"; };
+		DD98CE552911693D000EBDB3 /* ShopListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListDataSource.swift; sourceTree = "<group>"; };
+		DD98CE5729116D7C000EBDB3 /* ShopListReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListReactor.swift; sourceTree = "<group>"; };
 		DD98FD28290AC4F5002EAB2A /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
 		DD98FD2B290AC54C002EAB2A /* NotificationCenterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterHandler.swift; sourceTree = "<group>"; };
 		DD98FD2D290AC5E0002EAB2A /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -236,6 +252,7 @@
 			children = (
 				DD0CCA6D290C221600264543 /* UserDTO.swift */,
 				DD25786C291022C800FB9BFD /* PostDTO.swift */,
+				DD98CE532911687C000EBDB3 /* ShopDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -243,8 +260,8 @@
 		DD25786629100CFA00FB9BFD /* Post */ = {
 			isa = PBXGroup;
 			children = (
-				DD31991D290D444500070383 /* PostListView.swift */,
-				DD3199292910081A00070383 /* PostCollectionViewCell.swift */,
+				DD6DA4E02911786F00BA3291 /* Cell */,
+				DD6DA4E12911787900BA3291 /* View */,
 				DD319919290D443600070383 /* PostListViewController.swift */,
 				DD25786829100DA800FB9BFD /* PostListReactor.swift */,
 				DD25786A291010C800FB9BFD /* PostListDataSource.swift */,
@@ -255,7 +272,11 @@
 		DD25786729100D0800FB9BFD /* Shop */ = {
 			isa = PBXGroup;
 			children = (
+				DD98CE59291176B6000EBDB3 /* Cell */,
+				DD98CE5A291176BF000EBDB3 /* View */,
 				DD319927291006C900070383 /* ShopListViewController.swift */,
+				DD98CE552911693D000EBDB3 /* ShopListDataSource.swift */,
+				DD98CE5729116D7C000EBDB3 /* ShopListReactor.swift */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -268,6 +289,40 @@
 				DD25786629100CFA00FB9BFD /* Post */,
 			);
 			path = Feed;
+			sourceTree = "<group>";
+		};
+		DD6DA4E02911786F00BA3291 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DD3199292910081A00070383 /* PostCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		DD6DA4E12911787900BA3291 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DD31991D290D444500070383 /* PostListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DD98CE59291176B6000EBDB3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DD98CE4B29115E6C000EBDB3 /* ShopInfoCollectionViewCell.swift */,
+				DD98CE4D29115E9A000EBDB3 /* HotShopCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		DD98CE5A291176BF000EBDB3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DD98CE4F29115F96000EBDB3 /* ShopHeaderView.swift */,
+				DD98CE51291167AD000EBDB3 /* ShopListView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		DD98FD26290AC4E3002EAB2A /* Extension */ = {
@@ -436,7 +491,7 @@
 			children = (
 				23608757290C358C0069493F /* Login */,
 				DD0CCA65290C150900264543 /* Common */,
-				DD9ACCC828F6DC8900B13E9C /* Launch */,
+				DD9ACCC828F6DC8900B13E9C /* Splash */,
 				DD9ACCC728F6DC8100B13E9C /* Home */,
 				DD0CCA62290C14DC00264543 /* User */,
 				DD319916290D413C00070383 /* Feed */,
@@ -457,12 +512,13 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		DD9ACCC828F6DC8900B13E9C /* Launch */ = {
+		DD9ACCC828F6DC8900B13E9C /* Splash */ = {
 			isa = PBXGroup;
 			children = (
 				DD9ACC9C28F6DA5100B13E9C /* LaunchScreen.storyboard */,
+				DD6DA4E229117A8400BA3291 /* SplashViewController.swift */,
 			);
-			path = Launch;
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		DD9ACCC928F6DC9500B13E9C /* PropertyList */ = {
@@ -679,9 +735,11 @@
 				DD98FD4A290AC876002EAB2A /* KeyChainHandler.swift in Sources */,
 				DD25786929100DA800FB9BFD /* PostListReactor.swift in Sources */,
 				DD98FD3A290AC6FE002EAB2A /* UIImageView+Kingfisher.swift in Sources */,
+				DD98CE542911687C000EBDB3 /* ShopDTO.swift in Sources */,
 				DD98FD4F290AC99A002EAB2A /* MoyaLoggingPlugin.swift in Sources */,
 				DD98FD58290ACA64002EAB2A /* BaseArrayResponse.swift in Sources */,
 				DD0CCA6E290C221600264543 /* UserDTO.swift in Sources */,
+				DD98CE562911693D000EBDB3 /* ShopListDataSource.swift in Sources */,
 				237546B129116229001C3E8B /* UserPostTableViewHeader.swift in Sources */,
 				DD9ACCCC28F6DE8100B13E9C /* API.swift in Sources */,
 				DD98FD54290AC9E4002EAB2A /* StatusCase.swift in Sources */,
@@ -695,19 +753,25 @@
 				DD98FD4C290AC8AD002EAB2A /* RootSwitcher.swift in Sources */,
 				23282981291114D000ABB272 /* UserProfileTableViewHeader.swift in Sources */,
 				DD98FD3F290AC79F002EAB2A /* UIStackView+.swift in Sources */,
+				DD98CE5829116D7C000EBDB3 /* ShopListReactor.swift in Sources */,
 				DD0CCA61290C12D700264543 /* Image.swift in Sources */,
 				2328298329111A7F00ABB272 /* CalendarTableViewCell.swift in Sources */,
 				DD98FD30290AC62B002EAB2A /* UIView+.swift in Sources */,
 				DD98FD2E290AC5E0002EAB2A /* NotificationManager.swift in Sources */,
 				DD319928291006C900070383 /* ShopListViewController.swift in Sources */,
+				DD98CE4E29115E9A000EBDB3 /* HotShopCollectionViewCell.swift in Sources */,
 				DD25786B291010C800FB9BFD /* PostListDataSource.swift in Sources */,
+				DD98CE52291167AD000EBDB3 /* ShopListView.swift in Sources */,
 				DD98FD34290AC64E002EAB2A /* UIViewController+Rx.swift in Sources */,
 				DD98FD2C290AC54C002EAB2A /* NotificationCenterHandler.swift in Sources */,
 				DD25786D291022C800FB9BFD /* PostDTO.swift in Sources */,
 				DD31991A290D443600070383 /* PostListViewController.swift in Sources */,
+				DD98CE4C29115E6C000EBDB3 /* ShopInfoCollectionViewCell.swift in Sources */,
+				DD98CE5029115F96000EBDB3 /* ShopHeaderView.swift in Sources */,
 				DD0CCA64290C14EC00264543 /* SearchUserViewController.swift in Sources */,
 				DD98FD56290ACA52002EAB2A /* BaseResponse.swift in Sources */,
 				DD98FD5A290ACA74002EAB2A /* NullResponse.swift in Sources */,
+				DD6DA4E329117A8400BA3291 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
