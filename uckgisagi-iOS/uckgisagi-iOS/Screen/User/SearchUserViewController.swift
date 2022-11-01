@@ -68,7 +68,7 @@ final class SearchUserViewController: BaseViewController {
         navigationBar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(64)
+            $0.height.equalTo(55)
         }
         backButton.snp.makeConstraints {
             $0.size.equalTo(34)
