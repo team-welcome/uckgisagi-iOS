@@ -24,4 +24,8 @@ enum Image {
     static let icCircleTap = UIImage(named: "ic.circle.tap")!
     static let icCircle = UIImage(named: "ic.circle")!
     static let icPlus = UIImage(named: "ic.plus")!
+    static let icSprout = UIImage(named: "ic.sprout")!
+    static let icHuk = UIImage(named: "ic.huk")!
+    static let icPost = UIImage(named: "ic.post")!
+    static let postTestImage = UIImage(named: "postTestImage")!
 }
