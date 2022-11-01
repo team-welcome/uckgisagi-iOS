@@ -15,4 +15,5 @@ enum Image {
     static let icBack = UIImage(named: "ic.back")!
     static let bigLogo = UIImage(named: "big.logo")!
     static let appleLogo = UIImage(named: "apple.logo")!
+    static let icMark = UIImage(named: "ic.mark")!
 }
