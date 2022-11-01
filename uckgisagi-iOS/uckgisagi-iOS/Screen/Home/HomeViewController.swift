@@ -118,7 +118,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserProfileCollectionViewCell.identifier, for: indexPath) as? UserProfileCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.configure(name: "뭉", isFriend: false) // MARK: - 서버에서 받는 값으로 수정하기
+        if indexPath.row == 4 {
+            cell.configureLastCell()
+        } else {
+            cell.configureProfile(name: "뭉", isFriend: false) // MARK: - 서버에서 받는 값으로 수정하기
+        }
         return cell
     }
     
@@ -165,7 +169,7 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
     }
 
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        let events = setupCalendarEvents(dates: ["2022-11-26"])
+        let events = setupCalendarEvents(dates: ["2022-11-26","2022-11-10"])
         if events.contains(date) {
             return 1
         } else {
