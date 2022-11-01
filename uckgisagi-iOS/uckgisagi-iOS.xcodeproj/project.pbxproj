@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2328297B291009A200ABB272 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 2328297A291009A200ABB272 /* FSCalendar */; };
+		23282981291114D000ABB272 /* UserProfileTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23282980291114D000ABB272 /* UserProfileTableViewHeader.swift */; };
+		2328298329111A7F00ABB272 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2328298229111A7F00ABB272 /* CalendarTableViewCell.swift */; };
 		23608759290C359B0069493F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23608758290C359B0069493F /* LoginViewController.swift */; };
 		2360875B290C45140069493F /* LoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360875A290C45140069493F /* LoginReactor.swift */; };
+		237546AF291159B7001C3E8B /* UserPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237546AE291159B7001C3E8B /* UserPostTableViewCell.swift */; };
+		237546B129116229001C3E8B /* UserPostTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237546B029116229001C3E8B /* UserPostTableViewHeader.swift */; };
 		23B6DAC5290D5FE9004FFA82 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B6DAC4290D5FE9004FFA82 /* HomeViewController.swift */; };
 		23B6DAC7290D6B1B004FFA82 /* UserProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B6DAC6290D6B1B004FFA82 /* UserProfileCollectionViewCell.swift */; };
 		DD0CCA4A290BEBAF00264543 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = DD0CCA49290BEBAF00264543 /* FirebaseAnalytics */; };
@@ -84,8 +88,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		23282980291114D000ABB272 /* UserProfileTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileTableViewHeader.swift; sourceTree = "<group>"; };
+		2328298229111A7F00ABB272 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		23608758290C359B0069493F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2360875A290C45140069493F /* LoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReactor.swift; sourceTree = "<group>"; };
+		237546AE291159B7001C3E8B /* UserPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostTableViewCell.swift; sourceTree = "<group>"; };
+		237546B029116229001C3E8B /* UserPostTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostTableViewHeader.swift; sourceTree = "<group>"; };
 		23B6DAC4290D5FE9004FFA82 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		23B6DAC6290D6B1B004FFA82 /* UserProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD0CCA55290BF06100264543 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -393,6 +401,10 @@
 			children = (
 				23B6DAC4290D5FE9004FFA82 /* HomeViewController.swift */,
 				23B6DAC6290D6B1B004FFA82 /* UserProfileCollectionViewCell.swift */,
+				23282980291114D000ABB272 /* UserProfileTableViewHeader.swift */,
+				2328298229111A7F00ABB272 /* CalendarTableViewCell.swift */,
+				237546AE291159B7001C3E8B /* UserPostTableViewCell.swift */,
+				237546B029116229001C3E8B /* UserPostTableViewHeader.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -605,6 +617,7 @@
 				DD98FD44290AC811002EAB2A /* UserDefaultHandler.swift in Sources */,
 				DD98FD42290AC7F5002EAB2A /* UserDefault.swift in Sources */,
 				23B6DAC5290D5FE9004FFA82 /* HomeViewController.swift in Sources */,
+				237546AF291159B7001C3E8B /* UserPostTableViewCell.swift in Sources */,
 				23B6DAC7290D6B1B004FFA82 /* UserProfileCollectionViewCell.swift in Sources */,
 				DD9ACCD028F6DEAF00B13E9C /* FirebaseService.swift in Sources */,
 				DD98FD36290AC667002EAB2A /* UIViewController+.swift in Sources */,
@@ -617,6 +630,7 @@
 				DD98FD4F290AC99A002EAB2A /* MoyaLoggingPlugin.swift in Sources */,
 				DD98FD58290ACA64002EAB2A /* BaseArrayResponse.swift in Sources */,
 				DD0CCA6E290C221600264543 /* UserDTO.swift in Sources */,
+				237546B129116229001C3E8B /* UserPostTableViewHeader.swift in Sources */,
 				DD9ACCCC28F6DE8100B13E9C /* API.swift in Sources */,
 				DD98FD54290AC9E4002EAB2A /* StatusCase.swift in Sources */,
 				DD0CCA5E290C0F5000264543 /* SearchBar.swift in Sources */,
@@ -627,8 +641,10 @@
 				23608759290C359B0069493F /* LoginViewController.swift in Sources */,
 				DD0CCA59290C0BF100264543 /* Color.swift in Sources */,
 				DD98FD4C290AC8AD002EAB2A /* RootSwitcher.swift in Sources */,
+				23282981291114D000ABB272 /* UserProfileTableViewHeader.swift in Sources */,
 				DD98FD3F290AC79F002EAB2A /* UIStackView+.swift in Sources */,
 				DD0CCA61290C12D700264543 /* Image.swift in Sources */,
+				2328298329111A7F00ABB272 /* CalendarTableViewCell.swift in Sources */,
 				DD98FD30290AC62B002EAB2A /* UIView+.swift in Sources */,
 				DD98FD2E290AC5E0002EAB2A /* NotificationManager.swift in Sources */,
 				DD98FD34290AC64E002EAB2A /* UIViewController+Rx.swift in Sources */,
