@@ -50,10 +50,10 @@ class UserPostTableViewCell: UITableViewCell {
         }
         
         postImage.snp.makeConstraints {
-            $0.width.equalTo(297)
             $0.height.equalTo(189)
             $0.leading.equalTo(sproutIconImage.snp.trailing).offset(4)
             $0.trailing.equalToSuperview().inset(26)
+            $0.top.equalTo(textStackView.snp.bottom).offset(16)
         }
     }
     
@@ -63,7 +63,7 @@ class UserPostTableViewCell: UITableViewCell {
         
         contentView.addSubviews(sproutIconImage, textStackView, postImage)
         
-        textStackView.spacing = 0
+        textStackView.spacing = 3
         textStackView.axis = .vertical
         sproutIconImage.image = Image.icSprout
         timeLabel.font = .systemFont(ofSize: 15, weight: .regular)

@@ -11,7 +11,7 @@ import SnapKit
 
 class UserPostTableViewHeader: UITableViewHeaderFooterView {
     private let headerNoticeLabel = UILabel()
-    private let postIconImage = UIImageView()
+    private let postButton = UIButton()
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -26,14 +26,14 @@ class UserPostTableViewHeader: UITableViewHeaderFooterView {
     }
 
     func setLayouts() {
-        addSubviews(headerNoticeLabel, postIconImage)
+        addSubviews(headerNoticeLabel, postButton)
         
         headerNoticeLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(33)
             $0.centerY.equalToSuperview()
         }
         
-        postIconImage.snp.makeConstraints {
+        postButton.snp.makeConstraints {
             $0.height.width.equalTo(24)
             $0.trailing.equalToSuperview().inset(19)
             $0.centerY.equalToSuperview()
@@ -45,6 +45,6 @@ class UserPostTableViewHeader: UITableViewHeaderFooterView {
         headerNoticeLabel.textColor = Color.mediumGray
         headerNoticeLabel.font = .systemFont(ofSize: 15, weight: UIFont.Weight(rawValue: 700))
         
-        postIconImage.image = Image.icPost
+        postButton.setImage(Image.icPost, for: .normal)
     }
 }
