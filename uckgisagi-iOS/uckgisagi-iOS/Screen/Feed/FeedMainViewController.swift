@@ -37,7 +37,7 @@ final class FeedMainViewController: BaseViewController {
 
     private let allPageViewController = PostListViewController()
     private let scrapPageViewController = PostListViewController()
-    private let shopPageViewController = PostListViewController()
+    private let shopPageViewController = ShopListViewController()
 
     private let navigationBar = UIView()
     private let backButton = UIButton()
@@ -56,6 +56,7 @@ final class FeedMainViewController: BaseViewController {
     override func setProperties() {
         allPageViewController.reactor = PostListReactor(type: .all)
         scrapPageViewController.reactor = PostListReactor(type: .scrap)
+        shopPageViewController.reactor = ShopListReactor()
 
         backButton.setImage(Image.icBack, for: .normal)
         titleImageView.image = Image.imgAddUser
