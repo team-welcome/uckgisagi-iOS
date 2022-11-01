@@ -23,7 +23,8 @@ final class ShopInfoCollectionViewCell: UICollectionViewCell {
     }
 
     func configure(imageURL: String, title: String, content: String) {
-        imageView.image(url: imageURL)
+        imageView.image = Image.imgDummy3
+//        imageView.image(url: imageURL)
         titleLabel.text = title
         contentLabel.text = content
     }
@@ -34,7 +35,7 @@ final class ShopInfoCollectionViewCell: UICollectionViewCell {
             $0.textColor = Color.white
         }
         contentLabel.do {
-            $0.font = .systemFont(ofSize: 14, weight: .regular)
+            $0.font = .systemFont(ofSize: 16, weight: .regular)
             $0.numberOfLines = 2
             $0.lineBreakMode = .byCharWrapping
             $0.textColor = Color.white
@@ -43,7 +44,7 @@ final class ShopInfoCollectionViewCell: UICollectionViewCell {
             $0.image = Image.icMark
         }
         dimView.do {
-            $0.backgroundColor = Color.black.withAlphaComponent(0.5)
+            $0.backgroundColor = Color.black.withAlphaComponent(0.8)
         }
         imageView.do {
             $0.contentMode = .scaleAspectFill
@@ -66,7 +67,7 @@ final class ShopInfoCollectionViewCell: UICollectionViewCell {
             $0.edges.equalToSuperview()
         }
         iconView.snp.makeConstraints {
-            $0.size.equalTo(24)
+            $0.size.equalTo(20)
             $0.leading.top.equalToSuperview().inset(12)
         }
         titleLabel.snp.makeConstraints {
@@ -75,8 +76,9 @@ final class ShopInfoCollectionViewCell: UICollectionViewCell {
             $0.centerY.equalTo(iconView.snp.centerY)
         }
         contentLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(2)
-            $0.leading.trailing.bottom.equalToSuperview().inset(12)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(6)
+            $0.leading.trailing.equalToSuperview().inset(12)
+            $0.bottom.greaterThanOrEqualToSuperview().inset(4).priority(.low)
         }
     }
 

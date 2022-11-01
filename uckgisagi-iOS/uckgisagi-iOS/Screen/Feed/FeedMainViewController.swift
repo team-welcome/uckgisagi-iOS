@@ -59,7 +59,7 @@ final class FeedMainViewController: BaseViewController {
         shopPageViewController.reactor = ShopListReactor()
 
         backButton.setImage(Image.icBack, for: .normal)
-        titleImageView.image = Image.imgAddUser
+        titleImageView.image = Image.smallLogo
         titleImageView.contentMode = .scaleAspectFit
 
         topBar.do {

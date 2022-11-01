@@ -23,7 +23,7 @@ final class RootSwitcher {
         }
         switch destination {
         case .splash:
-            delegate.window?.rootViewController = ViewController()
+            delegate.window?.rootViewController = SplashViewController()
         case .login:
             delegate.window?.rootViewController = LoginViewController(reactor: .init())
         case .home:

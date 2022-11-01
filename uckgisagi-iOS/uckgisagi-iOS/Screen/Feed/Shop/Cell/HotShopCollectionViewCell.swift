@@ -22,7 +22,8 @@ final class HotShopCollectionViewCell: UICollectionViewCell {
     }
 
     func configure(imageURL: String, title: String, content: String) {
-        imageView.image(url: imageURL)
+        imageView.image = Image.imgDummy4
+//        imageView.image(url: imageURL)
         titleLabel.text = title
         contentLabel.text = content
     }
@@ -39,7 +40,7 @@ final class HotShopCollectionViewCell: UICollectionViewCell {
             $0.lineBreakMode = .byCharWrapping
         }
         dimView.do {
-            $0.backgroundColor = Color.black.withAlphaComponent(0.5)
+            $0.backgroundColor = Color.black.withAlphaComponent(0.8)
         }
         imageView.do {
             $0.contentMode = .scaleAspectFill
@@ -66,7 +67,7 @@ final class HotShopCollectionViewCell: UICollectionViewCell {
             $0.leading.trailing.equalToSuperview().inset(12)
         }
         contentLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(4)
+            $0.top.equalTo(titleLabel.snp.bottom)
             $0.leading.bottom.trailing.equalToSuperview().inset(12)
         }
     }
