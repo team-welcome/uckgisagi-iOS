@@ -58,7 +58,6 @@ class HomeViewController: BaseViewController {
         ukgisagiLogo.image = Image.bigLogo
         surroundButton.setImage(Image.icSurround, for: .normal)
         tableView.separatorStyle = .none
-        tableView.
         
         if #available(iOS 15, *) {
             tableView.sectionHeaderTopPadding = 0
@@ -131,6 +130,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? 54 : 42
+        return section == 0 ? 54 : 50
     }
 }
