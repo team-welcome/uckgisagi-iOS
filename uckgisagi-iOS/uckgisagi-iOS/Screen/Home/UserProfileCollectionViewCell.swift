@@ -65,6 +65,7 @@ class UserProfileCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(profileImage)
         contentView.addSubview(profileNameLabel)
         contentView.addSubview(plusImage)
+        
         profileImage.snp.makeConstraints {
             $0.width.equalTo(36)
             $0.height.equalTo(36)
