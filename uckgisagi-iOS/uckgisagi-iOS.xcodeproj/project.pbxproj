@@ -222,6 +222,16 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		237546B22912A536001C3E8B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				237546AE291159B7001C3E8B /* UserPostTableViewCell.swift */,
+				2328298229111A7F00ABB272 /* CalendarTableViewCell.swift */,
+				23B6DAC6290D6B1B004FFA82 /* UserProfileCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		DD0CCA5A290C0EB700264543 /* Component */ = {
 			isa = PBXGroup;
 			children = (
@@ -502,11 +512,9 @@
 		DD9ACCC728F6DC8100B13E9C /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				237546B22912A536001C3E8B /* Cell */,
 				23B6DAC4290D5FE9004FFA82 /* HomeViewController.swift */,
-				23B6DAC6290D6B1B004FFA82 /* UserProfileCollectionViewCell.swift */,
 				23282980291114D000ABB272 /* UserProfileTableViewHeader.swift */,
-				2328298229111A7F00ABB272 /* CalendarTableViewCell.swift */,
-				237546AE291159B7001C3E8B /* UserPostTableViewCell.swift */,
 				237546B029116229001C3E8B /* UserPostTableViewHeader.swift */,
 			);
 			path = Home;
