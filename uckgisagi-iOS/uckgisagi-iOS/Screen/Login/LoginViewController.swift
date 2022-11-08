@@ -24,8 +24,6 @@ class LoginViewController: BaseViewController, View {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var disposeBag = DisposeBag()
-    
     // MARK: - properties 
     private let ukgisagiLogo = UIImageView()
     private let ukgisagiLabel = UILabel()

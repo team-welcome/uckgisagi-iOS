@@ -14,7 +14,6 @@ final class ShopListViewController: BaseViewController, View {
     typealias Reactor = ShopListReactor
     private lazy var datasource = ShopListDataSource(collectionView: listView.collectionView)
     private let listView = ShopListView()
-    var disposeBag = DisposeBag()
 
     override init() {
         super.init()

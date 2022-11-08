@@ -18,7 +18,6 @@ final class PostListViewController: BaseViewController, View {
     private let listView = PostListView()
 
     private lazy var dataSource = PostListDataSource(collectionView: listView.collectionView)
-    var disposeBag = DisposeBag()
 
     override func loadView() {
         view = listView
