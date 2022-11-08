@@ -45,7 +45,7 @@ final class FeedMainViewController: BaseViewController {
     private let topBar = UIStackView()
     private let contentView = UIView()
 
-    private let disposeBag = DisposeBag()
+//    private let disposeBag = DisposeBag()
 
     override init() {
         super.init()
