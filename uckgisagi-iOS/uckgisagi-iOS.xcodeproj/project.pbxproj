@@ -16,6 +16,8 @@
 		237546B129116229001C3E8B /* UserPostTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237546B029116229001C3E8B /* UserPostTableViewHeader.swift */; };
 		23B6DAC5290D5FE9004FFA82 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B6DAC4290D5FE9004FFA82 /* HomeViewController.swift */; };
 		23B6DAC7290D6B1B004FFA82 /* UserProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B6DAC6290D6B1B004FFA82 /* UserProfileCollectionViewCell.swift */; };
+		DD0210AA291A53490048F86B /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0210A9291A53490048F86B /* PostDetailViewController.swift */; };
+		DD0210AD291A535E0048F86B /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0210AC291A535E0048F86B /* PostDetailView.swift */; };
 		DD059A0F291A38B1004E9F02 /* WritingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD059A0E291A38B1004E9F02 /* WritingView.swift */; };
 		DD059A11291A3D63004E9F02 /* WritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD059A10291A3D63004E9F02 /* WritingViewController.swift */; };
 		DD059A13291A40D3004E9F02 /* WritingReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD059A12291A40D3004E9F02 /* WritingReactor.swift */; };
@@ -115,6 +117,8 @@
 		237546B029116229001C3E8B /* UserPostTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostTableViewHeader.swift; sourceTree = "<group>"; };
 		23B6DAC4290D5FE9004FFA82 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		23B6DAC6290D6B1B004FFA82 /* UserProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		DD0210A9291A53490048F86B /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		DD0210AC291A535E0048F86B /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		DD059A0E291A38B1004E9F02 /* WritingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingView.swift; sourceTree = "<group>"; };
 		DD059A10291A3D63004E9F02 /* WritingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingViewController.swift; sourceTree = "<group>"; };
 		DD059A12291A40D3004E9F02 /* WritingReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingReactor.swift; sourceTree = "<group>"; };
@@ -228,12 +232,30 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		DD059A0D291A37CE004E9F02 /* Post */ = {
+		DD0210A8291A53350048F86B /* Writing */ = {
 			isa = PBXGroup;
 			children = (
 				DD059A0E291A38B1004E9F02 /* WritingView.swift */,
 				DD059A10291A3D63004E9F02 /* WritingViewController.swift */,
 				DD059A12291A40D3004E9F02 /* WritingReactor.swift */,
+			);
+			path = Writing;
+			sourceTree = "<group>";
+		};
+		DD0210AB291A53530048F86B /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				DD0210A9291A53490048F86B /* PostDetailViewController.swift */,
+				DD0210AC291A535E0048F86B /* PostDetailView.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		DD059A0D291A37CE004E9F02 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				DD0210AB291A53530048F86B /* Detail */,
+				DD0210A8291A53350048F86B /* Writing */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -765,6 +787,7 @@
 				2360875B290C45140069493F /* LoginReactor.swift in Sources */,
 				DD98FD52290AC9CC002EAB2A /* StatusHandler.swift in Sources */,
 				DD98FD29290AC4F5002EAB2A /* Then.swift in Sources */,
+				DD0210AA291A53490048F86B /* PostDetailViewController.swift in Sources */,
 				DD9ACC9428F6DA5000B13E9C /* SceneDelegate.swift in Sources */,
 				23608759290C359B0069493F /* LoginViewController.swift in Sources */,
 				DD0CCA59290C0BF100264543 /* Color.swift in Sources */,
@@ -784,6 +807,7 @@
 				DD98FD34290AC64E002EAB2A /* UIViewController+Rx.swift in Sources */,
 				DD98FD2C290AC54C002EAB2A /* NotificationCenterHandler.swift in Sources */,
 				DD25786D291022C800FB9BFD /* PostDTO.swift in Sources */,
+				DD0210AD291A535E0048F86B /* PostDetailView.swift in Sources */,
 				DD31991A290D443600070383 /* PostListViewController.swift in Sources */,
 				DD98CE4C29115E6C000EBDB3 /* ShopInfoCollectionViewCell.swift in Sources */,
 				DD98CE5029115F96000EBDB3 /* ShopHeaderView.swift in Sources */,
