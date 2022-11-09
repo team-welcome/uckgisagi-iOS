@@ -9,6 +9,8 @@ import UIKit.UIColor
 
 enum Color {
     static let green = UIColor("1E9847")
+    static let moreLightGray = UIColor("FAFAFA")
+    static let lineLightGray = UIColor("F3F3F3")
     static let lightGray = UIColor("BBBBBB")
     static let mediumGray = UIColor("727673")
     static let black = UIColor("070707")

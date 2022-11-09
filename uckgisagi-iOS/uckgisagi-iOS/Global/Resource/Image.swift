@@ -19,6 +19,7 @@ enum Image {
     static let icPost = UIImage(named: "ic.post")!
     static let icBack = UIImage(named: "ic.back")!
     static let icMark = UIImage(named: "ic.mark")!
+    static let icDefaultImage = UIImage(named: "icDefaultImage")!
 
     // MARK: - Btn
     static let btnFollow = UIImage(named: "btn.follow")!
