@@ -9,8 +9,14 @@ import UIKit
 
 import SnapKit
 
+protocol UserProfileTableViewHeaderDelegate: AnyObject {
+    func addButtonDidTap(_ header: UserProfileTableViewHeader)
+}
+
 class UserProfileTableViewHeader: UITableViewHeaderFooterView {
-    private lazy var collectionView: UICollectionView = {
+    weak var delegate: UserProfileTableViewHeaderDelegate?
+    
+    lazy var collectionView: UICollectionView = {
         var layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal
@@ -21,12 +27,12 @@ class UserProfileTableViewHeader: UITableViewHeaderFooterView {
         collectionView.contentInset = UIEdgeInsets(top: .zero, left: 20, bottom: .zero, right: .zero)
         return collectionView
     }()
-    private lazy var dataSource = UserProfileDataSource(collectionView: self.collectionView)
+    private lazy var userProfileDataSource = UserProfileDataSource(collectionView: self.collectionView)
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setLayouts()
-        dataSource.updateSnapshot()
+        userProfileDataSource.updateSnapshot()
         setupCollectionView()
     }
     
@@ -51,5 +57,14 @@ extension UserProfileTableViewHeader: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("didselect")
+        if indexPath.row == 4 {
+            delegate?.addButtonDidTap(self)
+        }
     }
 }
+
+/**
+ 1) delegate
+ 2) rx
+ 3) noti
+ */

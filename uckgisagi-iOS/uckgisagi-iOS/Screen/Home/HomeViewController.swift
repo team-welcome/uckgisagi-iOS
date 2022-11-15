@@ -30,8 +30,8 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-//        postType = .friendPostEmpty
         dataSource.updateSnapshot()
+        bind()
     }
     
     override func setLayouts() {
@@ -73,6 +73,15 @@ class HomeViewController: BaseViewController {
             tableView.sectionHeaderTopPadding = 0
         }
     }
+    
+    func bind() {
+        surroundButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                let feedMainVC = FeedMainViewController()
+                self?.navigationController?.pushViewController(feedMainVC, animated: true)
+            })
+            .disposed(by: disposeBag)
+    }
 }
 
 // MARK: - TableViewDelegate
@@ -87,9 +96,11 @@ extension HomeViewController: UITableViewDelegate {
         switch section {
         case 0:
             guard let headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "UserProfileTableViewHeader") as? UserProfileTableViewHeader else { return UIView() }
+            headerCell.delegate = self
             return headerCell
         case 1:
             guard let headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "UserPostTableViewHeader") as? UserPostTableViewHeader else { return UIView() }
+            headerCell.delegate = self
             return headerCell
         default:
             return UIView()
@@ -112,3 +123,16 @@ extension HomeViewController: UITableViewDelegate {
         return section == 0 ? 54 : 50
     }
 }
+
+extension HomeViewController: UserProfileTableViewHeaderDelegate, UserPostTableViewHeaderDelegate {
+    func writeButtonDidTap(_ header: UserPostTableViewHeader) {
+        let writingVC = WritingViewController()
+        self.navigationController?.pushViewController(writingVC, animated: true)
+    }
+    
+    func addButtonDidTap(_ header: UserProfileTableViewHeader) {
+        let searchVC = SearchUserViewController()
+        self.navigationController?.pushViewController(searchVC, animated: true)
+    }
+}
+
