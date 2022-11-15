@@ -8,8 +8,14 @@
 import UIKit
 
 import SnapKit
+import RxSwift
+
+protocol UserPostTableViewHeaderDelegate: AnyObject {
+    func writeButtonDidTap(_ header: UserPostTableViewHeader)
+}
 
 class UserPostTableViewHeader: UITableViewHeaderFooterView {
+    weak var delegate: UserPostTableViewHeaderDelegate?
     private let headerNoticeLabel = UILabel()
     private let postButton = UIButton()
 
@@ -18,6 +24,7 @@ class UserPostTableViewHeader: UITableViewHeaderFooterView {
         
         setProperties()
         setLayouts()
+        bind()
     }
 
     @available(*, unavailable)
@@ -46,5 +53,13 @@ class UserPostTableViewHeader: UITableViewHeaderFooterView {
         headerNoticeLabel.font = .systemFont(ofSize: 15, weight: UIFont.Weight(rawValue: 700))
         
         postButton.setImage(Image.icPost, for: .normal)
+    }
+    
+    func bind() {
+        postButton.addTarget(self, action: #selector(postButtonDidTap(_:)), for: .touchUpInside)
+    }
+    
+    @objc func postButtonDidTap(_ sender: UIButton) {
+        delegate?.writeButtonDidTap(self)
     }
 }
