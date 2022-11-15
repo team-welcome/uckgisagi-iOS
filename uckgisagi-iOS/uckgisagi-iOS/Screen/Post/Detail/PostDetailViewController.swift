@@ -15,7 +15,6 @@ final class PostDetailViewController: BaseViewController {
 
     override init() {
         super.init()
-
     }
 
     override func loadView() {
@@ -27,7 +26,7 @@ final class PostDetailViewController: BaseViewController {
             image: Image.imgDummy3,
             username: "재연",
             timestamp: "AM 10:13",
-            content:  "나 오늘 분리수거 잘함. 라벨 꼭 떼고 버리기"
+            content:  "라벨 꼭 떼고 버리자 애들아 🌱"
         )
     }
 

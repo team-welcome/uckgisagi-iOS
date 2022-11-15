@@ -988,6 +988,7 @@
 				DEVELOPMENT_TEAM = PBLH2V4923;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "uckgisagi-iOS/Application/PropertyList/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "억지사지";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -1018,6 +1019,7 @@
 				DEVELOPMENT_TEAM = PBLH2V4923;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "uckgisagi-iOS/Application/PropertyList/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "억지사지";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";

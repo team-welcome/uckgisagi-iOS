@@ -79,7 +79,6 @@ final class WritingView: UIView {
         }
         titleLabel.snp.makeConstraints {
             $0.center.equalToSuperview()
-            $0.leading.trailing.greaterThanOrEqualTo(50)
         }
         cancelButton.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
