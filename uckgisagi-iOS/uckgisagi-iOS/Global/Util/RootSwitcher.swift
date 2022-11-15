@@ -27,7 +27,11 @@ final class RootSwitcher {
         case .login:
             delegate.window?.rootViewController = LoginViewController(reactor: .init())
         case .home:
-            delegate.window?.rootViewController = HomeViewController()
+            let homeViewController = HomeViewController()
+            let navigationController = UINavigationController(rootViewController: homeViewController)
+            delegate.window?.rootViewController = navigationController
+            navigationController.isNavigationBarHidden = true
+            
         /// 테스트에만 사용할것
         case let .custom(viewController):
             delegate.window?.rootViewController = viewController
