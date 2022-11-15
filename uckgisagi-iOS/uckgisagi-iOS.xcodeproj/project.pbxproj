@@ -18,12 +18,12 @@
 		2389B436291951A800B0B923 /* EmptyPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2389B435291951A800B0B923 /* EmptyPostTableViewCell.swift */; };
 		23B6DAC5290D5FE9004FFA82 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B6DAC4290D5FE9004FFA82 /* HomeViewController.swift */; };
 		23B6DAC7290D6B1B004FFA82 /* UserProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B6DAC6290D6B1B004FFA82 /* UserProfileCollectionViewCell.swift */; };
+		23E9D6332914F72000E15B27 /* UserProfileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E9D6322914F72000E15B27 /* UserProfileDataSource.swift */; };
 		DD0210AA291A53490048F86B /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0210A9291A53490048F86B /* PostDetailViewController.swift */; };
 		DD0210AD291A535E0048F86B /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0210AC291A535E0048F86B /* PostDetailView.swift */; };
 		DD059A0F291A38B1004E9F02 /* WritingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD059A0E291A38B1004E9F02 /* WritingView.swift */; };
 		DD059A11291A3D63004E9F02 /* WritingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD059A10291A3D63004E9F02 /* WritingViewController.swift */; };
 		DD059A13291A40D3004E9F02 /* WritingReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD059A12291A40D3004E9F02 /* WritingReactor.swift */; };
-		23E9D6332914F72000E15B27 /* UserProfileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E9D6322914F72000E15B27 /* UserProfileDataSource.swift */; };
 		DD0CCA4A290BEBAF00264543 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = DD0CCA49290BEBAF00264543 /* FirebaseAnalytics */; };
 		DD0CCA4C290BEBAF00264543 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = DD0CCA4B290BEBAF00264543 /* FirebaseCrashlytics */; };
 		DD0CCA4E290BEBAF00264543 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = DD0CCA4D290BEBAF00264543 /* FirebaseDynamicLinks */; };
@@ -90,8 +90,11 @@
 		DD9ACCA928F6DA5100B13E9C /* uckgisagi_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCA828F6DA5100B13E9C /* uckgisagi_iOSTests.swift */; };
 		DD9ACCB328F6DA5100B13E9C /* uckgisagi_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCB228F6DA5100B13E9C /* uckgisagi_iOSUITests.swift */; };
 		DD9ACCB528F6DA5100B13E9C /* uckgisagi_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCB428F6DA5100B13E9C /* uckgisagi_iOSUITestsLaunchTests.swift */; };
-		DD9ACCCC28F6DE8100B13E9C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCCB28F6DE8100B13E9C /* API.swift */; };
 		DD9ACCD028F6DEAF00B13E9C /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCCF28F6DEAF00B13E9C /* FirebaseService.swift */; };
+		DDD1DBEB2923B25400FE2E2B /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1DBEA2923B25400FE2E2B /* Environment.swift */; };
+		DDD1DBF02923B3FA00FE2E2B /* RetrieveRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1DBEF2923B3FA00FE2E2B /* RetrieveRouter.swift */; };
+		DDD1DBF22923B4BE00FE2E2B /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1DBF12923B4BE00FE2E2B /* BaseTargetType.swift */; };
+		DDD1DBF52923B81900FE2E2B /* RetrieveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1DBF42923B81900FE2E2B /* RetrieveService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,8 +187,12 @@
 		DD9ACCAE28F6DA5100B13E9C /* uckgisagi-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "uckgisagi-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD9ACCB228F6DA5100B13E9C /* uckgisagi_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uckgisagi_iOSUITests.swift; sourceTree = "<group>"; };
 		DD9ACCB428F6DA5100B13E9C /* uckgisagi_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uckgisagi_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		DD9ACCCB28F6DE8100B13E9C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		DD9ACCCF28F6DEAF00B13E9C /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		DDD1DBEA2923B25400FE2E2B /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		DDD1DBED2923B2C600FE2E2B /* Uckgisagi.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Uckgisagi.xcconfig; sourceTree = "<group>"; };
+		DDD1DBEF2923B3FA00FE2E2B /* RetrieveRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveRouter.swift; sourceTree = "<group>"; };
+		DDD1DBF12923B4BE00FE2E2B /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
+		DDD1DBF42923B81900FE2E2B /* RetrieveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +245,26 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		237546B22912A536001C3E8B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				237546AE291159B7001C3E8B /* UserPostTableViewCell.swift */,
+				2328298229111A7F00ABB272 /* CalendarTableViewCell.swift */,
+				23B6DAC6290D6B1B004FFA82 /* UserProfileCollectionViewCell.swift */,
+				2389B435291951A800B0B923 /* EmptyPostTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		23E9D634291646F200E15B27 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				23282980291114D000ABB272 /* UserProfileTableViewHeader.swift */,
+				237546B029116229001C3E8B /* UserPostTableViewHeader.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		DD0210A8291A53350048F86B /* Writing */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,26 +291,6 @@
 				DD0210A8291A53350048F86B /* Writing */,
 			);
 			path = Post;
-			sourceTree = "<group>";
-		};
-		237546B22912A536001C3E8B /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				237546AE291159B7001C3E8B /* UserPostTableViewCell.swift */,
-				2328298229111A7F00ABB272 /* CalendarTableViewCell.swift */,
-				23B6DAC6290D6B1B004FFA82 /* UserProfileCollectionViewCell.swift */,
-				2389B435291951A800B0B923 /* EmptyPostTableViewCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		23E9D634291646F200E15B27 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				23282980291114D000ABB272 /* UserProfileTableViewHeader.swift */,
-				237546B029116229001C3E8B /* UserPostTableViewHeader.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		DD0CCA5A290C0EB700264543 /* Component */ = {
@@ -514,6 +521,7 @@
 		DD9ACCC228F6DBFA00B13E9C /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				DDD1DBEC2923B2A500FE2E2B /* Configuration */,
 				DD9ACCC928F6DC9500B13E9C /* PropertyList */,
 				DD9ACCC328F6DC0600B13E9C /* Support */,
 			);
@@ -596,10 +604,12 @@
 		DD9ACCCA28F6DE7400B13E9C /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				DDD1DBEA2923B25400FE2E2B /* Environment.swift */,
+				DDD1DBEE2923B30000FE2E2B /* Router */,
+				DDD1DBF32923B80700FE2E2B /* Service */,
 				DD0CCA6C290C220E00264543 /* DTO */,
 				DD98FD50290AC9B5002EAB2A /* BaseResponse */,
 				DD98FD4D290AC98F002EAB2A /* Plugin */,
-				DD9ACCCB28F6DE8100B13E9C /* API.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -619,6 +629,31 @@
 				DD9ACCCF28F6DEAF00B13E9C /* FirebaseService.swift */,
 			);
 			path = Firebase;
+			sourceTree = "<group>";
+		};
+		DDD1DBEC2923B2A500FE2E2B /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				DDD1DBED2923B2C600FE2E2B /* Uckgisagi.xcconfig */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		DDD1DBEE2923B30000FE2E2B /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				DDD1DBF12923B4BE00FE2E2B /* BaseTargetType.swift */,
+				DDD1DBEF2923B3FA00FE2E2B /* RetrieveRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		DDD1DBF32923B80700FE2E2B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				DDD1DBF42923B81900FE2E2B /* RetrieveService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -782,9 +817,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD0CCA6B290C1DB300264543 /* UserFollowCollectionViewCell.swift in Sources */,
+				DDD1DBEB2923B25400FE2E2B /* Environment.swift in Sources */,
 				237981C3291A450A0042FD54 /* HomeDataSource.swift in Sources */,
 				DD31992A2910081A00070383 /* PostCollectionViewCell.swift in Sources */,
 				DD98FD44290AC811002EAB2A /* UserDefaultHandler.swift in Sources */,
+				DDD1DBF22923B4BE00FE2E2B /* BaseTargetType.swift in Sources */,
 				23E9D6332914F72000E15B27 /* UserProfileDataSource.swift in Sources */,
 				DD98FD42290AC7F5002EAB2A /* UserDefault.swift in Sources */,
 				2389B436291951A800B0B923 /* EmptyPostTableViewCell.swift in Sources */,
@@ -794,6 +831,7 @@
 				DD9ACCD028F6DEAF00B13E9C /* FirebaseService.swift in Sources */,
 				DD98FD36290AC667002EAB2A /* UIViewController+.swift in Sources */,
 				DD0CCA67290C151400264543 /* BaseViewController.swift in Sources */,
+				DDD1DBF52923B81900FE2E2B /* RetrieveService.swift in Sources */,
 				DD31991E290D444500070383 /* PostListView.swift in Sources */,
 				DD319918290D416300070383 /* FeedMainViewController.swift in Sources */,
 				DD98FD38290AC69C002EAB2A /* Observable+.swift in Sources */,
@@ -808,7 +846,6 @@
 				DD0CCA6E290C221600264543 /* UserDTO.swift in Sources */,
 				DD98CE562911693D000EBDB3 /* ShopListDataSource.swift in Sources */,
 				237546B129116229001C3E8B /* UserPostTableViewHeader.swift in Sources */,
-				DD9ACCCC28F6DE8100B13E9C /* API.swift in Sources */,
 				DD059A13291A40D3004E9F02 /* WritingReactor.swift in Sources */,
 				DD98FD54290AC9E4002EAB2A /* StatusCase.swift in Sources */,
 				DD0CCA5E290C0F5000264543 /* SearchBar.swift in Sources */,
@@ -835,6 +872,7 @@
 				DD98FD34290AC64E002EAB2A /* UIViewController+Rx.swift in Sources */,
 				DD98FD2C290AC54C002EAB2A /* NotificationCenterHandler.swift in Sources */,
 				DD25786D291022C800FB9BFD /* PostDTO.swift in Sources */,
+				DDD1DBF02923B3FA00FE2E2B /* RetrieveRouter.swift in Sources */,
 				DD0210AD291A535E0048F86B /* PostDetailView.swift in Sources */,
 				DD31991A290D443600070383 /* PostListViewController.swift in Sources */,
 				DD98CE4C29115E6C000EBDB3 /* ShopInfoCollectionViewCell.swift in Sources */,

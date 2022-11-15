@@ -7,9 +7,16 @@
 
 struct PostDTO: Decodable {
     let id: Int
-    let content: String
-    let isLiked: Bool
-    let imageURL: String
+    let content, createdAt, imageURL, nickname: String
+    let scrapStatus, updatedAt: String
+
+    enum CodingKeys: String, CodingKey {
+        case content, createdAt
+        case imageURL = "imageUrl"
+        case nickname
+        case id = "postId"
+        case scrapStatus, updatedAt
+    }
 }
 
 extension PostDTO: Equatable, Hashable {
@@ -24,7 +31,6 @@ extension PostDTO: Equatable, Hashable {
     static func isSameContents(lhs: PostDTO, rhs: PostDTO) -> Bool {
         return lhs.id == rhs.id
         && lhs.content == rhs.content
-        && lhs.isLiked == rhs.isLiked
         && lhs.imageURL == rhs.imageURL
     }
 }
