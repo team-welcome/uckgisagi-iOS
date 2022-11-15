@@ -146,3 +146,5 @@ fastlane/screenshots/**/*.png
 fastlane/test_output
 fastlane/.env
 
+
+uckgisagi-iOS/uckgisagi-iOS/Application/Configuration/Uckgisagi.xcconfig
