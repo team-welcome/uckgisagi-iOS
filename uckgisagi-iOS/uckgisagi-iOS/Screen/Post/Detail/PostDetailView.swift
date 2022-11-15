@@ -68,9 +68,6 @@ final class PostDetailView: UIView {
             $0.width.equalTo(90)
         }
         containerStackView.addArrangedSubviews(imageView, userInfoView, contentLabel)
-        containerStackView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
         imageView.snp.makeConstraints {
             $0.height.equalTo(imageView.snp.width).multipliedBy(0.8).priority(.high)
         }
