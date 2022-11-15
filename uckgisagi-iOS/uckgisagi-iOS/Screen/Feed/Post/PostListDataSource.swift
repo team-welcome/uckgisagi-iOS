@@ -57,7 +57,7 @@ final class PostListDataSource {
             cell.configure(
                 content: post.content,
                 imageURL: post.imageURL,
-                isSelected: post.isLiked
+                isSelected: true
             )
         }
     }

@@ -43,32 +43,7 @@ final class PostListReactor: Reactor {
             return Observable.concat([
                 Observable.just(.setLoading(true)),
                 Observable.just(.setPosts(
-                    posts: [
-                        PostDTO(
-                            id: 1,
-                            content: "나 오늘 분리수거 잘함. 라벨 꼭 떼고 버리기",
-                            isLiked: false,
-                            imageURL: "https://user-images.githubusercontent.com/103497527/193805545-93e46588-7013-4310-aa60-ecb4c2f3312c.png"
-                        ),
-                        PostDTO(
-                            id: 2,
-                            content: "나 오늘 분리수거 잘함. 라벨 꼭 떼고 버리기",
-                            isLiked: true,
-                            imageURL: "https://user-images.githubusercontent.com/103497527/193805545-93e46588-7013-4310-aa60-ecb4c2f3312c.png"
-                        ),
-                        PostDTO(
-                            id: 3,
-                            content: "나 오늘 분리수거 잘함. 라벨 꼭 떼고 버리기",
-                            isLiked: false,
-                            imageURL: "https://user-images.githubusercontent.com/103497527/193805545-93e46588-7013-4310-aa60-ecb4c2f3312c.png"
-                        ),
-                        PostDTO(
-                            id: 4,
-                            content: "나 오늘 분리수거 잘함. 라벨 꼭 떼고 버리기",
-                            isLiked: true,
-                            imageURL: "https://user-images.githubusercontent.com/103497527/193805545-93e46588-7013-4310-aa60-ecb4c2f3312c.png"
-                        )
-                    ]
+                    posts: []
                 )),
                 Observable.just(.setLoading(false))
             ])
