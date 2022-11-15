@@ -24,6 +24,7 @@ enum Image {
     // MARK: - Btn
     static let btnFollow = UIImage(named: "btn.follow")!
     static let btnFollowing = UIImage(named: "btn.following")!
+    static let btnPush = UIImage(named: "btn.push")!
 
     // MARK: - Logo
     static let bigLogo = UIImage(named: "big.logo")!

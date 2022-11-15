@@ -11,6 +11,12 @@ import SnapKit
 import RxSwift
 import FSCalendar
 
+enum PostCase {
+    case friendPostEmpty
+    case ownerPostEmpty
+    case postExist
+}
+
 class HomeViewController: BaseViewController {
     // MARK: - Properties
     private let navigationView = UIView()
@@ -18,10 +24,14 @@ class HomeViewController: BaseViewController {
     private let surroundButton = UIButton()
     private let userProfileHeaderView = UserProfileTableViewHeader()
     private let tableView = UITableView()
+    private var postType: PostCase?
+    private lazy var dataSource = HomeDataSource(tableView: tableView, postType: .postExist)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+//        postType = .friendPostEmpty
+        dataSource.updateSnapshot()
     }
     
     override func setLayouts() {
@@ -65,43 +75,12 @@ class HomeViewController: BaseViewController {
     }
 }
 
-// MARK: - TableView
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+// MARK: - TableViewDelegate
+extension HomeViewController: UITableViewDelegate {
     func setupTableView() {
-        tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(CalendarTableViewCell.self, forCellReuseIdentifier: CalendarTableViewCell.identifier)
         tableView.register(UserProfileTableViewHeader.self, forHeaderFooterViewReuseIdentifier: "UserProfileTableViewHeader")
         tableView.register(UserPostTableViewHeader.self, forHeaderFooterViewReuseIdentifier: "UserPostTableViewHeader")
-        tableView.register(UserPostTableViewCell.self, forCellReuseIdentifier: UserPostTableViewCell.identifier)
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        } else {
-            return 5 // TODO: - 수정
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: CalendarTableViewCell.identifier, for: indexPath) as? CalendarTableViewCell else { return UITableViewCell() }
-            cell.selectionStyle = .none
-            return cell
-        case 1:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: UserPostTableViewCell.identifier, for: indexPath) as? UserPostTableViewCell else { return UITableViewCell() }
-            cell.selectionStyle = .none
-            cell.configure()
-            return cell
-        default:
-            return UITableViewCell()
-        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
