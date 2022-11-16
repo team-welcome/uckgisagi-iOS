@@ -11,6 +11,7 @@ import Moya
 
 enum AuthRouter {
     case signup(fcmToken: String, socialToken: String)
+    case reissue
 }
 
 extension AuthRouter: BaseTargetType {
@@ -18,12 +19,16 @@ extension AuthRouter: BaseTargetType {
         switch self {
         case .signup:
             return "/auth/login"
+        case .reissue:
+            return "/auth/reissue"
         }
     }
 
     var method: Moya.Method {
         switch self {
         case .signup(_, _):
+            return .post
+        case .reissue:
             return .post
         }
     }
@@ -38,6 +43,8 @@ extension AuthRouter: BaseTargetType {
 
             let paramsJson = try? JSONSerialization.data(withJSONObject: params)
             return .requestData(paramsJson ?? Data())
+        case .reissue:
+            return .requestParameters(parameters: [:], encoding: JSONEncoding.default)
         }
     }
 }
