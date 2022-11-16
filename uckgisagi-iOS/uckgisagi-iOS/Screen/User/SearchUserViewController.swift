@@ -8,8 +8,11 @@
 import UIKit
 
 import SnapKit
+import ReactorKit
 
-final class SearchUserViewController: BaseViewController {
+final class SearchUserViewController: BaseViewController, View {
+    typealias Reactor = SearchUserReactor
+
     // MARK: - typealias
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, UserDTO>
     typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, UserDTO>
@@ -36,14 +39,7 @@ final class SearchUserViewController: BaseViewController {
     // MARK: - Initialize
     override init() {
         super.init()
-        update([
-            UserDTO(id: 1, name: "뮨서", isFollowing: true),
-            UserDTO(id: 2, name: "토딘", isFollowing: true),
-            UserDTO(id: 3, name: "짠짠", isFollowing: false),
-            UserDTO(id: 4, name: "대희", isFollowing: false),
-            UserDTO(id: 5, name: "준서", isFollowing: false),
-            UserDTO(id: 6, name: "화랑", isFollowing: true)
-        ])
+        hideKeyboardWhenTappedAround()
     }
 
     override func setProperties() {
@@ -80,6 +76,25 @@ final class SearchUserViewController: BaseViewController {
             $0.centerY.equalToSuperview()
             $0.width.equalTo(90)
         }
+    }
+
+    func bind(reactor: SearchUserReactor) {
+        searchBar.textField.rx.text
+            .distinctUntilChanged()
+            .compactMap { $0 }
+            .filter { !$0.isEmpty}
+            .debounce(.microseconds(500), scheduler: MainScheduler.instance)
+            .map { Reactor.Action.search(text: $0)}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        reactor.state
+            .compactMap { $0.userList }
+            .withUnretained(self)
+            .subscribe { owner, userList in
+                owner.update(userList)
+            }
+            .disposed(by: disposeBag)
     }
 
     private func createLayout() -> UICollectionViewLayout {
@@ -134,8 +149,8 @@ extension SearchUserViewController {
         return CellRegistraion<Cell> { cell, _, user in
             cell.delegate = self
             cell.configure(
-                name: user.name,
-                isFollwing: user.isFollowing
+                name: user.nickname,
+                isFollwing: user.followStatus.parse()
             )
             cell.tag = user.id
         }
