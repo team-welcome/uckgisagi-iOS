@@ -83,7 +83,7 @@ final class SearchUserViewController: BaseViewController, View {
             .distinctUntilChanged()
             .compactMap { $0 }
             .filter { !$0.isEmpty}
-            .debounce(.microseconds(500), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
             .map { Reactor.Action.search(text: $0)}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
@@ -93,6 +93,12 @@ final class SearchUserViewController: BaseViewController, View {
             .withUnretained(self)
             .subscribe { owner, userList in
                 owner.update(userList)
+            }
+            .disposed(by: disposeBag)
+
+        backButton.rx.tap
+            .bind { [weak self] _ in
+                self?.navigationController?.popViewController(animated: true)
             }
             .disposed(by: disposeBag)
     }
