@@ -93,13 +93,14 @@
 		DD9ACCB528F6DA5100B13E9C /* uckgisagi_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCB428F6DA5100B13E9C /* uckgisagi_iOSUITestsLaunchTests.swift */; };
 		DD9ACCD028F6DEAF00B13E9C /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCCF28F6DEAF00B13E9C /* FirebaseService.swift */; };
 		DDD1DBEB2923B25400FE2E2B /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1DBEA2923B25400FE2E2B /* Environment.swift */; };
-		DDD1DBF02923B3FA00FE2E2B /* RetrieveRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1DBEF2923B3FA00FE2E2B /* RetrieveRouter.swift */; };
+		DDD1DBF02923B3FA00FE2E2B /* PostRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1DBEF2923B3FA00FE2E2B /* PostRouter.swift */; };
 		DDD1DBF22923B4BE00FE2E2B /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1DBF12923B4BE00FE2E2B /* BaseTargetType.swift */; };
-		DDD1DBF52923B81900FE2E2B /* RetrieveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1DBF42923B81900FE2E2B /* RetrieveService.swift */; };
+		DDD1DBF52923B81900FE2E2B /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1DBF42923B81900FE2E2B /* PostService.swift */; };
 		DDEDEB35292546A800B0ACAA /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEDEB34292546A800B0ACAA /* AuthRouter.swift */; };
 		DDEDEB372925478B00B0ACAA /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEDEB362925478B00B0ACAA /* AuthService.swift */; };
 		DDEDEB3B292547E100B0ACAA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEDEB3A292547E100B0ACAA /* NetworkService.swift */; };
 		DDEDEB3D292548BC00B0ACAA /* TokenDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEDEB3C292548BC00B0ACAA /* TokenDTO.swift */; };
+		DDEDEB3F29254FD400B0ACAA /* GradeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEDEB3E29254FD400B0ACAA /* GradeDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -196,13 +197,14 @@
 		DD9ACCCF28F6DEAF00B13E9C /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		DDD1DBEA2923B25400FE2E2B /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		DDD1DBED2923B2C600FE2E2B /* Uckgisagi.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Uckgisagi.xcconfig; sourceTree = "<group>"; };
-		DDD1DBEF2923B3FA00FE2E2B /* RetrieveRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveRouter.swift; sourceTree = "<group>"; };
+		DDD1DBEF2923B3FA00FE2E2B /* PostRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRouter.swift; sourceTree = "<group>"; };
 		DDD1DBF12923B4BE00FE2E2B /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
-		DDD1DBF42923B81900FE2E2B /* RetrieveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveService.swift; sourceTree = "<group>"; };
+		DDD1DBF42923B81900FE2E2B /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		DDEDEB34292546A800B0ACAA /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
 		DDEDEB362925478B00B0ACAA /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		DDEDEB3A292547E100B0ACAA /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		DDEDEB3C292548BC00B0ACAA /* TokenDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDTO.swift; sourceTree = "<group>"; };
+		DDEDEB3E29254FD400B0ACAA /* GradeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -336,6 +338,7 @@
 				DD98CE532911687C000EBDB3 /* ShopDTO.swift */,
 				2332D0A12925012700BB3C0F /* LoginDTO.swift */,
 				DDEDEB3C292548BC00B0ACAA /* TokenDTO.swift */,
+				DDEDEB3E29254FD400B0ACAA /* GradeDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -656,7 +659,7 @@
 			isa = PBXGroup;
 			children = (
 				DDD1DBF12923B4BE00FE2E2B /* BaseTargetType.swift */,
-				DDD1DBEF2923B3FA00FE2E2B /* RetrieveRouter.swift */,
+				DDD1DBEF2923B3FA00FE2E2B /* PostRouter.swift */,
 				DDEDEB34292546A800B0ACAA /* AuthRouter.swift */,
 			);
 			path = Router;
@@ -665,7 +668,7 @@
 		DDD1DBF32923B80700FE2E2B /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				DDD1DBF42923B81900FE2E2B /* RetrieveService.swift */,
+				DDD1DBF42923B81900FE2E2B /* PostService.swift */,
 				DDEDEB362925478B00B0ACAA /* AuthService.swift */,
 			);
 			path = Service;
@@ -848,8 +851,9 @@
 				DD9ACCD028F6DEAF00B13E9C /* FirebaseService.swift in Sources */,
 				DD98FD36290AC667002EAB2A /* UIViewController+.swift in Sources */,
 				DD0CCA67290C151400264543 /* BaseViewController.swift in Sources */,
-				DDD1DBF52923B81900FE2E2B /* RetrieveService.swift in Sources */,
+				DDD1DBF52923B81900FE2E2B /* PostService.swift in Sources */,
 				DD31991E290D444500070383 /* PostListView.swift in Sources */,
+				DDEDEB3F29254FD400B0ACAA /* GradeDTO.swift in Sources */,
 				DD319918290D416300070383 /* FeedMainViewController.swift in Sources */,
 				DD98FD38290AC69C002EAB2A /* Observable+.swift in Sources */,
 				DD98FD32290AC63E002EAB2A /* UIView+Rx.swift in Sources */,
@@ -890,7 +894,7 @@
 				DD98FD34290AC64E002EAB2A /* UIViewController+Rx.swift in Sources */,
 				DD98FD2C290AC54C002EAB2A /* NotificationCenterHandler.swift in Sources */,
 				DD25786D291022C800FB9BFD /* PostDTO.swift in Sources */,
-				DDD1DBF02923B3FA00FE2E2B /* RetrieveRouter.swift in Sources */,
+				DDD1DBF02923B3FA00FE2E2B /* PostRouter.swift in Sources */,
 				DD0210AD291A535E0048F86B /* PostDetailView.swift in Sources */,
 				DDEDEB3B292547E100B0ACAA /* NetworkService.swift in Sources */,
 				DD31991A290D443600070383 /* PostListViewController.swift in Sources */,

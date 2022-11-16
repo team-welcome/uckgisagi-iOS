@@ -1,24 +1,33 @@
 //
-//  RetrieveService.swift
+//  PostService.swift
 //  uckgisagi-iOS
 //
 //  Created by 김윤서 on 2022/11/15.
 //
+import UIKit.UIImage
 
 import Moya
 import RxMoya
 import RxSwift
 
-protocol RetrieveServiceType {
+protocol PostServiceType {
+    func postWriting(image: UIImage, content: String) -> Observable<BaseResponse<GradeDTO>>
     func getPostDetail(postID: Int) -> Observable<BaseResponse<PostDTO>>
     func getPostList() -> Observable<BaseArrayResponse<PostDTO>>
     func getScrapDetail(postID: Int) -> Observable<BaseResponse<PostDTO>>
     func getScrapList() -> Observable<BaseArrayResponse<PostDTO>>
 }
 
-final class RetrieveService: RetrieveServiceType {
+final class PostService: PostServiceType {
     
-    private let router = MoyaProvider<RetrieveRouter>(plugins: [MoyaLoggingPlugin()])
+    private let router = MoyaProvider<PostRouter>(plugins: [MoyaLoggingPlugin()])
+
+    func postWriting(image: UIImage, content: String) -> Observable<BaseResponse<GradeDTO>> {
+        return router.rx.request(.postWriting(image: image, content: content))
+            .asObservable()
+            .map(BaseResponse<GradeDTO>.self)
+            .catchError()
+    }
 
     func getPostDetail(postID: Int) -> Observable<BaseResponse<PostDTO>>{
         return router.rx.request(.getPostDetail(postID: postID))
@@ -47,5 +56,5 @@ final class RetrieveService: RetrieveServiceType {
             .asObservable()
             .catchError()
     }
-    
+
 }

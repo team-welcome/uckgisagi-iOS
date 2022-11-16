@@ -9,5 +9,5 @@ final class NetworkService {
     static let shared = NetworkService()
 
     let auth = AuthService()
-    let retrieve = RetrieveService()
+    let post = PostService()
 }
