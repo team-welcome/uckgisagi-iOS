@@ -5,6 +5,8 @@
 //  Created by 김윤서 on 2022/10/27.
 //
 
+import Moya
+import RxMoya
 import RxSwift
 
 extension Observable {

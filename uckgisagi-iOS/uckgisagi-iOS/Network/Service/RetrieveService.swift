@@ -14,8 +14,6 @@ protocol RetrieveServiceType {
     func getPostList() -> Observable<BaseArrayResponse<PostDTO>>
     func getScrapDetail(postID: Int) -> Observable<BaseResponse<PostDTO>>
     func getScrapList() -> Observable<BaseArrayResponse<PostDTO>>
-    
-    func signup(fcmToken: String, socialToken: String) -> Observable<BaseResponse<LoginDTO>>
 }
 
 final class RetrieveService: RetrieveServiceType {
@@ -50,10 +48,4 @@ final class RetrieveService: RetrieveServiceType {
             .catchError()
     }
     
-    func signup(fcmToken: String, socialToken: String) -> RxSwift.Observable<BaseResponse<LoginDTO>> {
-        return router.rx.request(.signup(fcmToken: fcmToken, socialToken: socialToken))
-            .map(BaseResponse<LoginDTO>.self)
-            .asObservable()
-            .catchError()
-    }
 }
