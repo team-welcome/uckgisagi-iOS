@@ -22,8 +22,8 @@ final class ShopListDataSource {
     private lazy var dataSource = createDataSource()
     private let collectionView: UICollectionView
 
-    private var hot: [Int: ShopDTO]
-    private var shops: [Int: ShopDTO]
+    private var hot: [Int: StoreDTO]
+    private var shops: [Int: StoreDTO]
 
     enum Section {
         case hot
@@ -80,9 +80,9 @@ final class ShopListDataSource {
         return CellRegistration<Cell> { [weak self] cell, _, shopID in
             guard
                 let self = self,
-                let post = self.shops[shopID]
+                let post = self.hot[shopID]
             else { return }
-            cell.configure(imageURL: post.imageURL, title: post.name, content: post.location)
+            cell.configure(imageURL: post.imageURL, title: post.storeName, content: post.address)
         }
     }
 
@@ -92,7 +92,7 @@ final class ShopListDataSource {
                 let self = self,
                 let post = self.shops[shopID]
             else { return }
-            cell.configure(imageURL: post.imageURL, title: post.name, content: post.location)
+            cell.configure(imageURL: post.imageURL, title: post.storeName, content: post.address)
         }
     }
 
@@ -116,7 +116,7 @@ final class ShopListDataSource {
         }
     }
 
-    func update(hots: [ShopDTO], shops: [ShopDTO]) {
+    func update(hots: [StoreDTO], shops: [StoreDTO]) {
         var snapshot = Snapshot()
         snapshot.appendSections([.hot, .shop])
 
@@ -133,8 +133,8 @@ final class ShopListDataSource {
         snapshot.appendItems(hotIds, toSection: .hot)
         snapshot.appendItems(shopIds, toSection: .shop)
 
-        dataSource.apply(snapshot, animatingDifferences: true)
         configureReviewHeader()
+        dataSource.apply(snapshot, animatingDifferences: true)
 
     }
 }

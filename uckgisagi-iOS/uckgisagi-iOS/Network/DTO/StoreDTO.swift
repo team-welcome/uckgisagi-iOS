@@ -7,9 +7,16 @@
 
 struct StoreDTO: Decodable {
     let id: Int
-    let name: String
-    let location: String
+    let storeName: String
+    let address: String
     let imageURL: String
+
+    enum CodingKeys: String, CodingKey {
+        case address
+        case imageURL = "imageUrl"
+        case id = "storeId"
+        case storeName
+    }
 }
 
 extension StoreDTO: Equatable, Hashable {
@@ -22,7 +29,7 @@ extension StoreDTO: Equatable, Hashable {
     }
 }
 
-struct ShopListDTO: Decodable{
-    let hots: [StoreDTO]
-    let shops: [StoreDTO]
+struct StoreListDTO: Decodable {
+    let mostPopularStore: [StoreDTO]
+    let restStore: [StoreDTO]
 }
