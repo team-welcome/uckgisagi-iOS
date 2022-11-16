@@ -53,7 +53,7 @@
 		DD98CE4E29115E9A000EBDB3 /* HotShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98CE4D29115E9A000EBDB3 /* HotShopCollectionViewCell.swift */; };
 		DD98CE5029115F96000EBDB3 /* ShopHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98CE4F29115F96000EBDB3 /* ShopHeaderView.swift */; };
 		DD98CE52291167AD000EBDB3 /* ShopListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98CE51291167AD000EBDB3 /* ShopListView.swift */; };
-		DD98CE542911687C000EBDB3 /* ShopDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98CE532911687C000EBDB3 /* ShopDTO.swift */; };
+		DD98CE542911687C000EBDB3 /* StoreDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98CE532911687C000EBDB3 /* StoreDTO.swift */; };
 		DD98CE562911693D000EBDB3 /* ShopListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98CE552911693D000EBDB3 /* ShopListDataSource.swift */; };
 		DD98CE5829116D7C000EBDB3 /* ShopListReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98CE5729116D7C000EBDB3 /* ShopListReactor.swift */; };
 		DD98FD18290AC473002EAB2A /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = DD98FD17290AC473002EAB2A /* RxMoya */; };
@@ -92,6 +92,8 @@
 		DD9ACCB328F6DA5100B13E9C /* uckgisagi_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCB228F6DA5100B13E9C /* uckgisagi_iOSUITests.swift */; };
 		DD9ACCB528F6DA5100B13E9C /* uckgisagi_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCB428F6DA5100B13E9C /* uckgisagi_iOSUITestsLaunchTests.swift */; };
 		DD9ACCD028F6DEAF00B13E9C /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCCF28F6DEAF00B13E9C /* FirebaseService.swift */; };
+		DDD0B2712925571B0015AC5E /* StoreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0B2702925571B0015AC5E /* StoreRouter.swift */; };
+		DDD0B273292558240015AC5E /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0B272292558240015AC5E /* StoreService.swift */; };
 		DDD1DBEB2923B25400FE2E2B /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1DBEA2923B25400FE2E2B /* Environment.swift */; };
 		DDD1DBF02923B3FA00FE2E2B /* PostRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1DBEF2923B3FA00FE2E2B /* PostRouter.swift */; };
 		DDD1DBF22923B4BE00FE2E2B /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1DBF12923B4BE00FE2E2B /* BaseTargetType.swift */; };
@@ -160,7 +162,7 @@
 		DD98CE4D29115E9A000EBDB3 /* HotShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotShopCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD98CE4F29115F96000EBDB3 /* ShopHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopHeaderView.swift; sourceTree = "<group>"; };
 		DD98CE51291167AD000EBDB3 /* ShopListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListView.swift; sourceTree = "<group>"; };
-		DD98CE532911687C000EBDB3 /* ShopDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDTO.swift; sourceTree = "<group>"; };
+		DD98CE532911687C000EBDB3 /* StoreDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDTO.swift; sourceTree = "<group>"; };
 		DD98CE552911693D000EBDB3 /* ShopListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListDataSource.swift; sourceTree = "<group>"; };
 		DD98CE5729116D7C000EBDB3 /* ShopListReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListReactor.swift; sourceTree = "<group>"; };
 		DD98FD28290AC4F5002EAB2A /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
@@ -195,6 +197,8 @@
 		DD9ACCB228F6DA5100B13E9C /* uckgisagi_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uckgisagi_iOSUITests.swift; sourceTree = "<group>"; };
 		DD9ACCB428F6DA5100B13E9C /* uckgisagi_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uckgisagi_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DD9ACCCF28F6DEAF00B13E9C /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		DDD0B2702925571B0015AC5E /* StoreRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRouter.swift; sourceTree = "<group>"; };
+		DDD0B272292558240015AC5E /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
 		DDD1DBEA2923B25400FE2E2B /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		DDD1DBED2923B2C600FE2E2B /* Uckgisagi.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Uckgisagi.xcconfig; sourceTree = "<group>"; };
 		DDD1DBEF2923B3FA00FE2E2B /* PostRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRouter.swift; sourceTree = "<group>"; };
@@ -335,7 +339,7 @@
 			children = (
 				DD0CCA6D290C221600264543 /* UserDTO.swift */,
 				DD25786C291022C800FB9BFD /* PostDTO.swift */,
-				DD98CE532911687C000EBDB3 /* ShopDTO.swift */,
+				DD98CE532911687C000EBDB3 /* StoreDTO.swift */,
 				2332D0A12925012700BB3C0F /* LoginDTO.swift */,
 				DDEDEB3C292548BC00B0ACAA /* TokenDTO.swift */,
 				DDEDEB3E29254FD400B0ACAA /* GradeDTO.swift */,
@@ -661,6 +665,7 @@
 				DDD1DBF12923B4BE00FE2E2B /* BaseTargetType.swift */,
 				DDD1DBEF2923B3FA00FE2E2B /* PostRouter.swift */,
 				DDEDEB34292546A800B0ACAA /* AuthRouter.swift */,
+				DDD0B2702925571B0015AC5E /* StoreRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -670,6 +675,7 @@
 			children = (
 				DDD1DBF42923B81900FE2E2B /* PostService.swift */,
 				DDEDEB362925478B00B0ACAA /* AuthService.swift */,
+				DDD0B272292558240015AC5E /* StoreService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -844,6 +850,7 @@
 				DDEDEB35292546A800B0ACAA /* AuthRouter.swift in Sources */,
 				23E9D6332914F72000E15B27 /* UserProfileDataSource.swift in Sources */,
 				DD98FD42290AC7F5002EAB2A /* UserDefault.swift in Sources */,
+				DDD0B2712925571B0015AC5E /* StoreRouter.swift in Sources */,
 				2389B436291951A800B0B923 /* EmptyPostTableViewCell.swift in Sources */,
 				23B6DAC5290D5FE9004FFA82 /* HomeViewController.swift in Sources */,
 				237546AF291159B7001C3E8B /* UserPostTableViewCell.swift in Sources */,
@@ -862,7 +869,7 @@
 				DD25786929100DA800FB9BFD /* PostListReactor.swift in Sources */,
 				DDEDEB372925478B00B0ACAA /* AuthService.swift in Sources */,
 				DD98FD3A290AC6FE002EAB2A /* UIImageView+Kingfisher.swift in Sources */,
-				DD98CE542911687C000EBDB3 /* ShopDTO.swift in Sources */,
+				DD98CE542911687C000EBDB3 /* StoreDTO.swift in Sources */,
 				DD98FD4F290AC99A002EAB2A /* MoyaLoggingPlugin.swift in Sources */,
 				DD98FD58290ACA64002EAB2A /* BaseArrayResponse.swift in Sources */,
 				DD0CCA6E290C221600264543 /* UserDTO.swift in Sources */,
@@ -884,6 +891,7 @@
 				DD98FD3F290AC79F002EAB2A /* UIStackView+.swift in Sources */,
 				DD98CE5829116D7C000EBDB3 /* ShopListReactor.swift in Sources */,
 				DD0CCA61290C12D700264543 /* Image.swift in Sources */,
+				DDD0B273292558240015AC5E /* StoreService.swift in Sources */,
 				2328298329111A7F00ABB272 /* CalendarTableViewCell.swift in Sources */,
 				DD98FD30290AC62B002EAB2A /* UIView+.swift in Sources */,
 				DD98FD2E290AC5E0002EAB2A /* NotificationManager.swift in Sources */,
