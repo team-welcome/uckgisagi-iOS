@@ -1,19 +1,19 @@
 //
-//  ShopDTO.swift
+//  StoreDTO.swift
 //  uckgisagi-iOS
 //
 //  Created by 김윤서 on 2022/11/01.
 //
 
-struct ShopDTO: Decodable {
+struct StoreDTO: Decodable {
     let id: Int
     let name: String
     let location: String
     let imageURL: String
 }
 
-extension ShopDTO: Equatable, Hashable {
-    static func == (lhs: ShopDTO, rhs: ShopDTO) -> Bool {
+extension StoreDTO: Equatable, Hashable {
+    static func == (lhs: StoreDTO, rhs: StoreDTO) -> Bool {
         return lhs.id == rhs.id
     }
 
@@ -23,6 +23,6 @@ extension ShopDTO: Equatable, Hashable {
 }
 
 struct ShopListDTO: Decodable{
-    let hots: [ShopDTO]
-    let shops: [ShopDTO]
+    let hots: [StoreDTO]
+    let shops: [StoreDTO]
 }
