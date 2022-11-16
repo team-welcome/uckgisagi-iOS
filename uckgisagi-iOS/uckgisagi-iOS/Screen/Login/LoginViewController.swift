@@ -13,22 +13,11 @@ import RxSwift
 import AuthenticationServices
 
 class LoginViewController: BaseViewController {
-    typealias Reactor = LoginReactor
-
-//    init(reactor: Reactor) {
-//        super.init()
-//
-//        self.reactor = reactor
-//    }
-//    
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
     // MARK: - properties 
     private let ukgisagiLogo = UIImageView()
     private let ukgisagiLabel = UILabel()
     private let appleLoginButton = ASAuthorizationAppleIDButton()
+    private let retrieveService = RetrieveService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,25 +57,20 @@ class LoginViewController: BaseViewController {
         (appleLoginButton as UIControl).cornerRadius = 25
     }
     
-//    func bind(reactor: LoginReactor) {
-//        appleLoginButton.rx
-//            .tap
-//            .map { .doLogin }
-//            .bind(to: reactor.action)
-//            .disposed(by: disposeBag)
-//
-//        reactor.state
-//            .map(\.isAppleLoginSuccess)
-//            .bind { [weak self] status in
-//                if status {
-//                    // TODO: - 화면 전환 코드 넣어두기
-//                }
-//            }
-//            .disposed(by: disposeBag)
-//    }
-    
     func bind() {
         appleLoginButton.addTarget(self, action: #selector(openAppleLogin), for: .touchUpInside)
+    }
+    
+    func doLogin(_ socialToken: String) {
+        guard let fcmToken = UserDefaults.standard.string(forKey: "fcmToken") else { return }
+    
+        retrieveService.signup(fcmToken: fcmToken, socialToken: socialToken)
+            .subscribe(onNext: { response in
+                guard let data = response.data else { return }
+                KeychainHandler.shared.accessToken = data.accessToken
+                KeychainHandler.shared.refreshToken = data.refreshToken
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -119,6 +103,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
                 print("identityToken: \(identityToken)")
                 print("authString: \(authString)")
                 print("tokenString: \(tokenString)")
+                doLogin(tokenString)
             }
             
             print("useridentifier: \(userIdentifier)")

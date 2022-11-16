@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate : MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        print("파이어베이스 토큰: \(String(describing: fcmToken))")
+        UserDefaults.standard.setValue(fcmToken, forKey: "fcmToken")
     }
 }
 
