@@ -134,6 +134,7 @@ extension HomeViewController: UserProfileTableViewHeaderDelegate, UserPostTableV
     
     func addButtonDidTap(_ header: UserProfileTableViewHeader) {
         let searchVC = SearchUserViewController()
+        searchVC.reactor = SearchUserReactor()
         self.navigationController?.pushViewController(searchVC, animated: true)
     }
 }
