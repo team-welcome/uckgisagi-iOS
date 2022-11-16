@@ -10,6 +10,7 @@
 		2328297B291009A200ABB272 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 2328297A291009A200ABB272 /* FSCalendar */; };
 		23282981291114D000ABB272 /* UserProfileTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23282980291114D000ABB272 /* UserProfileTableViewHeader.swift */; };
 		2328298329111A7F00ABB272 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2328298229111A7F00ABB272 /* CalendarTableViewCell.swift */; };
+		2332D0A22925012700BB3C0F /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2332D0A12925012700BB3C0F /* LoginDTO.swift */; };
 		23608759290C359B0069493F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23608758290C359B0069493F /* LoginViewController.swift */; };
 		2360875B290C45140069493F /* LoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360875A290C45140069493F /* LoginReactor.swift */; };
 		237546AF291159B7001C3E8B /* UserPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237546AE291159B7001C3E8B /* UserPostTableViewCell.swift */; };
@@ -117,6 +118,7 @@
 /* Begin PBXFileReference section */
 		23282980291114D000ABB272 /* UserProfileTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileTableViewHeader.swift; sourceTree = "<group>"; };
 		2328298229111A7F00ABB272 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
+		2332D0A12925012700BB3C0F /* LoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDTO.swift; sourceTree = "<group>"; };
 		23608758290C359B0069493F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2360875A290C45140069493F /* LoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReactor.swift; sourceTree = "<group>"; };
 		237546AE291159B7001C3E8B /* UserPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostTableViewCell.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				DD0CCA6D290C221600264543 /* UserDTO.swift */,
 				DD25786C291022C800FB9BFD /* PostDTO.swift */,
 				DD98CE532911687C000EBDB3 /* ShopDTO.swift */,
+				2332D0A12925012700BB3C0F /* LoginDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -879,6 +882,7 @@
 				DD98CE5029115F96000EBDB3 /* ShopHeaderView.swift in Sources */,
 				DD0CCA64290C14EC00264543 /* SearchUserViewController.swift in Sources */,
 				DD98FD56290ACA52002EAB2A /* BaseResponse.swift in Sources */,
+				2332D0A22925012700BB3C0F /* LoginDTO.swift in Sources */,
 				DD98FD5A290ACA74002EAB2A /* NullResponse.swift in Sources */,
 				DD059A11291A3D63004E9F02 /* WritingViewController.swift in Sources */,
 				DD6DA4E329117A8400BA3291 /* SplashViewController.swift in Sources */,
@@ -931,6 +935,7 @@
 /* Begin XCBuildConfiguration section */
 		DD9ACCB628F6DA5100B13E9C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDD1DBED2923B2C600FE2E2B /* Uckgisagi.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -991,6 +996,7 @@
 		};
 		DD9ACCB728F6DA5100B13E9C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDD1DBED2923B2C600FE2E2B /* Uckgisagi.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1045,6 +1051,7 @@
 		};
 		DD9ACCB928F6DA5100B13E9C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDD1DBED2923B2C600FE2E2B /* Uckgisagi.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1055,6 +1062,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "uckgisagi-iOS/Application/PropertyList/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "억지사지";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "인증글에 사진을 포함하기위해 필요해요:)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -1076,6 +1084,7 @@
 		};
 		DD9ACCBA28F6DA5100B13E9C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDD1DBED2923B2C600FE2E2B /* Uckgisagi.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1086,6 +1095,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "uckgisagi-iOS/Application/PropertyList/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "억지사지";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "인증글에 사진을 포함하기위해 필요해요:)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
