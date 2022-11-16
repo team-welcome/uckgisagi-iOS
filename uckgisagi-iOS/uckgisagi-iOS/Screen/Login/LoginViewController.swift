@@ -10,24 +10,31 @@ import UIKit
 import SnapKit
 import ReactorKit
 import RxSwift
+import AuthenticationServices
 
-class LoginViewController: BaseViewController, View {
+class LoginViewController: BaseViewController {
     typealias Reactor = LoginReactor
-    
-    init(reactor: Reactor) {
-        super.init()
-        
-        self.reactor = reactor
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
+//    init(reactor: Reactor) {
+//        super.init()
+//
+//        self.reactor = reactor
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     // MARK: - properties 
     private let ukgisagiLogo = UIImageView()
     private let ukgisagiLabel = UILabel()
-    private let appleLoginButton = UIButton()
+    private let appleLoginButton = ASAuthorizationAppleIDButton()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        bind()
+    }
     
     // MARK: - layout
     override func setLayouts() {
@@ -58,30 +65,78 @@ class LoginViewController: BaseViewController, View {
         ukgisagiLabel.textColor = Color.green
         ukgisagiLabel.font = .systemFont(ofSize: 18, weight: .thin)
         
-        appleLoginButton.setTitle(" Apple로 시작하기", for: .normal)
-        appleLoginButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
-        appleLoginButton.setImage(Image.appleLogo, for: .normal)
-        appleLoginButton.setTitleColor(.white, for: .normal)
-        appleLoginButton.backgroundColor = .black
-        appleLoginButton.layer.cornerRadius = 24
+        (appleLoginButton as UIControl).cornerRadius = 25
     }
     
-    func bind(reactor: LoginReactor) {
-        appleLoginButton.rx
-            .tap
-            .map { .doLogin }
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
-        
-        reactor.state
-            .map(\.isAppleLoginSuccess)
-            .bind { [weak self] status in
-                if status {
-                    // TODO: - 화면 전환 코드 넣어두기
-                }
-            }
-            .disposed(by: disposeBag)
-    }
+//    func bind(reactor: LoginReactor) {
+//        appleLoginButton.rx
+//            .tap
+//            .map { .doLogin }
+//            .bind(to: reactor.action)
+//            .disposed(by: disposeBag)
+//
+//        reactor.state
+//            .map(\.isAppleLoginSuccess)
+//            .bind { [weak self] status in
+//                if status {
+//                    // TODO: - 화면 전환 코드 넣어두기
+//                }
+//            }
+//            .disposed(by: disposeBag)
+//    }
     
+    func bind() {
+        appleLoginButton.addTarget(self, action: #selector(openAppleLogin), for: .touchUpInside)
+    }
 }
 
+extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+   
+    @objc private func openAppleLogin(_ sender: ASAuthorizationAppleIDButton) {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
+    }
+    
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+        case let appleIDCredential as ASAuthorizationAppleIDCredential:
+            let userIdentifier = appleIDCredential.user
+            let fullName = appleIDCredential.fullName
+            let email = appleIDCredential.email
+            
+            if let authorizationCode = appleIDCredential.authorizationCode, let identityToken = appleIDCredential.identityToken, let authString = String(data: authorizationCode, encoding: .utf8), let tokenString = String(data: identityToken, encoding: .utf8) {
+                print("authorizationCode: \(authorizationCode)")
+                print("identityToken: \(identityToken)")
+                print("authString: \(authString)")
+                print("tokenString: \(tokenString)")
+            }
+            
+            print("useridentifier: \(userIdentifier)")
+            print("fullName: \(String(describing: fullName))")
+            print("email: \(String(describing: email))")
+            
+        case let passwordCredential as ASPasswordCredential:
+            let username = passwordCredential.user
+            let password = passwordCredential.password
+            
+            print("username: \(username)")
+            print("password: \(password)")
+        default:
+            break
+        }
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print("애플 로그인 실패")
+    }
+}
