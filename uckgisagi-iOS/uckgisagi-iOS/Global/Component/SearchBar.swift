@@ -55,7 +55,7 @@ final class SearchBarView: UIView {
             $0.leading.bottom.trailing.equalToSuperview()
         }
         searchIcon.snp.makeConstraints {
-            $0.size.equalTo(24)
+            $0.size.equalTo(24).priority(.high)
             $0.leading.equalToSuperview()
             $0.centerY.equalToSuperview()
             $0.bottom.greaterThanOrEqualTo(bottomLineView.snp.top).inset(8)
