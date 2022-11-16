@@ -11,4 +11,5 @@ final class NetworkService {
     let auth = AuthService()
     let post = PostService()
     let store = StoreService()
+    let user = UserService()
 }
