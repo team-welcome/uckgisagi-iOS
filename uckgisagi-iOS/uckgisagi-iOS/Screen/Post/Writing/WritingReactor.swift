@@ -11,7 +11,7 @@ import ReactorKit
 
 final class WritingReactor: Reactor {
     struct State {
-        var isLoading: Bool = false
+        var isLoading: Bool = true
     }
 
     enum Action {
@@ -30,8 +30,13 @@ final class WritingReactor: Reactor {
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .finishWriting:
-            return Observable.just(.setLoading(true))
+        case let .finishWriting(text, image):
+            return Observable.concat([
+                Observable.just(.setLoading(true)),
+                NetworkService.shared.post.postWriting(image: image, content: text)
+                    .compactMap { $0.data }
+                    .map { _ in Mutation.setLoading(false)}
+            ])
         }
     }
 

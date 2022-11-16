@@ -127,6 +127,7 @@ extension HomeViewController: UITableViewDelegate {
 extension HomeViewController: UserProfileTableViewHeaderDelegate, UserPostTableViewHeaderDelegate {
     func writeButtonDidTap(_ header: UserPostTableViewHeader) {
         let writingVC = WritingViewController()
+        writingVC.reactor = WritingReactor()
         writingVC.modalPresentationStyle = .fullScreen
         present(writingVC, animated: true)
     }

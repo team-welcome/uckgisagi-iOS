@@ -59,6 +59,13 @@ final class WritingViewController: BaseViewController, View {
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
 
+        writingView.cancelButton.rx.tap
+            .withUnretained(self)
+            .bind { owner,  _ in
+                owner.dismiss(animated: true)
+            }
+            .disposed(by: disposeBag)
+
         writingView.imageView.rx.tapGesture
             .withUnretained(self)
             .subscribe { owner, _ in
@@ -74,7 +81,7 @@ final class WritingViewController: BaseViewController, View {
             .compactMap { $0.isLoading }
             .withUnretained(self)
             .bind { owner, isLoading in
-                owner.navigationController?.popViewController(animated: true)
+                owner.dismiss(animated: true)
             }
             .disposed(by: disposeBag)
     }
