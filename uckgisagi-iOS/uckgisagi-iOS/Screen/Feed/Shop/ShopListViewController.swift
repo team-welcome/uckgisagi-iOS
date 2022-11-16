@@ -32,9 +32,9 @@ final class ShopListViewController: BaseViewController, View {
         reactor.state
             .compactMap { $0.shopList }
             .withUnretained(self)
-            .bind { owner, shopList in
-                owner.datasource.update(hots: shopList.hots, shops: shopList.hots)
-            }
+            .subscribe(onNext: { owner, shopList in
+                owner.datasource.update(hots: shopList.mostPopularStore, shops: shopList.restStore)
+            })
             .disposed(by: disposeBag)
     }
 

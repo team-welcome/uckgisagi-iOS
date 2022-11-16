@@ -17,7 +17,6 @@ class LoginViewController: BaseViewController {
     private let ukgisagiLogo = UIImageView()
     private let ukgisagiLabel = UILabel()
     private let appleLoginButton = ASAuthorizationAppleIDButton()
-    private let retrieveService = RetrieveService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,13 +61,12 @@ class LoginViewController: BaseViewController {
     }
     
     func doLogin(_ socialToken: String) {
-        guard let fcmToken = UserDefaults.standard.string(forKey: "fcmToken") else { return }
-    
-        retrieveService.signup(fcmToken: fcmToken, socialToken: socialToken)
+        NetworkService.shared.auth.signup(fcmToken: KeychainHandler.shared.fcmToken, socialToken: socialToken)
             .subscribe(onNext: { response in
                 guard let data = response.data else { return }
                 KeychainHandler.shared.accessToken = data.accessToken
                 KeychainHandler.shared.refreshToken = data.refreshToken
+                RootSwitcher.update(.home)
             })
             .disposed(by: disposeBag)
     }

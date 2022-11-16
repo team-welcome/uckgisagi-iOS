@@ -30,7 +30,7 @@ final class RootSwitcher {
             let homeViewController = HomeViewController()
             let navigationController = UINavigationController(rootViewController: homeViewController)
             delegate.window?.rootViewController = navigationController
-            navigationController.isNavigationBarHidden = true
+            navigationController.navigationBar.isHidden = true
             
         /// 테스트에만 사용할것
         case let .custom(viewController):

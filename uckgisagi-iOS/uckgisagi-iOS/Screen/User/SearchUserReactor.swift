@@ -1,26 +1,13 @@
 //
-//  WritingReactor.swift
+//  SearchUserReactor.swift
 //  uckgisagi-iOS
 //
-//  Created by 김윤서 on 2022/11/08.
+//  Created by 김윤서 on 2022/11/17.
 //
-
-import UIKit
 
 import ReactorKit
 
-final class WritingReactor: Reactor {
-    struct State {
-        var isLoading: Bool = true
-    }
-
-    enum Action {
-        case finishWriting(text: String, image: UIImage)
-    }
-
-    enum Mutation {
-        case setLoading(Bool)
-    }
+final class SearchUserReactor: Reactor {
 
     let initialState: State
 
@@ -28,24 +15,44 @@ final class WritingReactor: Reactor {
         initialState = State()
     }
 
+    struct State {
+        var userList: [UserDTO]?
+        var isLoading: Bool = false
+    }
+
+    enum Action {
+        case search(text: String)
+    }
+
+    enum Mutation {
+        case setUserList([UserDTO])
+        case setLoading(Bool)
+    }
+
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case let .finishWriting(text, image):
+        case let .search(text):
             return Observable.concat([
                 Observable.just(.setLoading(true)),
-                NetworkService.shared.post.postWriting(image: image, content: text)
+                NetworkService.shared.user.search(nickname: text)
                     .compactMap { $0.data }
-                    .map { _ in Mutation.setLoading(false)}
+                    .map { Mutation.setUserList($0)},
+                Observable.just(.setLoading(false))
             ])
+
         }
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
+        case let .setUserList(userList):
+            newState.userList = userList
         case let .setLoading(isLoading):
             newState.isLoading = isLoading
         }
         return newState
     }
+
 }
+

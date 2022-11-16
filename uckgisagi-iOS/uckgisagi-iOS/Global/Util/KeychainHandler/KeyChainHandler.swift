@@ -15,6 +15,7 @@ struct KeychainHandler {
     private let keychain = KeychainWrapper.standard
     private let accessTokenKey = "accessToken"
     private let refreshTokenKey = "refreshToken"
+    private let fcmTokenKey = "fcmToken"
 
     var accessToken: String {
         get {
@@ -34,9 +35,19 @@ struct KeychainHandler {
         }
     }
 
+    var fcmToken: String {
+        get {
+            return keychain.string(forKey: fcmTokenKey) ?? ""
+        }
+        set {
+            keychain.set(newValue, forKey: fcmTokenKey)
+        }
+    }
+
     mutating func removeAll() {
         accessToken = ""
         refreshToken = ""
+        fcmToken = ""
     }
 
 }

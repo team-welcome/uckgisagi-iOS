@@ -16,7 +16,7 @@ final class ShopListReactor: Reactor {
     }
 
     struct State {
-        var shopList: ShopListDTO?
+        var shopList: StoreListDTO?
         var isLoading: Bool = false
     }
 
@@ -26,7 +26,7 @@ final class ShopListReactor: Reactor {
     }
 
     enum Mutation {
-        case setShopList(ShopListDTO)
+        case setShopList(StoreListDTO)
         case setLoading(Bool)
     }
 
@@ -35,26 +35,9 @@ final class ShopListReactor: Reactor {
         case .viewWillAppear, .pullToRefresh:
             return Observable.concat([
                 Observable.just(.setLoading(true)),
-                Observable.just(.setShopList(
-                    ShopListDTO(
-                        hots: [
-                            ShopDTO(id: 1, name: "알맹상점 리필스테이션", location: "서울특별시 중구 한강대로 405, 서울역 4층 야외주차장 옥상정원) 나무건물", imageURL: ""),
-                            ShopDTO(id: 2, name: "알맹상점 리필스테이션", location: "서울특별시 중구 한강대로 405, 서울역 4층 야외주차장 옥상정원) 나무건물", imageURL: ""),
-                            ShopDTO(id: 3, name: "알맹상점 리필스테이션", location: "서울특별시 중구 한강대로 405, 서울역 4층 야외주차장 옥상정원) 나무건물", imageURL: ""),
-                            ShopDTO(id: 4, name: "알맹상점 리필스테이션", location: "서울특별시 중구 한강대로 405, 서울역 4층 야외주차장 옥상정원) 나무건물", imageURL: ""),
-                            ShopDTO(id: 5, name: "알맹상점 리필스테이션", location: "서울특별시 중구 한강대로 405, 서울역 4층 야외주차장 옥상정원) 나무건물", imageURL: "")
-                        ],
-                        shops: [
-                            ShopDTO(id: 6, name: "알맹상점 리필스테이션", location: "서울특별시 중구 한강대로 405, 서울역 4층 야외주차장 옥상정원) 나무건물", imageURL: ""),
-                            ShopDTO(id: 7, name: "알맹상점 리필스테이션", location: "서울특별시 중구 한강대로 405, 서울역 4층 야외주차장 옥상정원) 나무건물", imageURL: ""),
-                            ShopDTO(id: 8, name: "알맹상점 리필스테이션", location: "서울특별시 중구 한강대로 405, 서울역 4층 야외주차장 옥상정원) 나무건물", imageURL: ""),
-                            ShopDTO(id: 9, name: "알맹상점 리필스테이션", location: "서울특별시 중구 한강대로 405, 서울역 4층 야외주차장 옥상정원) 나무건물", imageURL: ""),
-                            ShopDTO(id: 10, name: "알맹상점 리필스테이션", location: "서울특별시 중구 한강대로 405, 서울역 4층 야외주차장 옥상정원) 나무건물", imageURL: ""),
-                            ShopDTO(id: 11, name: "알맹상점 리필스테이션", location: "서울특별시 중구 한강대로 405, 서울역 4층 야외주차장 옥상정원) 나무건물", imageURL: ""),
-                            ShopDTO(id: 12, name: "알맹상점 리필스테이션", location: "서울특별시 중구 한강대로 405, 서울역 4층 야외주차장 옥상정원) 나무건물", imageURL: "")
-                        ]
-                    )
-                )),
+                NetworkService.shared.store.getStoreList()
+                    .compactMap { $0.data }
+                    .map { Mutation.setShopList($0) },
                 Observable.just(.setLoading(false))
             ])
         }

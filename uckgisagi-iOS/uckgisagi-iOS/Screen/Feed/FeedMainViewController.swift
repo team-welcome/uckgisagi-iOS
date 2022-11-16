@@ -45,8 +45,6 @@ final class FeedMainViewController: BaseViewController {
     private let topBar = UIStackView()
     private let contentView = UIView()
 
-//    private let disposeBag = DisposeBag()
-
     override init() {
         super.init()
         selected(page: selectedPage)
@@ -124,6 +122,12 @@ final class FeedMainViewController: BaseViewController {
             }
         })
         .disposed(by: disposeBag)
+
+        backButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 
     private func selected(page: PageItem) {

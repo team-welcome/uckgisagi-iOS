@@ -127,11 +127,14 @@ extension HomeViewController: UITableViewDelegate {
 extension HomeViewController: UserProfileTableViewHeaderDelegate, UserPostTableViewHeaderDelegate {
     func writeButtonDidTap(_ header: UserPostTableViewHeader) {
         let writingVC = WritingViewController()
-        self.navigationController?.pushViewController(writingVC, animated: true)
+        writingVC.reactor = WritingReactor()
+        writingVC.modalPresentationStyle = .fullScreen
+        present(writingVC, animated: true)
     }
     
     func addButtonDidTap(_ header: UserProfileTableViewHeader) {
         let searchVC = SearchUserViewController()
+        searchVC.reactor = SearchUserReactor()
         self.navigationController?.pushViewController(searchVC, animated: true)
     }
 }
