@@ -13,8 +13,6 @@ enum RetrieveRouter {
     case getPostList
     case getScrapDetail(postID: Int)
     case getScrapList
-    
-    case signup(fcmToken: String, socialToken: String)
 }
 
 extension RetrieveRouter: BaseTargetType {
@@ -28,8 +26,6 @@ extension RetrieveRouter: BaseTargetType {
             return "/post/scrap\(postID)"
         case .getScrapList:
             return "/post/scrap"
-        case .signup:
-            return "/auth/login"
         }
     }
 
@@ -37,8 +33,6 @@ extension RetrieveRouter: BaseTargetType {
         switch self {
         case .getPostDetail(_), .getPostList, .getScrapDetail(_), .getScrapList:
             return .get
-        case .signup(_, _):
-            return .post
         }
     }
 
@@ -46,14 +40,6 @@ extension RetrieveRouter: BaseTargetType {
         switch self {
         case .getPostDetail(_), .getPostList, .getScrapDetail(_), .getScrapList:
             return .requestPlain
-        case .signup(let fcmToken , let socialToken):
-            var params: [String: Any] = [:]
-            params["fcmToken"] = fcmToken
-            params["socialToken"] = socialToken
-            params["socialType"] = "APPLE"
-            
-            let paramsJson = try? JSONSerialization.data(withJSONObject:params)
-            return .requestData(paramsJson ?? Data())
         }
     }
 }

@@ -18,7 +18,11 @@ final class SplashViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            RootSwitcher.update(.home)
+            guard KeychainHandler.shared.accessToken == "" else {
+                RootSwitcher.update(.home)
+                return
+            }
+            RootSwitcher.update(.login)
         }
     }
 

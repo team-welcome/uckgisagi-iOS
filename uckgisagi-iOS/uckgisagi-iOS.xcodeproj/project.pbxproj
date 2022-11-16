@@ -96,6 +96,7 @@
 		DDD1DBF02923B3FA00FE2E2B /* RetrieveRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1DBEF2923B3FA00FE2E2B /* RetrieveRouter.swift */; };
 		DDD1DBF22923B4BE00FE2E2B /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1DBF12923B4BE00FE2E2B /* BaseTargetType.swift */; };
 		DDD1DBF52923B81900FE2E2B /* RetrieveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1DBF42923B81900FE2E2B /* RetrieveService.swift */; };
+		DDEDEB35292546A800B0ACAA /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEDEB34292546A800B0ACAA /* AuthRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,6 +196,7 @@
 		DDD1DBEF2923B3FA00FE2E2B /* RetrieveRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveRouter.swift; sourceTree = "<group>"; };
 		DDD1DBF12923B4BE00FE2E2B /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
 		DDD1DBF42923B81900FE2E2B /* RetrieveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveService.swift; sourceTree = "<group>"; };
+		DDEDEB34292546A800B0ACAA /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -647,6 +649,7 @@
 			children = (
 				DDD1DBF12923B4BE00FE2E2B /* BaseTargetType.swift */,
 				DDD1DBEF2923B3FA00FE2E2B /* RetrieveRouter.swift */,
+				DDEDEB34292546A800B0ACAA /* AuthRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -825,6 +828,7 @@
 				DD31992A2910081A00070383 /* PostCollectionViewCell.swift in Sources */,
 				DD98FD44290AC811002EAB2A /* UserDefaultHandler.swift in Sources */,
 				DDD1DBF22923B4BE00FE2E2B /* BaseTargetType.swift in Sources */,
+				DDEDEB35292546A800B0ACAA /* AuthRouter.swift in Sources */,
 				23E9D6332914F72000E15B27 /* UserProfileDataSource.swift in Sources */,
 				DD98FD42290AC7F5002EAB2A /* UserDefault.swift in Sources */,
 				2389B436291951A800B0B923 /* EmptyPostTableViewCell.swift in Sources */,
