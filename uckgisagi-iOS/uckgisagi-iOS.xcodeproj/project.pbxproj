@@ -83,7 +83,7 @@
 		DD98FD4C290AC8AD002EAB2A /* RootSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98FD4B290AC8AD002EAB2A /* RootSwitcher.swift */; };
 		DD98FD4F290AC99A002EAB2A /* MoyaLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98FD4E290AC99A002EAB2A /* MoyaLoggingPlugin.swift */; };
 		DD98FD52290AC9CC002EAB2A /* StatusHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98FD51290AC9CC002EAB2A /* StatusHandler.swift */; };
-		DD98FD54290AC9E4002EAB2A /* StatusCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98FD53290AC9E4002EAB2A /* StatusCase.swift */; };
+		DD98FD54290AC9E4002EAB2A /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98FD53290AC9E4002EAB2A /* StatusCode.swift */; };
 		DD98FD56290ACA52002EAB2A /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98FD55290ACA52002EAB2A /* BaseResponse.swift */; };
 		DD98FD58290ACA64002EAB2A /* BaseArrayResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98FD57290ACA64002EAB2A /* BaseArrayResponse.swift */; };
 		DD98FD5A290ACA74002EAB2A /* NullResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98FD59290ACA74002EAB2A /* NullResponse.swift */; };
@@ -187,7 +187,7 @@
 		DD98FD4B290AC8AD002EAB2A /* RootSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootSwitcher.swift; sourceTree = "<group>"; };
 		DD98FD4E290AC99A002EAB2A /* MoyaLoggingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggingPlugin.swift; sourceTree = "<group>"; };
 		DD98FD51290AC9CC002EAB2A /* StatusHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusHandler.swift; sourceTree = "<group>"; };
-		DD98FD53290AC9E4002EAB2A /* StatusCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCase.swift; sourceTree = "<group>"; };
+		DD98FD53290AC9E4002EAB2A /* StatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
 		DD98FD55290ACA52002EAB2A /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		DD98FD57290ACA64002EAB2A /* BaseArrayResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseArrayResponse.swift; sourceTree = "<group>"; };
 		DD98FD59290ACA74002EAB2A /* NullResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullResponse.swift; sourceTree = "<group>"; };
@@ -486,7 +486,7 @@
 			isa = PBXGroup;
 			children = (
 				DD98FD51290AC9CC002EAB2A /* StatusHandler.swift */,
-				DD98FD53290AC9E4002EAB2A /* StatusCase.swift */,
+				DD98FD53290AC9E4002EAB2A /* StatusCode.swift */,
 				DD98FD55290ACA52002EAB2A /* BaseResponse.swift */,
 				DD98FD57290ACA64002EAB2A /* BaseArrayResponse.swift */,
 				DD98FD59290ACA74002EAB2A /* NullResponse.swift */,
@@ -886,7 +886,7 @@
 				DD98CE562911693D000EBDB3 /* ShopListDataSource.swift in Sources */,
 				237546B129116229001C3E8B /* UserPostTableViewHeader.swift in Sources */,
 				DD059A13291A40D3004E9F02 /* WritingReactor.swift in Sources */,
-				DD98FD54290AC9E4002EAB2A /* StatusCase.swift in Sources */,
+				DD98FD54290AC9E4002EAB2A /* StatusCode.swift in Sources */,
 				DD0CCA5E290C0F5000264543 /* SearchBar.swift in Sources */,
 				2360875B290C45140069493F /* LoginReactor.swift in Sources */,
 				DD98FD52290AC9CC002EAB2A /* StatusHandler.swift in Sources */,

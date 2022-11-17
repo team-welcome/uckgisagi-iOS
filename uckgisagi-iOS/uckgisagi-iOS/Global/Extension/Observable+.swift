@@ -12,9 +12,10 @@ import RxSwift
 extension Observable {
     func catchError() -> Observable<Element> {
         return self.do(onNext: { item in
+            dump(item)
             guard
                 let element = item as? StatusHandler,
-                let status = element.statusCase
+                let status = element.statusCode
             else {
                 return
             }

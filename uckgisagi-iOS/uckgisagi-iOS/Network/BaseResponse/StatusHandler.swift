@@ -6,6 +6,6 @@
 //
 
 protocol StatusHandler {
-    var statusCase: StatusCase? { get }
+    var statusCode: StatusCode? { get }
     var message: String? { get }
 }
