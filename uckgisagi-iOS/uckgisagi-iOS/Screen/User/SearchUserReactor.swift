@@ -18,15 +18,21 @@ final class SearchUserReactor: Reactor {
     struct State {
         var userList: [UserDTO]?
         var isLoading: Bool = false
+        var isSuccessFollow: Bool?
+        var isSuccessUnfollow: Bool?
     }
 
     enum Action {
         case search(text: String)
+        case follow(userID: Int)
+        case unfollow(userID: Int)
     }
 
     enum Mutation {
         case setUserList([UserDTO])
         case setLoading(Bool)
+        case setFollowResult(Bool)
+        case setUnfollowResult(Bool)
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
@@ -40,6 +46,23 @@ final class SearchUserReactor: Reactor {
                 Observable.just(.setLoading(false))
             ])
 
+        case let .follow(userID):
+            return Observable.concat([
+                Observable.just(.setLoading(true)),
+                NetworkService.shared.follow.follow(userID: userID)
+                    .compactMap { $0.statusCode }
+                    .map { Mutation.setFollowResult($0 == .okay) },
+                Observable.just(.setLoading(false))
+            ])
+
+        case let .unfollow(userID):
+            return Observable.concat([
+                Observable.just(.setLoading(true)),
+                NetworkService.shared.follow.unfollow(userID: userID)
+                    .compactMap { $0.statusCode }
+                    .map { Mutation.setUnfollowResult($0 == .okay) },
+                Observable.just(.setLoading(false))
+            ])
         }
     }
 
@@ -50,6 +73,10 @@ final class SearchUserReactor: Reactor {
             newState.userList = userList
         case let .setLoading(isLoading):
             newState.isLoading = isLoading
+        case let .setFollowResult(isSuccesss):
+            newState.isSuccessFollow = isSuccesss
+        case let .setUnfollowResult(isSuccesss):
+            newState.isSuccessUnfollow = isSuccesss
         }
         return newState
     }

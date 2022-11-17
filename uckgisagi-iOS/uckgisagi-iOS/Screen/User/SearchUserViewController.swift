@@ -9,6 +9,7 @@ import UIKit
 
 import SnapKit
 import ReactorKit
+import RxSwift
 
 final class SearchUserViewController: BaseViewController, View {
     typealias Reactor = SearchUserReactor
@@ -35,6 +36,8 @@ final class SearchUserViewController: BaseViewController, View {
         return collectionView
     }()
     private lazy var dataSource: DiffableDataSource = createDataSource()
+
+    private let followPublisher = PublishSubject<(userID: Int, currentFollowStatus: Bool)>()
 
     // MARK: - Initialize
     override init() {
@@ -79,6 +82,26 @@ final class SearchUserViewController: BaseViewController, View {
     }
 
     func bind(reactor: SearchUserReactor) {
+        reactor.state
+            .compactMap { $0.userList }
+            .withUnretained(self)
+            .subscribe { owner, userList in
+                owner.update(userList)
+            }
+            .disposed(by: disposeBag)
+
+        followPublisher
+            .filter { $1 }
+            .map { userID, _ in Reactor.Action.unfollow(userID: userID) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        followPublisher
+            .filter { !$1 }
+            .map { userID, _ in Reactor.Action.follow(userID: userID) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
         searchBar.textField.rx.text
             .distinctUntilChanged()
             .compactMap { $0 }
@@ -86,14 +109,6 @@ final class SearchUserViewController: BaseViewController, View {
             .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
             .map { Reactor.Action.search(text: $0)}
             .bind(to: reactor.action)
-            .disposed(by: disposeBag)
-
-        reactor.state
-            .compactMap { $0.userList }
-            .withUnretained(self)
-            .subscribe { owner, userList in
-                owner.update(userList)
-            }
             .disposed(by: disposeBag)
 
         backButton.rx.tap
@@ -169,6 +184,7 @@ extension SearchUserViewController {
 
 extension SearchUserViewController: UserFollowCollectionViewCellDelegate {
     func buttonDidTap(_ cell: UserFollowCollectionViewCell) {
+        followPublisher.onNext((userID: cell.tag, currentFollowStatus: cell.button.isFollowing))
         cell.button.isFollowing.toggle()
     }
 }

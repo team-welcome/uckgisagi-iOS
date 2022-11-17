@@ -50,6 +50,8 @@
 		DD31991E290D444500070383 /* PostListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31991D290D444500070383 /* PostListView.swift */; };
 		DD319928291006C900070383 /* ShopListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD319927291006C900070383 /* ShopListViewController.swift */; };
 		DD31992A2910081A00070383 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3199292910081A00070383 /* PostCollectionViewCell.swift */; };
+		DD400A5629267C0700CD0224 /* FollowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD400A5529267C0700CD0224 /* FollowService.swift */; };
+		DD400A5829267C1600CD0224 /* FollowRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD400A5729267C1600CD0224 /* FollowRouter.swift */; };
 		DD6DA4E329117A8400BA3291 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6DA4E229117A8400BA3291 /* SplashViewController.swift */; };
 		DD92E9B1290BC63F00D1A03D /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD92E9B0290BC63F00D1A03D /* ReactorKit */; };
 		DD98CE4C29115E6C000EBDB3 /* ShopInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98CE4B29115E6C000EBDB3 /* ShopInfoCollectionViewCell.swift */; };
@@ -163,6 +165,8 @@
 		DD31991D290D444500070383 /* PostListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListView.swift; sourceTree = "<group>"; };
 		DD319927291006C900070383 /* ShopListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopListViewController.swift; sourceTree = "<group>"; };
 		DD3199292910081A00070383 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
+		DD400A5529267C0700CD0224 /* FollowService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowService.swift; sourceTree = "<group>"; };
+		DD400A5729267C1600CD0224 /* FollowRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowRouter.swift; sourceTree = "<group>"; };
 		DD6DA4E229117A8400BA3291 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		DD98CE4B29115E6C000EBDB3 /* ShopInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD98CE4D29115E9A000EBDB3 /* HotShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotShopCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -674,6 +678,7 @@
 				DDEDEB34292546A800B0ACAA /* AuthRouter.swift */,
 				DDD0B2702925571B0015AC5E /* StoreRouter.swift */,
 				DD0BC2DB2925601900C96FAB /* UserRouter.swift */,
+				DD400A5729267C1600CD0224 /* FollowRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -685,6 +690,7 @@
 				DDEDEB362925478B00B0ACAA /* AuthService.swift */,
 				DDD0B272292558240015AC5E /* StoreService.swift */,
 				DD0BC2DD2925607F00C96FAB /* UserService.swift */,
+				DD400A5529267C0700CD0224 /* FollowService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -878,6 +884,7 @@
 				DD25786929100DA800FB9BFD /* PostListReactor.swift in Sources */,
 				DDEDEB372925478B00B0ACAA /* AuthService.swift in Sources */,
 				DD0BC2DE2925607F00C96FAB /* UserService.swift in Sources */,
+				DD400A5829267C1600CD0224 /* FollowRouter.swift in Sources */,
 				DD98FD3A290AC6FE002EAB2A /* UIImageView+Kingfisher.swift in Sources */,
 				DD98CE542911687C000EBDB3 /* StoreDTO.swift in Sources */,
 				DD98FD4F290AC99A002EAB2A /* MoyaLoggingPlugin.swift in Sources */,
@@ -915,6 +922,7 @@
 				DD25786D291022C800FB9BFD /* PostDTO.swift in Sources */,
 				DDD1DBF02923B3FA00FE2E2B /* PostRouter.swift in Sources */,
 				DD0210AD291A535E0048F86B /* PostDetailView.swift in Sources */,
+				DD400A5629267C0700CD0224 /* FollowService.swift in Sources */,
 				DDEDEB3B292547E100B0ACAA /* NetworkService.swift in Sources */,
 				DD31991A290D443600070383 /* PostListViewController.swift in Sources */,
 				DD0BC2DC2925601900C96FAB /* UserRouter.swift in Sources */,
