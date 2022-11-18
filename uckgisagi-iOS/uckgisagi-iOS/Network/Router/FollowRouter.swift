@@ -17,8 +17,8 @@ enum FollowRouter {
 extension FollowRouter: BaseTargetType {
     var path: String {
         switch self {
-        case .follow:
-            return "/follow"
+        case let .follow(userID):
+            return "/follow/\(userID)"
         case let .unfollow(userID):
             return "/unfollow/\(userID)"
         }
@@ -35,11 +35,8 @@ extension FollowRouter: BaseTargetType {
 
     var task: Task {
         switch self {
-        case let .follow(userID):
-            return .requestParameters(
-                parameters: ["targetUserId" : userID],
-                encoding: JSONEncoding.default
-            )
+        case .follow:
+            return .requestPlain
         case .unfollow:
             return .requestPlain
         }
