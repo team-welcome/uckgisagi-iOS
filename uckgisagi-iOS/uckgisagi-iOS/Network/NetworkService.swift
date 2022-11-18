@@ -12,4 +12,5 @@ final class NetworkService {
     let post = PostService()
     let store = StoreService()
     let user = UserService()
+    let follow = FollowService()
 }

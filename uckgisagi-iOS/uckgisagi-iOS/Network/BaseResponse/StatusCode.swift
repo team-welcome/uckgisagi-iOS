@@ -1,5 +1,5 @@
 //
-//  StatusCase.swift
+//  StatusCode.swift
 //  uckgisagi-iOS
 //
 //  Created by 김윤서 on 2022/10/27.
@@ -23,7 +23,7 @@ BAD_GATEWAY(502),
 SERVICE_UNAVAILABLE(503)
  */
 
-enum StatusCase: String, Decodable {
+enum StatusCode: String, Decodable {
     case okay = "OK"
     case created = "CREATED"
     case accepted = "ACCEPTED"

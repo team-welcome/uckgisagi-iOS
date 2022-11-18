@@ -6,7 +6,7 @@
 //
 
 struct BaseResponse<T: Decodable>: Decodable, StatusHandler {
-    let statusCase: StatusCase?
+    let statusCode: StatusCode?
     let message: String?
     let data: T?
 }
