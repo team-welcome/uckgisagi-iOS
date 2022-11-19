@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import RxSwift
 import FSCalendar
+import ReactorKit
 
 enum PostCase {
     case friendPostEmpty
@@ -17,7 +18,9 @@ enum PostCase {
     case postExist
 }
 
-class HomeViewController: BaseViewController {
+class HomeViewController: BaseViewController, View {
+    typealias Reactor = HomeReactor
+    
     // MARK: - Properties
     private let navigationView = UIView()
     private let ukgisagiLogo = UIImageView()
@@ -31,7 +34,6 @@ class HomeViewController: BaseViewController {
         super.viewDidLoad()
         setupTableView()
         dataSource.updateSnapshot()
-        bind()
     }
     
     override func setLayouts() {
@@ -74,7 +76,25 @@ class HomeViewController: BaseViewController {
         }
     }
     
-    func bind() {
+    func bind(reactor: HomeReactor) {
+        rx.viewWillAppear
+            .map { _ in .getFriendList }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        reactor.state
+            .map { $0.friendList }
+            .bind { friendList in
+                print(friendList)
+            }
+            .disposed(by: disposeBag)
+        
+        // 인디케이터 사용하기
+//        reactor.state
+//            .map { $0.isLoading }
+//            .bind(to: indicator.rx.isAnimating)
+//            .disposed(by: disposeBag)
+        
         surroundButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
                 let feedMainVC = FeedMainViewController()
