@@ -20,6 +20,10 @@
 		23B6DAC5290D5FE9004FFA82 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B6DAC4290D5FE9004FFA82 /* HomeViewController.swift */; };
 		23B6DAC7290D6B1B004FFA82 /* UserProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B6DAC6290D6B1B004FFA82 /* UserProfileCollectionViewCell.swift */; };
 		23E9D6332914F72000E15B27 /* UserProfileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E9D6322914F72000E15B27 /* UserProfileDataSource.swift */; };
+		23ED13662928F54200CA0608 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ED13652928F54200CA0608 /* HomeRouter.swift */; };
+		23ED13682928F75700CA0608 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ED13672928F75700CA0608 /* HomeService.swift */; };
+		23ED136A2928F7E100CA0608 /* FriendListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ED13692928F7E100CA0608 /* FriendListDTO.swift */; };
+		23ED136C2928FD3C00CA0608 /* HomeReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ED136B2928FD3C00CA0608 /* HomeReactor.swift */; };
 		DD0210AA291A53490048F86B /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0210A9291A53490048F86B /* PostDetailViewController.swift */; };
 		DD0210AD291A535E0048F86B /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0210AC291A535E0048F86B /* PostDetailView.swift */; };
 		DD059A0F291A38B1004E9F02 /* WritingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD059A0E291A38B1004E9F02 /* WritingView.swift */; };
@@ -140,6 +144,10 @@
 		23B6DAC4290D5FE9004FFA82 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		23B6DAC6290D6B1B004FFA82 /* UserProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		23E9D6322914F72000E15B27 /* UserProfileDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileDataSource.swift; sourceTree = "<group>"; };
+		23ED13652928F54200CA0608 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		23ED13672928F75700CA0608 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
+		23ED13692928F7E100CA0608 /* FriendListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListDTO.swift; sourceTree = "<group>"; };
+		23ED136B2928FD3C00CA0608 /* HomeReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReactor.swift; sourceTree = "<group>"; };
 		DD0210A9291A53490048F86B /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		DD0210AC291A535E0048F86B /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		DD059A0E291A38B1004E9F02 /* WritingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingView.swift; sourceTree = "<group>"; };
@@ -354,6 +362,7 @@
 				2332D0A12925012700BB3C0F /* LoginDTO.swift */,
 				DDEDEB3C292548BC00B0ACAA /* TokenDTO.swift */,
 				DDEDEB3E29254FD400B0ACAA /* GradeDTO.swift */,
+				23ED13692928F7E100CA0608 /* FriendListDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -610,6 +619,7 @@
 				23B6DAC4290D5FE9004FFA82 /* HomeViewController.swift */,
 				23E9D6322914F72000E15B27 /* UserProfileDataSource.swift */,
 				237981C2291A450A0042FD54 /* HomeDataSource.swift */,
+				23ED136B2928FD3C00CA0608 /* HomeReactor.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -679,6 +689,7 @@
 				DDD0B2702925571B0015AC5E /* StoreRouter.swift */,
 				DD0BC2DB2925601900C96FAB /* UserRouter.swift */,
 				DD400A5729267C1600CD0224 /* FollowRouter.swift */,
+				23ED13652928F54200CA0608 /* HomeRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -691,6 +702,7 @@
 				DDD0B272292558240015AC5E /* StoreService.swift */,
 				DD0BC2DD2925607F00C96FAB /* UserService.swift */,
 				DD400A5529267C0700CD0224 /* FollowService.swift */,
+				23ED13672928F75700CA0608 /* HomeService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -856,6 +868,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD0CCA6B290C1DB300264543 /* UserFollowCollectionViewCell.swift in Sources */,
+				23ED136C2928FD3C00CA0608 /* HomeReactor.swift in Sources */,
 				DDEDEB3D292548BC00B0ACAA /* TokenDTO.swift in Sources */,
 				DDD1DBEB2923B25400FE2E2B /* Environment.swift in Sources */,
 				237981C3291A450A0042FD54 /* HomeDataSource.swift in Sources */,
@@ -864,6 +877,7 @@
 				DDD1DBF22923B4BE00FE2E2B /* BaseTargetType.swift in Sources */,
 				DDEDEB35292546A800B0ACAA /* AuthRouter.swift in Sources */,
 				23E9D6332914F72000E15B27 /* UserProfileDataSource.swift in Sources */,
+				23ED136A2928F7E100CA0608 /* FriendListDTO.swift in Sources */,
 				DD98FD42290AC7F5002EAB2A /* UserDefault.swift in Sources */,
 				DDD0B2712925571B0015AC5E /* StoreRouter.swift in Sources */,
 				2389B436291951A800B0B923 /* EmptyPostTableViewCell.swift in Sources */,
@@ -879,6 +893,7 @@
 				DD319918290D416300070383 /* FeedMainViewController.swift in Sources */,
 				DD98FD38290AC69C002EAB2A /* Observable+.swift in Sources */,
 				DD98FD32290AC63E002EAB2A /* UIView+Rx.swift in Sources */,
+				23ED13682928F75700CA0608 /* HomeService.swift in Sources */,
 				DD9ACC9228F6DA5000B13E9C /* AppDelegate.swift in Sources */,
 				DD98FD4A290AC876002EAB2A /* KeyChainHandler.swift in Sources */,
 				DD25786929100DA800FB9BFD /* PostListReactor.swift in Sources */,
@@ -924,6 +939,7 @@
 				DD0210AD291A535E0048F86B /* PostDetailView.swift in Sources */,
 				DD400A5629267C0700CD0224 /* FollowService.swift in Sources */,
 				DDEDEB3B292547E100B0ACAA /* NetworkService.swift in Sources */,
+				23ED13662928F54200CA0608 /* HomeRouter.swift in Sources */,
 				DD31991A290D443600070383 /* PostListViewController.swift in Sources */,
 				DD0BC2DC2925601900C96FAB /* UserRouter.swift in Sources */,
 				DD98CE4C29115E6C000EBDB3 /* ShopInfoCollectionViewCell.swift in Sources */,
