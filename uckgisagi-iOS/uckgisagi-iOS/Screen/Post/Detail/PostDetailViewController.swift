@@ -9,7 +9,7 @@ import UIKit
 
 import ReactorKit
 
-final class PostDetailViewController: BaseViewController {
+final class PostDetailViewController: BaseViewController, View {
 
     private let detailView = PostDetailView()
 
@@ -21,13 +21,26 @@ final class PostDetailViewController: BaseViewController {
         view = detailView
     }
 
-    override func setProperties() {
-        detailView.configure(
-            image: Image.imgDummy3,
-            username: "재연",
-            timestamp: "AM 10:13",
-            content:  "라벨 꼭 떼고 버리자 애들아 🌱"
-        )
+    func bind(reactor: PostDetailReactor) {
+        rx.viewWillAppear
+            .map { _ in Reactor.Action.viewWillAppear }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        reactor.state
+            .compactMap { $0.post }
+            .distinctUntilChanged()
+            .withUnretained(self)
+            .bind { owner, post in
+                owner.detailView.configure(
+                    imageURL:  post.imageURL,
+                    username: post.nickname,
+                    timestamp: post.updatedAt,
+                    content:  post.content
+                )
+            }
+            .disposed(by: disposeBag)
+
     }
 
 }
