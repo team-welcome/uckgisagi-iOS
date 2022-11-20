@@ -35,8 +35,8 @@ final class PostDetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(image: UIImage, username: String, timestamp: String, content: String) {
-        imageView.image = Image.imgDummy3
+    func configure(imageURL: String, username: String, timestamp: String, content: String) {
+        imageView.image(url: imageURL)
         usernameLabel.text = "\(username) \(timestamp)"
         contentLabel.text = content
     }
