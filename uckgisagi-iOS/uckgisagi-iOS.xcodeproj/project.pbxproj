@@ -52,6 +52,7 @@
 		DD31992A2910081A00070383 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3199292910081A00070383 /* PostCollectionViewCell.swift */; };
 		DD400A5629267C0700CD0224 /* FollowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD400A5529267C0700CD0224 /* FollowService.swift */; };
 		DD400A5829267C1600CD0224 /* FollowRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD400A5729267C1600CD0224 /* FollowRouter.swift */; };
+		DD5CE499292A530E00AE1027 /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5CE498292A530E00AE1027 /* Interceptor.swift */; };
 		DD6DA4E329117A8400BA3291 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6DA4E229117A8400BA3291 /* SplashViewController.swift */; };
 		DD92E9B1290BC63F00D1A03D /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD92E9B0290BC63F00D1A03D /* ReactorKit */; };
 		DD98CE4C29115E6C000EBDB3 /* ShopInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98CE4B29115E6C000EBDB3 /* ShopInfoCollectionViewCell.swift */; };
@@ -167,6 +168,7 @@
 		DD3199292910081A00070383 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD400A5529267C0700CD0224 /* FollowService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowService.swift; sourceTree = "<group>"; };
 		DD400A5729267C1600CD0224 /* FollowRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowRouter.swift; sourceTree = "<group>"; };
+		DD5CE498292A530E00AE1027 /* Interceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
 		DD6DA4E229117A8400BA3291 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		DD98CE4B29115E6C000EBDB3 /* ShopInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD98CE4D29115E9A000EBDB3 /* HotShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotShopCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -634,6 +636,7 @@
 		DD9ACCCA28F6DE7400B13E9C /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				DD5CE498292A530E00AE1027 /* Interceptor.swift */,
 				DDEDEB3A292547E100B0ACAA /* NetworkService.swift */,
 				DDD1DBEA2923B25400FE2E2B /* Environment.swift */,
 				DDD1DBEE2923B30000FE2E2B /* Router */,
@@ -866,6 +869,7 @@
 				23E9D6332914F72000E15B27 /* UserProfileDataSource.swift in Sources */,
 				DD98FD42290AC7F5002EAB2A /* UserDefault.swift in Sources */,
 				DDD0B2712925571B0015AC5E /* StoreRouter.swift in Sources */,
+				DD5CE499292A530E00AE1027 /* Interceptor.swift in Sources */,
 				2389B436291951A800B0B923 /* EmptyPostTableViewCell.swift in Sources */,
 				23B6DAC5290D5FE9004FFA82 /* HomeViewController.swift in Sources */,
 				237546AF291159B7001C3E8B /* UserPostTableViewCell.swift in Sources */,

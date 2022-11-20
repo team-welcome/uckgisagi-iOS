@@ -19,10 +19,6 @@ extension Observable {
                 return
             }
 
-            if status == .unAuthorized {
-                RootSwitcher.update(.login)
-            }
-
         })
         .catch { error in
             return .empty()

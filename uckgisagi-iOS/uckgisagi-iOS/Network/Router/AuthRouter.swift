@@ -44,7 +44,11 @@ extension AuthRouter: BaseTargetType {
             let paramsJson = try? JSONSerialization.data(withJSONObject: params)
             return .requestData(paramsJson ?? Data())
         case .reissue:
-            return .requestParameters(parameters: [:], encoding: JSONEncoding.default)
+            return .requestParameters(
+                parameters: [
+                    "accessToken": KeychainHandler.shared.accessToken,
+                    "refreshToken": KeychainHandler.shared.refreshToken
+                ], encoding: JSONEncoding.default)
         }
     }
 }
