@@ -21,13 +21,11 @@ final class FollowService: FollowServiceType {
         return router.rx.request(.follow(userID: userID))
             .map(BaseResponse<NullResponse>.self)
             .asObservable()
-            .catchError()
     }
 
     func unfollow(userID: Int) -> Observable<BaseResponse<NullResponse>>{
         return router.rx.request(.unfollow(userID: userID))
             .map(BaseResponse<NullResponse>.self)
             .asObservable()
-            .catchError()
     }
 }

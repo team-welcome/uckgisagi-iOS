@@ -26,35 +26,30 @@ final class PostService: PostServiceType {
         return router.rx.request(.postWriting(image: image, content: content))
             .asObservable()
             .map(BaseResponse<GradeDTO>.self)
-            .catchError()
     }
 
     func getPostDetail(postID: Int) -> Observable<BaseResponse<PostDTO>>{
         return router.rx.request(.getPostDetail(postID: postID))
             .map(BaseResponse<PostDTO>.self)
             .asObservable()
-            .catchError()
     }
 
     func getPostList() -> RxSwift.Observable<BaseArrayResponse<PostDTO>> {
         return router.rx.request(.getPostList)
             .map(BaseArrayResponse<PostDTO>.self)
             .asObservable()
-            .catchError()
     }
 
     func getScrapDetail(postID: Int) -> RxSwift.Observable<BaseResponse<PostDTO>> {
         return router.rx.request(.getScrapDetail(postID: postID))
             .map(BaseResponse<PostDTO>.self)
             .asObservable()
-            .catchError()
     }
 
     func getScrapList() -> RxSwift.Observable<BaseArrayResponse<PostDTO>> {
         return router.rx.request(.getScrapList)
             .map(BaseArrayResponse<PostDTO>.self)
             .asObservable()
-            .catchError()
     }
 
 }

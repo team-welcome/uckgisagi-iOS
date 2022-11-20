@@ -17,9 +17,9 @@ final class Interceptor : RequestInterceptor {
     func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
         guard
             let response = request.task?.response as? HTTPURLResponse,
-            StatusCode(response.statusCode) == .unAuthorized
+            response.statusCode == 401
         else {
-            completion(.doNotRetryWithError(error))
+            completion(.doNotRetry)
             return
         }
 
@@ -32,11 +32,11 @@ final class Interceptor : RequestInterceptor {
                     KeychainHandler.shared.removeAll()
                     UserDefaultHandler.shared.removeAll()
                     RootSwitcher.update(.login)
-                    return completion(.doNotRetryWithError(error))
+                    return completion(.doNotRetry)
                 }
                 KeychainHandler.shared.accessToken = accessToken
                 KeychainHandler.shared.refreshToken = refreshToken
-                completion(.retry)
+                completion(.retryWithDelay(0.1))
             })
             .disposed(by: disposeBag)
     }

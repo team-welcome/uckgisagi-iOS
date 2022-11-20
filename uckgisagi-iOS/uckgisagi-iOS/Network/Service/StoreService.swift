@@ -20,6 +20,5 @@ final class StoreService: StoreServiceType {
         return router.rx.request(.getStoreList)
             .asObservable()
             .map(BaseResponse<StoreListDTO>.self)
-            .catchError()
     }
 }

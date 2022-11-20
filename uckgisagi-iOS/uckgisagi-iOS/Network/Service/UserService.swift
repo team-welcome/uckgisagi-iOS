@@ -20,6 +20,5 @@ final class UserService: UserServiceType {
         return router.rx.request(.search(nickname: nickname))
             .map(BaseArrayResponse<UserDTO>.self)
             .asObservable()
-            .catchError()
     }
 }

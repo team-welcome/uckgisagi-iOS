@@ -21,13 +21,11 @@ final class AuthService: AuthServiceType {
         return router.rx.request(.signup(fcmToken: fcmToken, socialToken: socialToken))
             .map(BaseResponse<LoginDTO>.self)
             .asObservable()
-            .catchError()
     }
 
     func reissue() -> Observable<BaseResponse<TokenDTO>> {
         return router.rx.request(.reissue)
             .map(BaseResponse<TokenDTO>.self)
             .asObservable()
-            .catchError()
     }
 }
