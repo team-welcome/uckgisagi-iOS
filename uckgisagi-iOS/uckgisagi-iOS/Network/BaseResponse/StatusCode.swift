@@ -39,4 +39,25 @@ enum StatusCode: String, Decodable {
     case internalSever = "INTERNAL_SERVER"
     case badGateway = "BAD_GATEWAY"
     case serviceUnavailable = "SERVICE_UNAVAILABLE"
+    case notDefined = "NOT_DEFINED_CLIENT_ERROR"
+
+    init(_ statusCode: Int) {
+        switch statusCode {
+        case 200: self = .okay
+        case 201: self = .created
+        case 202: self = .noContent
+        case 204: self = .noContent
+        case 400: self = .badRequest
+        case 401: self = .unAuthorized
+        case 404: self = .notFound
+        case 405: self = .methodNotAllowed
+        case 406: self = .notAcceptable
+        case 409: self = .conflict
+        case 415: self = .unsupportedMediaType
+        case 500: self = .internalSever
+        case 502: self = .badRequest
+        case 503: self = .serviceUnavailable
+        default : self = .notDefined
+        }
+    }
 }

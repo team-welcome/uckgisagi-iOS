@@ -92,7 +92,6 @@ final class PostListDataSource {
         return posts[postID]
     }
 
-
 }
 
 extension Sequence where Element: Hashable {

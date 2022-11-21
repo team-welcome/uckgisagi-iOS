@@ -7,8 +7,10 @@
 
 struct PostDTO: Decodable {
     let id: Int
-    let content, createdAt, imageURL, nickname: String
-    let scrapStatus, updatedAt: String
+    let content, imageURL: String
+    let nickname: String?
+    let scrapStatus: Status
+    let createdAt,updatedAt: String?
 
     enum CodingKeys: String, CodingKey {
         case content, createdAt

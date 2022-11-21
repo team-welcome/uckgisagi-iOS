@@ -15,19 +15,17 @@ protocol AuthServiceType {
 }
 
 final class AuthService: AuthServiceType {
-    private let router = MoyaProvider<AuthRouter>(plugins: [MoyaLoggingPlugin()])
+    private let router = MoyaProvider<AuthRouter>(session: Session(interceptor: Interceptor.shared), plugins: [MoyaLoggingPlugin()])
 
-    func signup(fcmToken: String, socialToken: String) -> RxSwift.Observable<BaseResponse<LoginDTO>> {
+    func signup(fcmToken: String, socialToken: String) -> Observable<BaseResponse<LoginDTO>> {
         return router.rx.request(.signup(fcmToken: fcmToken, socialToken: socialToken))
             .map(BaseResponse<LoginDTO>.self)
             .asObservable()
-            .catchError()
     }
 
     func reissue() -> Observable<BaseResponse<TokenDTO>> {
         return router.rx.request(.reissue)
             .map(BaseResponse<TokenDTO>.self)
             .asObservable()
-            .catchError()
     }
 }

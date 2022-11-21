@@ -38,13 +38,15 @@ final class PostListReactor: Reactor {
     }
 
     func mutate(action: Action) -> Observable<Mutation> {
+        let getPostList = type == .all
+        ? NetworkService.shared.post.getPostList()
+        : NetworkService.shared.post.getScrapList()
+
         switch action {
         case .viewWillAppear, .pullToRefresh:
             return Observable.concat([
                 Observable.just(.setLoading(true)),
-                Observable.just(.setPosts(
-                    posts: []
-                )),
+                getPostList.compactMap { Mutation.setPosts(posts: $0.data ?? []) },
                 Observable.just(.setLoading(false))
             ])
         }
