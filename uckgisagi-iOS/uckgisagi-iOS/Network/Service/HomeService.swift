@@ -26,24 +26,21 @@ class HomeService: HomeServiceType {
     let event = PublishSubject<HomeEvent>()
     private let router = MoyaProvider<HomeRouter>(plugins: [MoyaLoggingPlugin()])
     
+    func getFriendList() -> RxSwift.Observable<BaseResponse<FriendListDTO>> {
+        return router.rx.request(.getFriendList)
+            .map(BaseResponse<FriendListDTO>.self)
+            .asObservable()
+    }
+    
+    func getFriendPost(friendId: Int) -> RxSwift.Observable<BaseResponse<ChallengePostDTO>> {
+        return router.rx.request(.getFriendPost(friendId: friendId))
+            .map(BaseResponse<ChallengePostDTO>.self)
+            .asObservable()
+    }
+    
     func getMyPost() -> RxSwift.Observable<BaseResponse<ChallengePostDTO>> {
         return router.rx.request(.getMyPost)
             .map(BaseResponse<ChallengePostDTO>.self)
             .asObservable()
-            .catchError()
-    }
-    
-    func getFriendPost(friendId: Int) -> Observable<BaseResponse<ChallengePostDTO>> {
-        return router.rx.request(.getFriendPost(friendId: friendId))
-            .map(BaseResponse<ChallengePostDTO>.self)
-            .asObservable()
-            .catchError()
-    }
-    
-    func getFriendList() -> Observable<BaseResponse<FriendListDTO>> {
-        return router.rx.request(.getFriendList)
-            .map(BaseResponse<FriendListDTO>.self)
-            .asObservable()
-            .catchError()
     }
 }
