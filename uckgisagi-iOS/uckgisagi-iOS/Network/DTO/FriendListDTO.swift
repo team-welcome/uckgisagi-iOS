@@ -8,7 +8,7 @@
 import Foundation
 
 struct FriendListDTO: Codable {
-    let friendInfo: [Info]
+    let friendInfo: [Info]?
     let myInfo: Info
 }
 
