@@ -8,9 +8,15 @@
 import UIKit
 
 import SnapKit
+import ReactorKit
 import FSCalendar
+import RxSwift
 
-class CalendarTableViewCell: UITableViewCell {
+class CalendarTableViewCell: UITableViewCell, View {
+    typealias Reactor = CalendarTableViewCellReactor
+    
+    var disposeBag = DisposeBag()
+    
     static let identifier = "CalendarTableViewCell"
     let monthLabel = UILabel()
     let calendar = FSCalendar(frame: .zero)
@@ -25,6 +31,13 @@ class CalendarTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        disposeBag = DisposeBag()
+        calendar.reloadData()
     }
     
     func setLayouts() {
@@ -46,6 +59,10 @@ class CalendarTableViewCell: UITableViewCell {
         monthLabel.text = dateformat()
         monthLabel.font = .systemFont(ofSize: 15, weight: UIFont.Weight(rawValue: 500))
         monthLabel.textColor = Color.mediumGray
+    }
+    
+    func bind(reactor: Reactor) {
+        calendar.reloadData()
     }
 }
 
@@ -79,14 +96,14 @@ extension CalendarTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FSCal
 
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         // MARK: - 터치시 이벤트
-        print(Calendar.current.date(byAdding: .hour, value: 9, to: date))
+        reactor?.action.onNext(.selectDate(date))
     }
 
     func setupCalendarEvents(dates: [String]) -> [Date?] {
         let dateFormatter = DateFormatter()
         var eventDate: [Date?] = .init()
         dateFormatter.locale = Locale(identifier: "ko_KR")
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 
         dates.forEach { date in
             eventDate.append(dateFormatter.date(from: date) ?? nil)
@@ -95,11 +112,19 @@ extension CalendarTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FSCal
     }
 
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        let events = setupCalendarEvents(dates: ["2022-11-26","2022-11-10"])
+        var events: [Date?]
+        
+        if let dates = reactor?.currentState.dates {
+            events = setupCalendarEvents(dates: dates)
+        } else {
+            events = setupCalendarEvents(dates: [])
+        }
+        
         if events.contains(date) {
             return 1
         } else {
             return 0
         }
     }
+    
 }
