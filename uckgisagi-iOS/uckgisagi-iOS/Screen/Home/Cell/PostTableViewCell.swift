@@ -93,7 +93,7 @@ class PostTableViewCell: UITableViewCell, View {
         let formatter = Foundation.DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         formatter.timeZone = TimeZone(identifier: "UTC")
-        let date = formatter.date(from: str)! // Date 형태로 변환
+        let date = formatter.date(from: str)!
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "a hh:mm"

@@ -62,7 +62,6 @@ class HomeViewController: BaseViewController, View {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-//        dataSource.updateSnapshot()
     }
     
     override func setLayouts() {

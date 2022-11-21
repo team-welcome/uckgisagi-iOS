@@ -91,9 +91,6 @@ class UserProfileCollectionViewCell: UICollectionViewCell, View {
             profileNameLabel.text = ""
             profileImage.image = Image.icCircleTap
             plusImage.isHidden = false
-            
         }
-        
-        
     }
 }
