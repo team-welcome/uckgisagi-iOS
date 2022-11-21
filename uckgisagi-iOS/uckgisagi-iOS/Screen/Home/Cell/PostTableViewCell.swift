@@ -39,13 +39,6 @@ class PostTableViewCell: UITableViewCell, View {
         disposeBag = DisposeBag()
     }
     
-    func configure() {
-        // TODO: - 수정
-        timeLabel.text = "AM 10:13"
-        postTextLabel.text = "나 오늘 분리수거 잘했음"
-        postImage.image = Image.postTestImage
-    }
-    
     func setLayouts() {
         sproutIconImage.snp.makeConstraints {
             $0.top.equalToSuperview().offset(9)
@@ -80,9 +73,32 @@ class PostTableViewCell: UITableViewCell, View {
         timeLabel.font = .systemFont(ofSize: 15, weight: .regular)
         postTextLabel.font = .systemFont(ofSize: 15, weight: .regular)
         postTextLabel.textColor = Color.mediumGray
+        postImage.layer.cornerRadius = 10
+        postImage.layer.masksToBounds = true
     }
     
     func bind(reactor: Reactor) {
+        guard let post = reactor.currentState.challengePost else { return }
+        let postDate = getDate(str: post.createdAt)
         
+        timeLabel.text = postDate
+        postTextLabel.text = post.content
+        
+        if let imageURL = URL(string: post.imageURL) {
+            postImage.kf.setImage(with: imageURL)
+        }
+    }
+    
+    func getDate(str: String) -> String {
+        let formatter = Foundation.DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        let date = formatter.date(from: str)! // Date 형태로 변환
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "a hh:mm"
+        let finalDate = dateFormatter.string(from: date)
+
+        return finalDate
     }
 }

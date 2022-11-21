@@ -9,19 +9,35 @@ import Foundation
 import ReactorKit
 
 class PostTableViewCellReactor: Reactor {
-    enum Action {}
+    enum Action {
+        case update
+    }
     
-    enum Mutation {}
+    enum Mutation {
+        case setChallengePost(Post)
+    }
     
-    struct State {}
+    struct State {
+        var challengePost: Post?
+    }
     
     var initialState: State
     
-    init() {
-        self.initialState = State()
+    init(challengePost: Post) {
+        self.initialState = State(challengePost: challengePost)
     }
 }
 
 extension PostTableViewCellReactor {
     
+    func reduce(state: State, mutation: Mutation) -> State {
+        var newState = state
+        
+        switch mutation {
+        case .setChallengePost(let post):
+            newState.challengePost = post
+        }
+        
+        return newState
+    }
 }

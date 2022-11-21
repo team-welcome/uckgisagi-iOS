@@ -31,7 +31,6 @@
 		23ED137B292A07DF00CA0608 /* CalendarTableViewCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ED137A292A07DF00CA0608 /* CalendarTableViewCellReactor.swift */; };
 		23ED137D292A081800CA0608 /* PostTableViewCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ED137C292A081800CA0608 /* PostTableViewCellReactor.swift */; };
 		23ED137F292A218D00CA0608 /* ChallengePostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ED137E292A218D00CA0608 /* ChallengePostDTO.swift */; };
-		23ED1381292A34D300CA0608 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ED1380292A34D300CA0608 /* Date+.swift */; };
 		DD0210AA291A53490048F86B /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0210A9291A53490048F86B /* PostDetailViewController.swift */; };
 		DD0210AD291A535E0048F86B /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0210AC291A535E0048F86B /* PostDetailView.swift */; };
 		DD059A0F291A38B1004E9F02 /* WritingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD059A0E291A38B1004E9F02 /* WritingView.swift */; };
@@ -161,7 +160,6 @@
 		23ED137A292A07DF00CA0608 /* CalendarTableViewCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCellReactor.swift; sourceTree = "<group>"; };
 		23ED137C292A081800CA0608 /* PostTableViewCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCellReactor.swift; sourceTree = "<group>"; };
 		23ED137E292A218D00CA0608 /* ChallengePostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengePostDTO.swift; sourceTree = "<group>"; };
-		23ED1380292A34D300CA0608 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		DD0210A9291A53490048F86B /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		DD0210AC291A535E0048F86B /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		DD059A0E291A38B1004E9F02 /* WritingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingView.swift; sourceTree = "<group>"; };
@@ -303,9 +301,9 @@
 				2328298229111A7F00ABB272 /* CalendarTableViewCell.swift */,
 				23ED137A292A07DF00CA0608 /* CalendarTableViewCellReactor.swift */,
 				23B6DAC6290D6B1B004FFA82 /* UserProfileCollectionViewCell.swift */,
+				23ED1374292A036900CA0608 /* UserProfileCollectionViewCellReactor.swift */,
 				2389B435291951A800B0B923 /* EmptyPostTableViewCell.swift */,
 				23ED1378292A07C400CA0608 /* EmptyPostTableViewCellReactor.swift */,
-				23ED1374292A036900CA0608 /* UserProfileCollectionViewCellReactor.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -466,7 +464,6 @@
 				DD98FD37290AC69C002EAB2A /* Observable+.swift */,
 				DD98FD39290AC6FE002EAB2A /* UIImageView+Kingfisher.swift */,
 				DD98FD3E290AC79F002EAB2A /* UIStackView+.swift */,
-				23ED1380292A34D300CA0608 /* Date+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -968,7 +965,6 @@
 				DDD1DBF02923B3FA00FE2E2B /* PostRouter.swift in Sources */,
 				DD0210AD291A535E0048F86B /* PostDetailView.swift in Sources */,
 				DD400A5629267C0700CD0224 /* FollowService.swift in Sources */,
-				23ED1381292A34D300CA0608 /* Date+.swift in Sources */,
 				DDEDEB3B292547E100B0ACAA /* NetworkService.swift in Sources */,
 				23ED13662928F54200CA0608 /* HomeRouter.swift in Sources */,
 				DD31991A290D443600070383 /* PostListViewController.swift in Sources */,

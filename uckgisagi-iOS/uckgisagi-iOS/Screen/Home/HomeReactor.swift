@@ -170,11 +170,12 @@ extension HomeReactor {
             }
         } else {
             data.posts.forEach { post in
-                postItems.append(.post(.init())) // reactor로 전달 
+                postItems.append(.post(.init(challengePost: post))) // reactor로 전달
             }
         }
         
         let postSection: HomeSectionModel = .init(model: .post(postItems), items: postItems)
+        
         
         return [calendarSection, postSection]
     }
