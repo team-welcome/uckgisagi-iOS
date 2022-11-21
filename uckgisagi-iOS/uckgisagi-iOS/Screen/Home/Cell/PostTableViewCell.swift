@@ -8,8 +8,13 @@
 import UIKit
 
 import SnapKit
+import ReactorKit
 
-class UserPostTableViewCell: UITableViewCell {
+class PostTableViewCell: UITableViewCell, View {
+    typealias Reactor = PostTableViewCellReactor
+    
+    var disposeBag = DisposeBag()
+    
     static let identifier = "UserPostTableViewCell"
     private let sproutIconImage = UIImageView()
     private let textStackView = UIStackView()
@@ -26,6 +31,12 @@ class UserPostTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        disposeBag = DisposeBag()
     }
     
     func configure() {
@@ -69,5 +80,9 @@ class UserPostTableViewCell: UITableViewCell {
         timeLabel.font = .systemFont(ofSize: 15, weight: .regular)
         postTextLabel.font = .systemFont(ofSize: 15, weight: .regular)
         postTextLabel.textColor = Color.mediumGray
+    }
+    
+    func bind(reactor: Reactor) {
+        
     }
 }
