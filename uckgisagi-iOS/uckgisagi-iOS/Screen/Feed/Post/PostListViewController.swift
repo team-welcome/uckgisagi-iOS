@@ -8,6 +8,7 @@
 import UIKit
 
 import ReactorKit
+import RxCocoa
 import RxSwift
 
 final class PostListViewController: BaseViewController, View {
@@ -25,6 +26,7 @@ final class PostListViewController: BaseViewController, View {
 
     func bind(reactor: PostListReactor) {
         rx.viewWillAppear
+            .take(1)
             .map { _ in Reactor.Action.viewWillAppear }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
@@ -36,6 +38,21 @@ final class PostListViewController: BaseViewController, View {
             .bind { owner, posts in
                 owner.dataSource.update(posts: posts)
             }
+            .disposed(by: disposeBag)
+
+        listView.collectionView.rx.itemSelected
+            .withUnretained(self)
+            .map { owner, indexPath in
+                return owner.dataSource.itemIdentifier(for: indexPath)
+            }
+            .compactMap { $0 }
+            .withUnretained(self)
+            .subscribe(onNext: { owner, item in
+                let detail = PostDetailViewController()
+                detail.reactor = PostDetailReactor(postID: item.id)
+                detail.modalPresentationStyle = .fullScreen
+                owner.navigationController?.pushViewController(detail, animated: true)
+            })
             .disposed(by: disposeBag)
     }
 

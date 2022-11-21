@@ -14,12 +14,11 @@ protocol UserServiceType {
 }
 
 final class UserService: UserServiceType {
-    private let router = MoyaProvider<UserRouter>(plugins: [MoyaLoggingPlugin()])
+    private let router = MoyaProvider<UserRouter>(session: Session(interceptor: Interceptor.shared), plugins: [MoyaLoggingPlugin()])
 
     func search(nickname: String) -> Observable<BaseArrayResponse<UserDTO>> {
         return router.rx.request(.search(nickname: nickname))
             .map(BaseArrayResponse<UserDTO>.self)
             .asObservable()
-            .catchError()
     }
 }

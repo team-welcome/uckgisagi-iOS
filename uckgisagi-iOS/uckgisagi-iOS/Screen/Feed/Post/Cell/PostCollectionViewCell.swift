@@ -28,8 +28,7 @@ final class PostCollectionViewCell: UICollectionViewCell {
 
     func configure(content: String, imageURL: String, isSelected: Bool) {
         contentLabel.text = content
-        imageView.image = Image.imgDummy2
-//        imageView.image(url: imageURL)
+        imageView.image(url: imageURL)
         heartButton.isSelected = isSelected
     }
 
@@ -39,7 +38,7 @@ final class PostCollectionViewCell: UICollectionViewCell {
         }
         heartButton.do {
             $0.setImage(UIImage(systemName: "heart.fill"), for: .selected)
-            $0.setImage(UIImage(systemName: "heart"), for: .normal)
+            $0.setImage(UIImage(systemName: "heart.line"), for: .normal)
             $0.tintColor = Color.white
         }
         dimView.do {

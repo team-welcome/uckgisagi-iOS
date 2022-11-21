@@ -76,7 +76,7 @@ extension PostRouter {
         list.append(
             MultipartFormData(
                 provider: .data(image.jpegData(compressionQuality: 0) ?? Data()),
-                name: "image",
+                name: "imageFile",
                 fileName: "certification.png",
                 mimeType: "image/png"
             )

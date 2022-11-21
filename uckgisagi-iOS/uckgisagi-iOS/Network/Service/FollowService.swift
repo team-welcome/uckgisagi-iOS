@@ -15,19 +15,17 @@ protocol FollowServiceType {
 }
 
 final class FollowService: FollowServiceType {
-    private let router = MoyaProvider<FollowRouter>(plugins: [MoyaLoggingPlugin()])
+    private let router = MoyaProvider<FollowRouter>(session: Session(interceptor: Interceptor.shared), plugins: [MoyaLoggingPlugin()])
 
     func follow(userID: Int) -> Observable<BaseResponse<NullResponse>>{
         return router.rx.request(.follow(userID: userID))
             .map(BaseResponse<NullResponse>.self)
             .asObservable()
-            .catchError()
     }
 
     func unfollow(userID: Int) -> Observable<BaseResponse<NullResponse>>{
         return router.rx.request(.unfollow(userID: userID))
             .map(BaseResponse<NullResponse>.self)
             .asObservable()
-            .catchError()
     }
 }
