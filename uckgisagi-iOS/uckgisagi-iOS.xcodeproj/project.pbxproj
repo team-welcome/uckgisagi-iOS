@@ -13,17 +13,25 @@
 		2332D0A22925012700BB3C0F /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2332D0A12925012700BB3C0F /* LoginDTO.swift */; };
 		23608759290C359B0069493F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23608758290C359B0069493F /* LoginViewController.swift */; };
 		2360875B290C45140069493F /* LoginReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2360875A290C45140069493F /* LoginReactor.swift */; };
-		237546AF291159B7001C3E8B /* UserPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237546AE291159B7001C3E8B /* UserPostTableViewCell.swift */; };
+		237546AF291159B7001C3E8B /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237546AE291159B7001C3E8B /* PostTableViewCell.swift */; };
 		237546B129116229001C3E8B /* UserPostTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237546B029116229001C3E8B /* UserPostTableViewHeader.swift */; };
-		237981C3291A450A0042FD54 /* HomeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237981C2291A450A0042FD54 /* HomeDataSource.swift */; };
 		2389B436291951A800B0B923 /* EmptyPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2389B435291951A800B0B923 /* EmptyPostTableViewCell.swift */; };
 		23B6DAC5290D5FE9004FFA82 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B6DAC4290D5FE9004FFA82 /* HomeViewController.swift */; };
 		23B6DAC7290D6B1B004FFA82 /* UserProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B6DAC6290D6B1B004FFA82 /* UserProfileCollectionViewCell.swift */; };
-		23E9D6332914F72000E15B27 /* UserProfileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E9D6322914F72000E15B27 /* UserProfileDataSource.swift */; };
 		23ED13662928F54200CA0608 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ED13652928F54200CA0608 /* HomeRouter.swift */; };
 		23ED13682928F75700CA0608 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ED13672928F75700CA0608 /* HomeService.swift */; };
 		23ED136A2928F7E100CA0608 /* FriendListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ED13692928F7E100CA0608 /* FriendListDTO.swift */; };
 		23ED136C2928FD3C00CA0608 /* HomeReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ED136B2928FD3C00CA0608 /* HomeReactor.swift */; };
+		23ED136F292A02A100CA0608 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = 23ED136E292A02A100CA0608 /* Differentiator */; };
+		23ED1371292A02A100CA0608 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 23ED1370292A02A100CA0608 /* RxDataSources */; };
+		23ED1373292A02CB00CA0608 /* UserProfileSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ED1372292A02CB00CA0608 /* UserProfileSectionModel.swift */; };
+		23ED1375292A036900CA0608 /* UserProfileCollectionViewCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ED1374292A036900CA0608 /* UserProfileCollectionViewCellReactor.swift */; };
+		23ED1377292A073800CA0608 /* HomeSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ED1376292A073800CA0608 /* HomeSectionModel.swift */; };
+		23ED1379292A07C400CA0608 /* EmptyPostTableViewCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ED1378292A07C400CA0608 /* EmptyPostTableViewCellReactor.swift */; };
+		23ED137B292A07DF00CA0608 /* CalendarTableViewCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ED137A292A07DF00CA0608 /* CalendarTableViewCellReactor.swift */; };
+		23ED137D292A081800CA0608 /* PostTableViewCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ED137C292A081800CA0608 /* PostTableViewCellReactor.swift */; };
+		23ED137F292A218D00CA0608 /* ChallengePostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ED137E292A218D00CA0608 /* ChallengePostDTO.swift */; };
+		23ED1381292A34D300CA0608 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23ED1380292A34D300CA0608 /* Date+.swift */; };
 		DD0210AA291A53490048F86B /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0210A9291A53490048F86B /* PostDetailViewController.swift */; };
 		DD0210AD291A535E0048F86B /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0210AC291A535E0048F86B /* PostDetailView.swift */; };
 		DD059A0F291A38B1004E9F02 /* WritingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD059A0E291A38B1004E9F02 /* WritingView.swift */; };
@@ -137,17 +145,23 @@
 		2332D0A12925012700BB3C0F /* LoginDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDTO.swift; sourceTree = "<group>"; };
 		23608758290C359B0069493F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2360875A290C45140069493F /* LoginReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReactor.swift; sourceTree = "<group>"; };
-		237546AE291159B7001C3E8B /* UserPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostTableViewCell.swift; sourceTree = "<group>"; };
+		237546AE291159B7001C3E8B /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		237546B029116229001C3E8B /* UserPostTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostTableViewHeader.swift; sourceTree = "<group>"; };
-		237981C2291A450A0042FD54 /* HomeDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataSource.swift; sourceTree = "<group>"; };
 		2389B435291951A800B0B923 /* EmptyPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPostTableViewCell.swift; sourceTree = "<group>"; };
 		23B6DAC4290D5FE9004FFA82 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		23B6DAC6290D6B1B004FFA82 /* UserProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCollectionViewCell.swift; sourceTree = "<group>"; };
-		23E9D6322914F72000E15B27 /* UserProfileDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileDataSource.swift; sourceTree = "<group>"; };
 		23ED13652928F54200CA0608 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		23ED13672928F75700CA0608 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		23ED13692928F7E100CA0608 /* FriendListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListDTO.swift; sourceTree = "<group>"; };
 		23ED136B2928FD3C00CA0608 /* HomeReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReactor.swift; sourceTree = "<group>"; };
+		23ED1372292A02CB00CA0608 /* UserProfileSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileSectionModel.swift; sourceTree = "<group>"; };
+		23ED1374292A036900CA0608 /* UserProfileCollectionViewCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCollectionViewCellReactor.swift; sourceTree = "<group>"; };
+		23ED1376292A073800CA0608 /* HomeSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionModel.swift; sourceTree = "<group>"; };
+		23ED1378292A07C400CA0608 /* EmptyPostTableViewCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPostTableViewCellReactor.swift; sourceTree = "<group>"; };
+		23ED137A292A07DF00CA0608 /* CalendarTableViewCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCellReactor.swift; sourceTree = "<group>"; };
+		23ED137C292A081800CA0608 /* PostTableViewCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCellReactor.swift; sourceTree = "<group>"; };
+		23ED137E292A218D00CA0608 /* ChallengePostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengePostDTO.swift; sourceTree = "<group>"; };
+		23ED1380292A34D300CA0608 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		DD0210A9291A53490048F86B /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		DD0210AC291A535E0048F86B /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		DD059A0E291A38B1004E9F02 /* WritingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingView.swift; sourceTree = "<group>"; };
@@ -236,6 +250,7 @@
 			files = (
 				DD0CCA52290BEBAF00264543 /* FirebasePerformance in Frameworks */,
 				DD98FD1E290AC49E002EAB2A /* RxCocoa in Frameworks */,
+				23ED136F292A02A100CA0608 /* Differentiator in Frameworks */,
 				DD98FD18290AC473002EAB2A /* RxMoya in Frameworks */,
 				DD98FD3D290AC771002EAB2A /* Kingfisher in Frameworks */,
 				DD98FD22290AC49E002EAB2A /* RxSwift in Frameworks */,
@@ -248,6 +263,7 @@
 				DD98FD47290AC854002EAB2A /* SwiftKeychainWrapper in Frameworks */,
 				DD0CCA4A290BEBAF00264543 /* FirebaseAnalytics in Frameworks */,
 				2328297B291009A200ABB272 /* FSCalendar in Frameworks */,
+				23ED1371292A02A100CA0608 /* RxDataSources in Frameworks */,
 				DD98FD1B290AC48B002EAB2A /* SnapKit in Frameworks */,
 				DD0CCA4E290BEBAF00264543 /* FirebaseDynamicLinks in Frameworks */,
 			);
@@ -282,10 +298,14 @@
 		237546B22912A536001C3E8B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				237546AE291159B7001C3E8B /* UserPostTableViewCell.swift */,
+				237546AE291159B7001C3E8B /* PostTableViewCell.swift */,
+				23ED137C292A081800CA0608 /* PostTableViewCellReactor.swift */,
 				2328298229111A7F00ABB272 /* CalendarTableViewCell.swift */,
+				23ED137A292A07DF00CA0608 /* CalendarTableViewCellReactor.swift */,
 				23B6DAC6290D6B1B004FFA82 /* UserProfileCollectionViewCell.swift */,
 				2389B435291951A800B0B923 /* EmptyPostTableViewCell.swift */,
+				23ED1378292A07C400CA0608 /* EmptyPostTableViewCellReactor.swift */,
+				23ED1374292A036900CA0608 /* UserProfileCollectionViewCellReactor.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -363,6 +383,7 @@
 				DDEDEB3C292548BC00B0ACAA /* TokenDTO.swift */,
 				DDEDEB3E29254FD400B0ACAA /* GradeDTO.swift */,
 				23ED13692928F7E100CA0608 /* FriendListDTO.swift */,
+				23ED137E292A218D00CA0608 /* ChallengePostDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -445,6 +466,7 @@
 				DD98FD37290AC69C002EAB2A /* Observable+.swift */,
 				DD98FD39290AC6FE002EAB2A /* UIImageView+Kingfisher.swift */,
 				DD98FD3E290AC79F002EAB2A /* UIStackView+.swift */,
+				23ED1380292A34D300CA0608 /* Date+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -617,8 +639,8 @@
 				23E9D634291646F200E15B27 /* View */,
 				237546B22912A536001C3E8B /* Cell */,
 				23B6DAC4290D5FE9004FFA82 /* HomeViewController.swift */,
-				23E9D6322914F72000E15B27 /* UserProfileDataSource.swift */,
-				237981C2291A450A0042FD54 /* HomeDataSource.swift */,
+				23ED1372292A02CB00CA0608 /* UserProfileSectionModel.swift */,
+				23ED1376292A073800CA0608 /* HomeSectionModel.swift */,
 				23ED136B2928FD3C00CA0608 /* HomeReactor.swift */,
 			);
 			path = Home;
@@ -740,6 +762,8 @@
 				DD0CCA51290BEBAF00264543 /* FirebasePerformance */,
 				DD0CCA53290BEBAF00264543 /* FirebaseRemoteConfig */,
 				2328297A291009A200ABB272 /* FSCalendar */,
+				23ED136E292A02A100CA0608 /* Differentiator */,
+				23ED1370292A02A100CA0608 /* RxDataSources */,
 			);
 			productName = "uckgisagi-iOS";
 			productReference = DD9ACC8E28F6DA5000B13E9C /* uckgisagi-iOS.app */;
@@ -823,6 +847,7 @@
 				DD92E9AF290BC63F00D1A03D /* XCRemoteSwiftPackageReference "ReactorKit" */,
 				DD0CCA48290BEBAF00264543 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				23282979291009A200ABB272 /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				23ED136D292A02A100CA0608 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = DD9ACC8F28F6DA5000B13E9C /* Products */;
 			projectDirPath = "";
@@ -868,21 +893,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD0CCA6B290C1DB300264543 /* UserFollowCollectionViewCell.swift in Sources */,
+				23ED137F292A218D00CA0608 /* ChallengePostDTO.swift in Sources */,
 				23ED136C2928FD3C00CA0608 /* HomeReactor.swift in Sources */,
 				DDEDEB3D292548BC00B0ACAA /* TokenDTO.swift in Sources */,
 				DDD1DBEB2923B25400FE2E2B /* Environment.swift in Sources */,
-				237981C3291A450A0042FD54 /* HomeDataSource.swift in Sources */,
+				23ED137D292A081800CA0608 /* PostTableViewCellReactor.swift in Sources */,
 				DD31992A2910081A00070383 /* PostCollectionViewCell.swift in Sources */,
 				DD98FD44290AC811002EAB2A /* UserDefaultHandler.swift in Sources */,
 				DDD1DBF22923B4BE00FE2E2B /* BaseTargetType.swift in Sources */,
 				DDEDEB35292546A800B0ACAA /* AuthRouter.swift in Sources */,
-				23E9D6332914F72000E15B27 /* UserProfileDataSource.swift in Sources */,
+				23ED137B292A07DF00CA0608 /* CalendarTableViewCellReactor.swift in Sources */,
 				23ED136A2928F7E100CA0608 /* FriendListDTO.swift in Sources */,
 				DD98FD42290AC7F5002EAB2A /* UserDefault.swift in Sources */,
 				DDD0B2712925571B0015AC5E /* StoreRouter.swift in Sources */,
 				2389B436291951A800B0B923 /* EmptyPostTableViewCell.swift in Sources */,
+				23ED1377292A073800CA0608 /* HomeSectionModel.swift in Sources */,
+				23ED1373292A02CB00CA0608 /* UserProfileSectionModel.swift in Sources */,
 				23B6DAC5290D5FE9004FFA82 /* HomeViewController.swift in Sources */,
-				237546AF291159B7001C3E8B /* UserPostTableViewCell.swift in Sources */,
+				237546AF291159B7001C3E8B /* PostTableViewCell.swift in Sources */,
 				23B6DAC7290D6B1B004FFA82 /* UserProfileCollectionViewCell.swift in Sources */,
 				DD9ACCD028F6DEAF00B13E9C /* FirebaseService.swift in Sources */,
 				DD98FD36290AC667002EAB2A /* UIViewController+.swift in Sources */,
@@ -910,6 +938,7 @@
 				DD059A13291A40D3004E9F02 /* WritingReactor.swift in Sources */,
 				DD98FD54290AC9E4002EAB2A /* StatusCode.swift in Sources */,
 				DD0CCA5E290C0F5000264543 /* SearchBar.swift in Sources */,
+				23ED1375292A036900CA0608 /* UserProfileCollectionViewCellReactor.swift in Sources */,
 				2360875B290C45140069493F /* LoginReactor.swift in Sources */,
 				DD98FD52290AC9CC002EAB2A /* StatusHandler.swift in Sources */,
 				DD98FD29290AC4F5002EAB2A /* Then.swift in Sources */,
@@ -921,6 +950,7 @@
 				DD98FD4C290AC8AD002EAB2A /* RootSwitcher.swift in Sources */,
 				23282981291114D000ABB272 /* UserProfileTableViewHeader.swift in Sources */,
 				DD059A0F291A38B1004E9F02 /* WritingView.swift in Sources */,
+				23ED1379292A07C400CA0608 /* EmptyPostTableViewCellReactor.swift in Sources */,
 				DD98FD3F290AC79F002EAB2A /* UIStackView+.swift in Sources */,
 				DD98CE5829116D7C000EBDB3 /* ShopListReactor.swift in Sources */,
 				DD0CCA61290C12D700264543 /* Image.swift in Sources */,
@@ -938,6 +968,7 @@
 				DDD1DBF02923B3FA00FE2E2B /* PostRouter.swift in Sources */,
 				DD0210AD291A535E0048F86B /* PostDetailView.swift in Sources */,
 				DD400A5629267C0700CD0224 /* FollowService.swift in Sources */,
+				23ED1381292A34D300CA0608 /* Date+.swift in Sources */,
 				DDEDEB3B292547E100B0ACAA /* NetworkService.swift in Sources */,
 				23ED13662928F54200CA0608 /* HomeRouter.swift in Sources */,
 				DD31991A290D443600070383 /* PostListViewController.swift in Sources */,
@@ -1305,6 +1336,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		23ED136D292A02A100CA0608 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		DD0CCA48290BEBAF00264543 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1376,6 +1415,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 23282979291009A200ABB272 /* XCRemoteSwiftPackageReference "FSCalendar" */;
 			productName = FSCalendar;
+		};
+		23ED136E292A02A100CA0608 /* Differentiator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 23ED136D292A02A100CA0608 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
+		};
+		23ED1370292A02A100CA0608 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 23ED136D292A02A100CA0608 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
 		};
 		DD0CCA49290BEBAF00264543 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
