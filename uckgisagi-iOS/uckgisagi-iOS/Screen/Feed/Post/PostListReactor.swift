@@ -40,7 +40,7 @@ final class PostListReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         let getPostList = type == .all
         ? NetworkService.shared.post.getPostList()
-        : NetworkService.shared.post.getPostList()
+        : NetworkService.shared.post.getScrapList()
 
         switch action {
         case .viewWillAppear, .pullToRefresh:
