@@ -23,6 +23,7 @@ final class PostDetailViewController: BaseViewController, View {
 
     func bind(reactor: PostDetailReactor) {
         rx.viewWillAppear
+            .take(1)
             .map { _ in Reactor.Action.viewWillAppear }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
@@ -34,8 +35,8 @@ final class PostDetailViewController: BaseViewController, View {
             .bind { owner, post in
                 owner.detailView.configure(
                     imageURL:  post.imageURL,
-                    username: post.nickname,
-                    timestamp: post.updatedAt,
+                    username: post.nickname ?? "",
+                    timestamp: post.updatedAt ?? "",
                     content:  post.content
                 )
             }
