@@ -14,7 +14,7 @@ protocol StoreServiceType {
 }
 
 final class StoreService: StoreServiceType {
-    private let router = MoyaProvider<StoreRouter>(session: Session(interceptor: Interceptor()), plugins: [MoyaLoggingPlugin()])
+    private let router = MoyaProvider<StoreRouter>(session: Session(interceptor: Interceptor.shared), plugins: [MoyaLoggingPlugin()])
 
     func getStoreList() -> Observable<BaseResponse<StoreListDTO>> {
         return router.rx.request(.getStoreList)
