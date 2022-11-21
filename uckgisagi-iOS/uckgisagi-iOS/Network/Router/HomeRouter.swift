@@ -11,6 +11,8 @@ import Moya
 
 enum HomeRouter {
     case getFriendList
+    case getFriendPost(friendId: Int)
+    case getMyPost
 }
 
 extension HomeRouter: BaseTargetType {
@@ -18,19 +20,23 @@ extension HomeRouter: BaseTargetType {
         switch self {
         case .getFriendList:
             return "/home/user"
+        case let .getFriendPost(friendId):
+            return "/home/\(friendId)"
+        case .getMyPost:
+            return "/home/me"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getFriendList:
+        case .getFriendList, .getFriendPost(_), .getMyPost:
             return .get
         }
     }
     
     var task: Moya.Task {
         switch self {
-        case .getFriendList:
+        case .getFriendList, .getFriendPost(_), .getMyPost:
             return .requestPlain
         }
     }
