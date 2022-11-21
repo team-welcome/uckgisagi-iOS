@@ -6,10 +6,14 @@
 //
 
 import UIKit
-
+import ReactorKit
 import SnapKit
 
-class EmptyPostTableViewCell: UITableViewCell {
+class EmptyPostTableViewCell: UITableViewCell, View {
+    typealias Reactor = EmptyPostTableViewCellReactor
+    
+    var disposeBag = DisposeBag()
+    
     static let identifier = "EmptyPostTableViewCell"
     let icHuk: UIImageView = .init()
     let noticeLabel: UILabel = .init()
@@ -26,6 +30,12 @@ class EmptyPostTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        disposeBag = DisposeBag()
     }
     
     private func setProperties() {
@@ -60,12 +70,19 @@ class EmptyPostTableViewCell: UITableViewCell {
         }
     }
     
-    func configure(isFriend: Bool) {
-        if isFriend {
+    func bind(reactor: Reactor) {
+        switch reactor.currentState.type {
+        case .my:
             pushButton.isHidden = true
             
             stackView.snp.updateConstraints {
                 $0.height.equalTo(200)
+            }
+        case .friend:
+            pushButton.isHidden = false
+            
+            stackView.snp.updateConstraints {
+                $0.height.equalTo(250)
             }
         }
     }
