@@ -9,7 +9,9 @@ import UIKit
 
 import SnapKit
 import RxSwift
+import RxDataSources
 import FSCalendar
+import ReactorKit
 
 enum PostCase {
     case friendPostEmpty
@@ -17,7 +19,38 @@ enum PostCase {
     case postExist
 }
 
-class HomeViewController: BaseViewController {
+class HomeViewController: BaseViewController, View {
+    typealias Reactor = HomeReactor
+    
+    typealias UserProfileDataSource = RxCollectionViewSectionedReloadDataSource<UserProfileSectionModel>
+    typealias HomeDataSource = RxTableViewSectionedReloadDataSource<HomeSectionModel>
+    
+    private lazy var userProfileDataSource = UserProfileDataSource { _, collectionView, indexPath, item -> UICollectionViewCell in
+        switch item {
+        case let .userProfile(reactor):
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: UserProfileCollectionViewCell.self), for: indexPath) as? UserProfileCollectionViewCell else { return .init() }
+            cell.reactor = reactor
+            return cell
+        }
+    }
+    
+    private lazy var homeDataSource = HomeDataSource { _, tableView, indexPath, item -> UITableViewCell in
+        switch item {
+        case let .calendar(reactor):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CalendarTableViewCell.self), for: indexPath) as? CalendarTableViewCell else { return .init() }
+            cell.reactor = reactor
+            return cell
+        case let .post(reactor):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self), for: indexPath) as? PostTableViewCell else { return .init() }
+            cell.reactor = reactor
+            return cell
+        case let .emptyPost(reactor):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EmptyPostTableViewCell.self), for: indexPath) as? EmptyPostTableViewCell else { return .init() }
+            cell.reactor = reactor
+            return cell
+        }
+    }
+    
     // MARK: - Properties
     private let navigationView = UIView()
     private let ukgisagiLogo = UIImageView()
@@ -25,13 +58,10 @@ class HomeViewController: BaseViewController {
     private let userProfileHeaderView = UserProfileTableViewHeader()
     private let tableView = UITableView()
     private var postType: PostCase?
-    private lazy var dataSource = HomeDataSource(tableView: tableView, postType: .postExist)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        dataSource.updateSnapshot()
-        bind()
     }
     
     override func setLayouts() {
@@ -74,12 +104,34 @@ class HomeViewController: BaseViewController {
         }
     }
     
-    func bind() {
+    func bind(reactor: HomeReactor) {
+        rx.viewWillAppear
+            .map { _ in .refesh }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
         surroundButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
                 let feedMainVC = FeedMainViewController()
                 self?.navigationController?.pushViewController(feedMainVC, animated: true)
             })
+            .disposed(by: disposeBag)
+        
+        tableView.rx.setDelegate(self).disposed(by: disposeBag)
+        
+        reactor.state
+            .map(\.homeSections)
+            .bind(to: tableView.rx.items(dataSource: homeDataSource))
+            .disposed(by: disposeBag)
+        
+        reactor.state
+            .compactMap(\.searchUserReactor)
+            .withUnretained(self)
+            .bind { this, reactor in
+                let viewController = SearchUserViewController()
+                viewController.reactor = reactor
+                this.navigationController?.pushViewController(viewController, animated: true)
+            }
             .disposed(by: disposeBag)
     }
 }
@@ -87,16 +139,32 @@ class HomeViewController: BaseViewController {
 // MARK: - TableViewDelegate
 extension HomeViewController: UITableViewDelegate {
     func setupTableView() {
-        tableView.delegate = self
         tableView.register(UserProfileTableViewHeader.self, forHeaderFooterViewReuseIdentifier: "UserProfileTableViewHeader")
         tableView.register(UserPostTableViewHeader.self, forHeaderFooterViewReuseIdentifier: "UserPostTableViewHeader")
+        tableView.register(CalendarTableViewCell.self, forCellReuseIdentifier: String(describing: CalendarTableViewCell.self))
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: String(describing: PostTableViewCell.self))
+        tableView.register(EmptyPostTableViewCell.self, forCellReuseIdentifier: String(describing: EmptyPostTableViewCell.self))
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
         case 0:
             guard let headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "UserProfileTableViewHeader") as? UserProfileTableViewHeader else { return UIView() }
-            headerCell.delegate = self
+            headerCell.collectionView.register(UserProfileCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: UserProfileCollectionViewCell.self))
+            headerCell.collectionView.rx.setDelegate(self).disposed(by: headerCell.disposeBag)
+            
+            headerCell.collectionView.rx.itemSelected
+                .withUnretained(self)
+                .bind { this, indexPath in
+                    this.reactor?.action.onNext(.userProfileCellTap(indexPath))
+                }
+                .disposed(by: headerCell.disposeBag)
+
+            reactor?.state
+                .map(\.userProfileSections)
+                .bind(to: headerCell.collectionView.rx.items(dataSource: userProfileDataSource))
+                .disposed(by: headerCell.disposeBag)
+            
             return headerCell
         case 1:
             guard let headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "UserPostTableViewHeader") as? UserPostTableViewHeader else { return UIView() }

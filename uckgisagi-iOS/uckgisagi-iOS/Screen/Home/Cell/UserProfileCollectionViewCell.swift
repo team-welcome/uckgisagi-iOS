@@ -8,8 +8,14 @@
 import UIKit
 
 import SnapKit
+import RxSwift
+import ReactorKit
 
-class UserProfileCollectionViewCell: UICollectionViewCell {
+class UserProfileCollectionViewCell: UICollectionViewCell, View {
+    typealias Reactor = UserProfileCollectionViewCellReactor
+    
+    var disposeBag = DisposeBag()
+    
     static let identifier = "userProfileCollectionViewCell"
     private var profileNameLabel = UILabel()
     private var profileImage = UIImageView()
@@ -29,21 +35,10 @@ class UserProfileCollectionViewCell: UICollectionViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
+        disposeBag = DisposeBag()
+        
         profileNameLabel.text = nil
         profileImage.image = Image.icCircle
-    }
-
-    // MARK: - Function
-    func configureProfile(name: String, isFriend: Bool) {
-        profileNameLabel.text = name
-        profileImage.image = isFriend ? Image.icCircle : Image.icCircleTap
-        plusImage.isHidden = true
-    }
-    
-    func configureLastCell() {
-        profileNameLabel.text = ""
-        profileImage.image = Image.icCircleTap
-        plusImage.isHidden = false
     }
 
     private func setProperties() {
@@ -77,6 +72,25 @@ class UserProfileCollectionViewCell: UICollectionViewCell {
         plusImage.snp.makeConstraints {
             $0.width.height.equalTo(24)
             $0.centerX.centerY.equalToSuperview()
+        }
+    }
+    
+    func bind(reactor: Reactor) {
+        switch reactor.currentState.type {
+        case .my:
+            guard let info = reactor.currentState.info else { break }
+            profileNameLabel.text = "\(info.nickname.prefix(1))"
+            profileImage.image = Image.icCircleTap
+            plusImage.isHidden = true
+        case .friend:
+            guard let info = reactor.currentState.info else { break }
+            profileNameLabel.text = "\(info.nickname.prefix(1))"
+            profileImage.image = Image.icCircle
+            plusImage.isHidden = true
+        case .plus:
+            profileNameLabel.text = ""
+            profileImage.image = Image.icCircleTap
+            plusImage.isHidden = false
         }
     }
 }

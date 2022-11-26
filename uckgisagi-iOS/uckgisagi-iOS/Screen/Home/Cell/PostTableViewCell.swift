@@ -8,8 +8,13 @@
 import UIKit
 
 import SnapKit
+import ReactorKit
 
-class UserPostTableViewCell: UITableViewCell {
+class PostTableViewCell: UITableViewCell, View {
+    typealias Reactor = PostTableViewCellReactor
+    
+    var disposeBag = DisposeBag()
+    
     static let identifier = "UserPostTableViewCell"
     private let sproutIconImage = UIImageView()
     private let textStackView = UIStackView()
@@ -28,11 +33,10 @@ class UserPostTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure() {
-        // TODO: - 수정
-        timeLabel.text = "AM 10:13"
-        postTextLabel.text = "나 오늘 분리수거 잘했음"
-        postImage.image = Image.postTestImage
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        disposeBag = DisposeBag()
     }
     
     func setLayouts() {
@@ -69,5 +73,32 @@ class UserPostTableViewCell: UITableViewCell {
         timeLabel.font = .systemFont(ofSize: 15, weight: .regular)
         postTextLabel.font = .systemFont(ofSize: 15, weight: .regular)
         postTextLabel.textColor = Color.mediumGray
+        postImage.layer.cornerRadius = 10
+        postImage.layer.masksToBounds = true
+    }
+    
+    func bind(reactor: Reactor) {
+        guard let post = reactor.currentState.challengePost else { return }
+        let postDate = getDate(str: post.createdAt)
+        
+        timeLabel.text = postDate
+        postTextLabel.text = post.content
+        
+        if let imageURL = URL(string: post.imageURL) {
+            postImage.kf.setImage(with: imageURL)
+        }
+    }
+    
+    func getDate(str: String) -> String {
+        let formatter = Foundation.DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        let date = formatter.date(from: str)!
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "a hh:mm"
+        let finalDate = dateFormatter.string(from: date)
+
+        return finalDate
     }
 }
