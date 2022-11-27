@@ -32,7 +32,7 @@ final class PostCollectionViewCell: UICollectionViewCell {
         contentLabel.text = nil
         imageView.image = nil
         heartButton.isSelected = false
-        tag = 0
+        indexPath = nil
     }
 
     func configure(content: String, imageURL: String, isSelected: Bool) {
