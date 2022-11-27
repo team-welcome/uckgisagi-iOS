@@ -9,7 +9,7 @@ struct PostDTO: Decodable {
     let id: Int
     let content, imageURL: String
     let nickname: String?
-    let scrapStatus: Status
+    var scrapStatus: Status
     let createdAt,updatedAt: String?
 
     enum CodingKeys: String, CodingKey {
@@ -34,5 +34,6 @@ extension PostDTO: Equatable, Hashable {
         return lhs.id == rhs.id
         && lhs.content == rhs.content
         && lhs.imageURL == rhs.imageURL
+        && lhs.scrapStatus == rhs.scrapStatus
     }
 }

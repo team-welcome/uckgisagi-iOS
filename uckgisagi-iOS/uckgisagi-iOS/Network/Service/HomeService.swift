@@ -24,7 +24,10 @@ protocol HomeServiceType {
 
 class HomeService: HomeServiceType {
     let event = PublishSubject<HomeEvent>()
-    private let router = MoyaProvider<HomeRouter>(plugins: [MoyaLoggingPlugin()])
+    private let router = MoyaProvider<HomeRouter>(
+        session: Session(interceptor: Interceptor.shared),
+        plugins: [MoyaLoggingPlugin()]
+    )
     
     func getFriendList() -> RxSwift.Observable<BaseResponse<FriendListDTO>> {
         return router.rx.request(.getFriendList)

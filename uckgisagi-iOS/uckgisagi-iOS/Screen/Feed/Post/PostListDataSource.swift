@@ -20,6 +20,7 @@ final class PostListDataSource {
     // MARK: - Properties
     private lazy var dataSource = createDataSource()
     private let collectionView: UICollectionView
+    let heartButtonPublisher = PublishSubject<PostDTO>()
 
     private var posts: [Int: PostDTO]
 
@@ -57,8 +58,10 @@ final class PostListDataSource {
             cell.configure(
                 content: post.content,
                 imageURL: post.imageURL,
-                isSelected: true
+                isSelected: post.scrapStatus.parse()
             )
+            cell.delegate = self
+            cell.indexPath = indexPath
         }
     }
 
@@ -92,6 +95,21 @@ final class PostListDataSource {
         return posts[postID]
     }
 
+}
+
+extension PostListDataSource: PostCollectionViewCellDelegate {
+    func heardButtonDitTap(_ cell: PostCollectionViewCell) {
+        guard
+            let indexPath = cell.indexPath,
+            var postDTO = itemIdentifier(for: indexPath)
+        else { return }
+        heartButtonPublisher.onNext(postDTO)
+
+        postDTO.scrapStatus = postDTO.scrapStatus == .active
+        ? .inactive : .active
+
+        reloadIfNeeded(item: postDTO)
+    }
 }
 
 extension Sequence where Element: Hashable {
