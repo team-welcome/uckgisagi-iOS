@@ -54,6 +54,18 @@ final class PostListViewController: BaseViewController, View {
                 owner.navigationController?.pushViewController(detail, animated: true)
             })
             .disposed(by: disposeBag)
+
+        dataSource.heartButtonPublisher
+            .filter { $0.scrapStatus.parse() }
+            .map { Reactor.Action.deleteScrap(postID: $0.id) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+
+        dataSource.heartButtonPublisher
+            .filter { !$0.scrapStatus.parse() }
+            .map { Reactor.Action.scrap(postID: $0.id) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
     }
 
     func scrollToTop() {

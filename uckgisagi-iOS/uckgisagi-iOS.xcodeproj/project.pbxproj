@@ -66,6 +66,8 @@
 		DD5CE499292A530E00AE1027 /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5CE498292A530E00AE1027 /* Interceptor.swift */; };
 		DD5CE4A1292A6DB000AE1027 /* PostDetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5CE4A0292A6DB000AE1027 /* PostDetailReactor.swift */; };
 		DD6DA4E329117A8400BA3291 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6DA4E229117A8400BA3291 /* SplashViewController.swift */; };
+		DD896C512933D30E00E72E8D /* ScrapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD896C502933D30E00E72E8D /* ScrapService.swift */; };
+		DD896C532933D31600E72E8D /* ScrapRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD896C522933D31600E72E8D /* ScrapRouter.swift */; };
 		DD92E9B1290BC63F00D1A03D /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD92E9B0290BC63F00D1A03D /* ReactorKit */; };
 		DD98CE4C29115E6C000EBDB3 /* ShopInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98CE4B29115E6C000EBDB3 /* ShopInfoCollectionViewCell.swift */; };
 		DD98CE4E29115E9A000EBDB3 /* HotShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD98CE4D29115E9A000EBDB3 /* HotShopCollectionViewCell.swift */; };
@@ -191,6 +193,8 @@
 		DD5CE498292A530E00AE1027 /* Interceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
 		DD5CE4A0292A6DB000AE1027 /* PostDetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailReactor.swift; sourceTree = "<group>"; };
 		DD6DA4E229117A8400BA3291 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		DD896C502933D30E00E72E8D /* ScrapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapService.swift; sourceTree = "<group>"; };
+		DD896C522933D31600E72E8D /* ScrapRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapRouter.swift; sourceTree = "<group>"; };
 		DD98CE4B29115E6C000EBDB3 /* ShopInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD98CE4D29115E9A000EBDB3 /* HotShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotShopCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD98CE4F29115F96000EBDB3 /* ShopHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopHeaderView.swift; sourceTree = "<group>"; };
@@ -712,6 +716,7 @@
 				DD0BC2DB2925601900C96FAB /* UserRouter.swift */,
 				DD400A5729267C1600CD0224 /* FollowRouter.swift */,
 				23ED13652928F54200CA0608 /* HomeRouter.swift */,
+				DD896C522933D31600E72E8D /* ScrapRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -725,6 +730,7 @@
 				DD0BC2DD2925607F00C96FAB /* UserService.swift */,
 				DD400A5529267C0700CD0224 /* FollowService.swift */,
 				23ED13672928F75700CA0608 /* HomeService.swift */,
+				DD896C502933D30E00E72E8D /* ScrapService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -893,6 +899,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD0CCA6B290C1DB300264543 /* UserFollowCollectionViewCell.swift in Sources */,
+				DD896C532933D31600E72E8D /* ScrapRouter.swift in Sources */,
 				23ED137F292A218D00CA0608 /* ChallengePostDTO.swift in Sources */,
 				23ED136C2928FD3C00CA0608 /* HomeReactor.swift in Sources */,
 				DDEDEB3D292548BC00B0ACAA /* TokenDTO.swift in Sources */,
@@ -929,6 +936,7 @@
 				DD0BC2DE2925607F00C96FAB /* UserService.swift in Sources */,
 				DD400A5829267C1600CD0224 /* FollowRouter.swift in Sources */,
 				DD98FD3A290AC6FE002EAB2A /* UIImageView+Kingfisher.swift in Sources */,
+				DD896C512933D30E00E72E8D /* ScrapService.swift in Sources */,
 				DD98CE542911687C000EBDB3 /* StoreDTO.swift in Sources */,
 				DD98FD4F290AC99A002EAB2A /* MoyaLoggingPlugin.swift in Sources */,
 				DD98FD58290ACA64002EAB2A /* BaseArrayResponse.swift in Sources */,

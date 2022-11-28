@@ -15,7 +15,10 @@ protocol AuthServiceType {
 }
 
 final class AuthService: AuthServiceType {
-    private let router = MoyaProvider<AuthRouter>(session: Session(interceptor: Interceptor.shared), plugins: [MoyaLoggingPlugin()])
+    private let router = MoyaProvider<AuthRouter>(
+        session: Session(interceptor: Interceptor.shared),
+        plugins: [MoyaLoggingPlugin()]
+    )
 
     func signup(fcmToken: String, socialToken: String) -> Observable<BaseResponse<LoginDTO>> {
         return router.rx.request(.signup(fcmToken: fcmToken, socialToken: socialToken))

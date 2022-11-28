@@ -7,11 +7,19 @@
 
 import UIKit
 
+protocol PostCollectionViewCellDelegate: AnyObject {
+    func heardButtonDitTap(_ cell: PostCollectionViewCell)
+}
+
 final class PostCollectionViewCell: UICollectionViewCell {
+    weak var delegate: PostCollectionViewCellDelegate?
+
     private let imageView = UIImageView()
-    private let heartButton = UIButton()
+    private(set) lazy var heartButton = UIButton()
     private let dimView = UIView()
     private let contentLabel = UILabel()
+
+    var indexPath: IndexPath?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,6 +32,7 @@ final class PostCollectionViewCell: UICollectionViewCell {
         contentLabel.text = nil
         imageView.image = nil
         heartButton.isSelected = false
+        indexPath = nil
     }
 
     func configure(content: String, imageURL: String, isSelected: Bool) {
@@ -32,14 +41,20 @@ final class PostCollectionViewCell: UICollectionViewCell {
         heartButton.isSelected = isSelected
     }
 
+    @objc
+    private func heartButtonDidTap(_ sender: UIButton) {
+        delegate?.heardButtonDitTap(self)
+    }
+
     private func setProperties() {
         imageView.do {
             $0.contentMode = .scaleAspectFill
         }
         heartButton.do {
             $0.setImage(UIImage(systemName: "heart.fill"), for: .selected)
-            $0.setImage(UIImage(systemName: "heart.line"), for: .normal)
+            $0.setImage(UIImage(systemName: "heart"), for: .normal)
             $0.tintColor = Color.white
+            $0.addTarget(self, action: #selector(heartButtonDidTap(_:)), for: .touchUpInside)
         }
         dimView.do {
             $0.backgroundColor = Color.black.withAlphaComponent(0.5)

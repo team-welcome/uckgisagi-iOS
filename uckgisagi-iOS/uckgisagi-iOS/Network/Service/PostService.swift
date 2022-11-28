@@ -20,7 +20,10 @@ protocol PostServiceType {
 
 final class PostService: PostServiceType {
     
-    private let router = MoyaProvider<PostRouter>(session: Session(interceptor: Interceptor.shared), plugins: [MoyaLoggingPlugin()])
+    private let router = MoyaProvider<PostRouter>(
+        session: Session(interceptor: Interceptor.shared),
+        plugins: [MoyaLoggingPlugin()]
+    )
 
     func postWriting(image: UIImage, content: String) -> Observable<BaseResponse<GradeDTO>> {
         return router.rx.request(.postWriting(image: image, content: content))
