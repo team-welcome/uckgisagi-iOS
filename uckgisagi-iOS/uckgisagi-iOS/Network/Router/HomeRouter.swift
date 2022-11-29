@@ -13,6 +13,7 @@ enum HomeRouter {
     case getFriendList
     case getFriendPost(friendId: Int)
     case getMyPost
+    case getMyPostByDate(date: String)
 }
 
 extension HomeRouter: BaseTargetType {
@@ -24,12 +25,14 @@ extension HomeRouter: BaseTargetType {
             return "/home/\(friendId)"
         case .getMyPost:
             return "/home/me"
+        case .getMyPostByDate(_):
+            return "/home/me/post"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getFriendList, .getFriendPost(_), .getMyPost:
+        case .getFriendList, .getFriendPost(_), .getMyPost, .getMyPostByDate(_):
             return .get
         }
     }
@@ -38,6 +41,11 @@ extension HomeRouter: BaseTargetType {
         switch self {
         case .getFriendList, .getFriendPost(_), .getMyPost:
             return .requestPlain
+        case .getMyPostByDate(date: let date):
+            return .requestParameters(
+                parameters: [
+                    "date": date
+                ], encoding: JSONEncoding.default)
         }
     }
     

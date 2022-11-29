@@ -20,10 +20,12 @@ protocol HomeServiceType {
     func getFriendList() -> Observable<BaseResponse<FriendListDTO>>
     func getMyPost() -> Observable<BaseResponse<ChallengePostDTO>>
     func getFriendPost(friendId: Int) -> Observable<BaseResponse<ChallengePostDTO>>
+    func getMyPostByDate(date: String) -> Observable<BaseResponse<Post>>
 }
 
 class HomeService: HomeServiceType {
     let event = PublishSubject<HomeEvent>()
+    
     private let router = MoyaProvider<HomeRouter>(
         session: Session(interceptor: Interceptor.shared),
         plugins: [MoyaLoggingPlugin()]
@@ -44,6 +46,12 @@ class HomeService: HomeServiceType {
     func getMyPost() -> RxSwift.Observable<BaseResponse<ChallengePostDTO>> {
         return router.rx.request(.getMyPost)
             .map(BaseResponse<ChallengePostDTO>.self)
+            .asObservable()
+    }
+    
+    func getMyPostByDate(date: String) -> RxSwift.Observable<BaseResponse<Post>> {
+        return router.rx.request(.getMyPostByDate(date: date))
+            .map(BaseResponse<Post>.self)
             .asObservable()
     }
 }
