@@ -20,6 +20,8 @@ class HomeReactor: Reactor {
         case setLoading(Bool)
         case setSelectedUserProfileCellIndexPath(IndexPath)
         case setSearchUserReactor(SearchUserReactor?)
+        case updateUserProfileSections([UserProfileItem], IndexPath)
+        case setIsPresentSearchUserVC(Bool)
     }
     
     struct State {
@@ -30,6 +32,7 @@ class HomeReactor: Reactor {
         var isLoading: Bool = false
         var selectedUserProfileCellIndexPath: IndexPath?
         var searchUserReactor: SearchUserReactor?
+        var isPresentSearchUserVC: Bool = false
     }
     
     let initialState: State
@@ -68,20 +71,18 @@ extension HomeReactor {
             
         case let .setSearchUserReactor(reactor):
             newState.searchUserReactor = reactor
+            
+        case let .updateUserProfileSections(items, indexPath):
+            newState.userProfileSections[indexPath.section].items = items
+            
+        case let .setIsPresentSearchUserVC(isPresent):
+            newState.isPresentSearchUserVC = isPresent
         }
         
         return newState
     }
     
     private func refreshMutation() -> Observable<Mutation> {
-        // homesection 업데이트하는 네트워크 로직 추가 
-//        return NetworkService.shared.home.getFriendList()
-//            .compactMap { $0.data }
-//            .withUnretained(self)
-//            .map { this, data in
-//                return .setUserProfileSections(this.makeSections(from: data))
-//            }
-        
         let setUserProfileSectionsMutation: Observable<Mutation> = NetworkService.shared.home.getFriendList()
             .compactMap { $0.data }
             .withUnretained(self)
@@ -100,9 +101,9 @@ extension HomeReactor {
     }
     
     private func tapCellMutation(_ indexPath: IndexPath) -> Observable<Mutation> {
-        print("[D] 셀이 클릭됨 \(indexPath)")
         var setSearchUserReactorMutation: Observable<Mutation> = .empty()
         var setMyPostSectionsMutation: Observable<Mutation> = .empty()
+        var updateUserProfileSelectedMutation: Observable<Mutation> = .empty()
         
         guard case let .userProfile(reactor) = currentState.userProfileSections[indexPath.section].items[indexPath.item] else { return .empty() }
         switch reactor.currentState.type {
@@ -124,12 +125,24 @@ extension HomeReactor {
                 }
             break
         case .plus:
-//            setSearchUserReactorMutation = .concat([.just(.setSearchUserReactor(SearchUserReactor())), .just(.setSearchUserReactor(SearchUserReactor()))])
-            setSearchUserReactorMutation = .just(.setSearchUserReactor(SearchUserReactor()))
+            setSearchUserReactorMutation = .concat([.just(.setSearchUserReactor(SearchUserReactor())), .just(.setIsPresentSearchUserVC(true)), .just(.setIsPresentSearchUserVC(false))])
             break
         }
         
-        return Observable.of(.just(.setSelectedUserProfileCellIndexPath(indexPath)), setMyPostSectionsMutation).merge()
+        var items = currentState.userProfileSections[indexPath.section].items.enumerated().map({ (index, item) -> UserProfileItem in
+            guard case let .userProfile(reactor) = item else { return .userProfile(.init(state: .init(type: .my)))}
+            var state = reactor.currentState
+            if (index == indexPath.item) {
+                state.isSelected = true
+            } else {
+                state.isSelected = false
+            }
+            return .userProfile(.init(state: state))
+        })
+        
+        updateUserProfileSelectedMutation = .just(.updateUserProfileSections(items, indexPath))
+        
+        return Observable.of(.just(.setSelectedUserProfileCellIndexPath(indexPath)), setMyPostSectionsMutation, updateUserProfileSelectedMutation, setSearchUserReactorMutation).merge()
     }
     
     private func makeSections(from data: FriendListDTO) -> [UserProfileSectionModel] {

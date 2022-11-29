@@ -17,6 +17,7 @@ class UserProfileCollectionViewCellReactor: Reactor {
     
     enum Action {
         case tap
+        case update
     }
     
     enum Mutation {
@@ -43,6 +44,8 @@ extension UserProfileCollectionViewCellReactor {
         switch action {
         case .tap:
             return tapMutation()
+        case .update:
+            return .just(.updateIsSelected)
         }
     }
 
