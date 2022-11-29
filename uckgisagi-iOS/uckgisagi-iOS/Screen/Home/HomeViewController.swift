@@ -58,6 +58,7 @@ class HomeViewController: BaseViewController, View {
     private let userProfileHeaderView = UserProfileTableViewHeader()
     private let tableView = UITableView()
     private var postType: PostCase?
+    private var isPresentSearchUserVC: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -125,14 +126,25 @@ class HomeViewController: BaseViewController, View {
             .disposed(by: disposeBag)
         
         reactor.state
+            .map(\.isPresentSearchUserVC)
+            .withUnretained(self)
+            .bind { this, status in
+                self.isPresentSearchUserVC = status
+            }
+            .disposed(by: disposeBag)
+        
+        reactor.state
             .compactMap(\.searchUserReactor)
             .withUnretained(self)
             .bind { this, reactor in
-                let viewController = SearchUserViewController()
-                viewController.reactor = reactor
-                this.navigationController?.pushViewController(viewController, animated: true)
+                if self.isPresentSearchUserVC {
+                    let viewController = SearchUserViewController()
+                    viewController.reactor = reactor
+                    this.navigationController?.pushViewController(viewController, animated: true)
+                }
             }
             .disposed(by: disposeBag)
+        
     }
 }
 
@@ -192,7 +204,7 @@ extension HomeViewController: UITableViewDelegate {
     }
 }
 
-extension HomeViewController: UserProfileTableViewHeaderDelegate, UserPostTableViewHeaderDelegate {
+extension HomeViewController: UserPostTableViewHeaderDelegate {
     func writeButtonDidTap(_ header: UserPostTableViewHeader) {
         let writingVC = WritingViewController()
         writingVC.reactor = WritingReactor()
@@ -200,10 +212,10 @@ extension HomeViewController: UserProfileTableViewHeaderDelegate, UserPostTableV
         present(writingVC, animated: true)
     }
     
-    func addButtonDidTap(_ header: UserProfileTableViewHeader) {
-        let searchVC = SearchUserViewController()
-        searchVC.reactor = SearchUserReactor()
-        self.navigationController?.pushViewController(searchVC, animated: true)
-    }
+//    func addButtonDidTap(_ header: UserProfileTableViewHeader) {
+//        let searchVC = SearchUserViewController()
+//        searchVC.reactor = SearchUserReactor()
+//        self.navigationController?.pushViewController(searchVC, animated: true)
+//    }
 }
 
