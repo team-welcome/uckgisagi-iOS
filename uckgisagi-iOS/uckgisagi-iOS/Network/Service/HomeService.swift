@@ -21,6 +21,7 @@ protocol HomeServiceType {
     func getMyPost() -> Observable<BaseResponse<ChallengePostDTO>>
     func getFriendPost(friendId: Int) -> Observable<BaseResponse<ChallengePostDTO>>
     func getMyPostByDate(date: String) -> Observable<BaseArrayResponse<Post>>
+    func getFriendPostByDate(friendId: Int, date: String) -> Observable<BaseArrayResponse<Post>>
 }
 
 class HomeService: HomeServiceType {
@@ -54,4 +55,11 @@ class HomeService: HomeServiceType {
             .map(BaseArrayResponse<Post>.self)
             .asObservable()
     }
+    
+    func getFriendPostByDate(friendId: Int, date: String) -> Observable<BaseArrayResponse<Post>> {
+        return router.rx.request(.getFriendPostByDate(friendId: friendId, date: date))
+            .map(BaseArrayResponse<Post>.self)
+            .asObservable()
+    }
+    
 }
