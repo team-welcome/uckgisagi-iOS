@@ -96,6 +96,7 @@ extension CalendarTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FSCal
 
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         // MARK: - 터치시 이벤트
+        guard let date = Calendar.current.date(byAdding: .hour, value: 9, to: date) else { return }
         reactor?.action.onNext(.selectDate(date))
     }
 

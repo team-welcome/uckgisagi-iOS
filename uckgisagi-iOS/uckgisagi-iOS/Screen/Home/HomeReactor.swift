@@ -12,6 +12,7 @@ class HomeReactor: Reactor {
     enum Action {
         case refesh
         case userProfileCellTap(IndexPath)
+        case updateMyPost(String)
     }
     
     enum Mutation {
@@ -50,6 +51,8 @@ extension HomeReactor {
             
         case let .userProfileCellTap(indexPath):
             return tapCellMutation(indexPath)
+        case let .updateMyPost(date):
+            return updatePostMutation(date: date)
         }
     }
 
@@ -80,6 +83,19 @@ extension HomeReactor {
         }
         
         return newState
+    }
+    
+    private func updatePostMutation(date: String) -> Observable<Mutation> {
+        let updateSectionsMutation: Observable<Mutation> =
+        NetworkService.shared.home.getMyPostByDate(date: date)
+            .compactMap { $0.data }
+            .withUnretained(self)
+            .map { this, data in
+                print(data)
+                return .setHomeSections(this.updateSections(from: data))
+            }
+
+        return updateSectionsMutation
     }
     
     private func refreshMutation() -> Observable<Mutation> {
@@ -184,6 +200,39 @@ extension HomeReactor {
         } else {
             data.posts.forEach { post in
                 postItems.append(.post(.init(challengePost: post)))
+            }
+        }
+        
+        let postSection: HomeSectionModel = .init(model: .post(postItems), items: postItems)
+        
+        return [calendarSection, postSection]
+    }
+    
+    private func updateSections(from data: [Post?]) -> [HomeSectionModel] {
+//        var currentSection = self.currentState.homeSections[0]
+        var calendarItems: [HomeItem] = []
+        calendarItems.append(.calendar(CalendarTableViewCellReactor(data: [])))
+        
+        let calendarSection: HomeSectionModel = .init(model: .calendar(calendarItems), items: calendarItems)
+        
+        var postItems: [HomeItem] = []
+        if data.isEmpty {
+            if let indexPath = currentState.selectedUserProfileCellIndexPath {
+                guard case let .userProfile(reactor) = currentState.userProfileSections[indexPath.section].items[indexPath.item] else { return [] }
+                switch reactor.currentState.type {
+                case .my:
+                    postItems.append(.emptyPost(EmptyPostTableViewCellReactor(type: .my)))
+                case .friend:
+                    postItems.append(.emptyPost(EmptyPostTableViewCellReactor(type: .friend)))
+                default:
+                    break
+                }
+            } else {
+                postItems.append(.emptyPost(EmptyPostTableViewCellReactor(type: .my)))
+            }
+        } else {
+            data.forEach { post in
+                postItems.append(.post(.init(challengePost: post!)))
             }
         }
         

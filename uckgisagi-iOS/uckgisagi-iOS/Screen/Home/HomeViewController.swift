@@ -145,6 +145,17 @@ class HomeViewController: BaseViewController, View {
             }
             .disposed(by: disposeBag)
         
+        NetworkService.shared.home.event
+            .subscribe(onNext: { this in
+                guard case let .select(date) = this else { return }
+                print(date)
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+
+                let dateString:String = dateFormatter.string(from: date)
+                
+                reactor.action.onNext(.updateMyPost(dateString))
+            })
     }
 }
 
