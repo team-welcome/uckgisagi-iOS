@@ -11,9 +11,11 @@ import ReactorKit
 class CalendarTableViewCellReactor: Reactor {
     enum Action {
         case selectDate(Date)
+        case updateDate([String])
     }
     
     enum Mutation {
+        case setDates([String])
     }
     
     struct State {
@@ -40,6 +42,19 @@ extension CalendarTableViewCellReactor {
         case let .selectDate(date):
             NetworkService.shared.home.event.onNext(.select(date))
             return .empty()
+        case let .updateDate(dates):
+            return .just(.setDates(dates))
         }
+    }
+    
+    func reduce(state: State, mutation: Mutation) -> State {
+        var newState = state
+        
+        switch mutation {
+        case let .setDates(dates):
+            newState.dates = dates
+        }
+        
+        return newState
     }
 }

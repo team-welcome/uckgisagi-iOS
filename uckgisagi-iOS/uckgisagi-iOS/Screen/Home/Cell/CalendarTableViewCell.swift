@@ -20,6 +20,7 @@ class CalendarTableViewCell: UITableViewCell, View {
     static let identifier = "CalendarTableViewCell"
     let monthLabel = UILabel()
     let calendar = FSCalendar(frame: .zero)
+    var dates: [String] = .init()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -62,7 +63,7 @@ class CalendarTableViewCell: UITableViewCell, View {
     }
     
     func bind(reactor: Reactor) {
-        calendar.reloadData()
+        self.dates = reactor.currentState.dates
     }
 }
 
@@ -104,23 +105,22 @@ extension CalendarTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FSCal
         let dateFormatter = DateFormatter()
         var eventDate: [Date?] = .init()
         dateFormatter.locale = Locale(identifier: "ko_KR")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
 
         dates.forEach { date in
             eventDate.append(dateFormatter.date(from: date) ?? nil)
         }
         return eventDate
     }
-
+    
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         var events: [Date?]
-        
         if let dates = reactor?.currentState.dates {
             events = setupCalendarEvents(dates: dates)
         } else {
             events = setupCalendarEvents(dates: [])
         }
-        
+
         if events.contains(date) {
             return 1
         } else {
