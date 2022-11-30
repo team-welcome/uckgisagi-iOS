@@ -22,6 +22,7 @@ class HomeReactor: Reactor {
         case setSelectedUserProfileCellIndexPath(IndexPath)
         case setSearchUserReactor(SearchUserReactor?)
         case updateUserProfileSections([UserProfileItem], IndexPath)
+        case updatePostSections([HomeItem])
         case setIsPresentSearchUserVC(Bool)
     }
     
@@ -80,6 +81,9 @@ extension HomeReactor {
             
         case let .setIsPresentSearchUserVC(isPresent):
             newState.isPresentSearchUserVC = isPresent
+            
+        case let .updatePostSections(items):
+            newState.homeSections[1].items = items
         }
         
         return newState
@@ -93,6 +97,7 @@ extension HomeReactor {
             .map { this, data in
                 print(data)
                 return .setHomeSections(this.updateSections(from: data))
+//                return .updatePostSections(this.updatePostSection(from: data))
             }
 
         return updateSectionsMutation
@@ -112,8 +117,9 @@ extension HomeReactor {
             .map { this, data in
                 return .setHomeSections(this.makeSections(from: data))
             }
-        
-        return Observable.of(setUserProfileSectionsMutation, setMyPostSectionsMutation).merge()
+        print("[D] 리프레시 뮤테이션")
+        print(currentState.homeSections)
+        return Observable.of(.just(.setLoading(true)) , setUserProfileSectionsMutation, setMyPostSectionsMutation, .just(.setLoading(false))).merge()
     }
     
     private func tapCellMutation(_ indexPath: IndexPath) -> Observable<Mutation> {
@@ -144,6 +150,7 @@ extension HomeReactor {
             setSearchUserReactorMutation = .concat([.just(.setSearchUserReactor(SearchUserReactor())), .just(.setIsPresentSearchUserVC(true)), .just(.setIsPresentSearchUserVC(false))])
             break
         }
+        print("[D] another button")
         
         var items = currentState.userProfileSections[indexPath.section].items.enumerated().map({ (index, item) -> UserProfileItem in
             guard case let .userProfile(reactor) = item else { return .userProfile(.init(state: .init(type: .my)))}
@@ -178,7 +185,7 @@ extension HomeReactor {
     
     private func makeSections(from data: ChallengePostDTO) -> [HomeSectionModel] {
         var calendarItems: [HomeItem] = []
-        calendarItems.append(.calendar(CalendarTableViewCellReactor(data: [])))
+        calendarItems.append(.calendar(CalendarTableViewCellReactor(data: data.postDates)))
         
         let calendarSection: HomeSectionModel = .init(model: .calendar(calendarItems), items: calendarItems)
         
@@ -209,10 +216,15 @@ extension HomeReactor {
     }
     
     private func updateSections(from data: [Post?]) -> [HomeSectionModel] {
-//        var currentSection = self.currentState.homeSections[0]
+        // TODO: - calendar 부분은 처음 정보 get할때 받아온 정보를 넣어두고, post 부분만 새롭게 넣어주고 싶은데 잘 안되는 모습. homeSection이 비어있는 경우 발생
+        
+//        print("[D] update post section")
+//        print(currentState.homeSections)
+//        var currentData = currentState.homeSections[0].items
         var calendarItems: [HomeItem] = []
         calendarItems.append(.calendar(CalendarTableViewCellReactor(data: [])))
         
+//        let calendarSection: HomeSectionModel = .init(model: .calendar(currentData), items: currentData)
         let calendarSection: HomeSectionModel = .init(model: .calendar(calendarItems), items: calendarItems)
         
         var postItems: [HomeItem] = []
@@ -239,5 +251,30 @@ extension HomeReactor {
         let postSection: HomeSectionModel = .init(model: .post(postItems), items: postItems)
         
         return [calendarSection, postSection]
+    }
+    
+    private func updatePostSection(from data: [Post?]) -> [HomeItem] {
+        // TODO: post 부분만 update 하려는 방식
+        var postItems: [HomeItem] = []
+        if data.isEmpty {
+            if let indexPath = currentState.selectedUserProfileCellIndexPath {
+                guard case let .userProfile(reactor) = currentState.userProfileSections[indexPath.section].items[indexPath.item] else { return [] }
+                switch reactor.currentState.type {
+                case .my:
+                    postItems.append(.emptyPost(EmptyPostTableViewCellReactor(type: .my)))
+                case .friend:
+                    postItems.append(.emptyPost(EmptyPostTableViewCellReactor(type: .friend)))
+                default:
+                    break
+                }
+            } else {
+                postItems.append(.emptyPost(EmptyPostTableViewCellReactor(type: .my)))
+            }
+        } else {
+            data.forEach { post in
+                postItems.append(.post(.init(challengePost: post!)))
+            }
+        }
+        return postItems
     }
 }

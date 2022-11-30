@@ -59,6 +59,13 @@ class HomeViewController: BaseViewController, View {
     private let tableView = UITableView()
     private var postType: PostCase?
     private var isPresentSearchUserVC: Bool = false
+    private lazy var indicatorView: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.center = self.splitViewController?.view.center ?? CGPoint()
+        activityIndicator.style = UIActivityIndicatorView.Style.large
+        activityIndicator.isHidden = false
+        return activityIndicator
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,7 +101,7 @@ class HomeViewController: BaseViewController, View {
     
     override func setProperties() {
         navigationView.addSubviews(ukgisagiLogo, surroundButton)
-        view.addSubviews(navigationView, tableView)
+        view.addSubviews(navigationView, tableView, indicatorView)
 
         ukgisagiLogo.image = Image.bigLogo
         surroundButton.setImage(Image.icSurround, for: .normal)
@@ -143,6 +150,12 @@ class HomeViewController: BaseViewController, View {
                     this.navigationController?.pushViewController(viewController, animated: true)
                 }
             }
+            .disposed(by: disposeBag)
+        
+        reactor.state
+            .map(\.isLoading)
+            .distinctUntilChanged()
+            .bind(to: indicatorView.rx.isAnimating)
             .disposed(by: disposeBag)
         
         NetworkService.shared.home.event
@@ -222,11 +235,5 @@ extension HomeViewController: UserPostTableViewHeaderDelegate {
         writingVC.modalPresentationStyle = .fullScreen
         present(writingVC, animated: true)
     }
-    
-//    func addButtonDidTap(_ header: UserProfileTableViewHeader) {
-//        let searchVC = SearchUserViewController()
-//        searchVC.reactor = SearchUserReactor()
-//        self.navigationController?.pushViewController(searchVC, animated: true)
-//    }
 }
 
