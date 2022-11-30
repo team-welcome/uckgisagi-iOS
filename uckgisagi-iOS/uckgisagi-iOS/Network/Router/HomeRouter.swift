@@ -45,7 +45,7 @@ extension HomeRouter: BaseTargetType {
             return .requestParameters(
                 parameters: [
                     "date": date
-                ], encoding: JSONEncoding.default)
+                ], encoding: URLEncoding.default)
         }
     }
     
