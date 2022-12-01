@@ -29,13 +29,10 @@ class UserProfileTableViewHeader: UITableViewHeaderFooterView {
         collectionView.contentInset = UIEdgeInsets(top: .zero, left: 20, bottom: .zero, right: .zero)
         return collectionView
     }()
-//    private lazy var userProfileDataSource = UserProfileDataSource(collectionView: self.collectionView)
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setLayouts()
-//        userProfileDataSource.updateSnapshot()
-//        setupCollectionView()
     }
     
     @available(*, unavailable)
@@ -57,36 +54,3 @@ class UserProfileTableViewHeader: UITableViewHeaderFooterView {
         }
     }
 }
-
-//extension UserProfileTableViewHeader: UICollectionViewDelegate, UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 5
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserProfileCollectionViewCell.identifier, for: indexPath) as? UserProfileCollectionViewCell else { return UICollectionViewCell() }
-//
-//        cell.configureProfile(name: "뭉", isFriend: false)
-//
-//        return cell
-//    }
-//
-//    func setupCollectionView() {
-//        collectionView.register(UserProfileCollectionViewCell.self, forCellWithReuseIdentifier: UserProfileCollectionViewCell.identifier)
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print("didselect")
-//        if indexPath.row == 4 {
-//            delegate?.addButtonDidTap(self)
-//        }
-//    }
-//}
-//
-///**
-// 1) delegate
-// 2) rx
-// 3) noti
-// */

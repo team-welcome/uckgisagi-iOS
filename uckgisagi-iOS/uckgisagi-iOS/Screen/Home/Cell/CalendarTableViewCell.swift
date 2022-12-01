@@ -103,7 +103,8 @@ extension CalendarTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FSCal
         self.calendar.appearance.todayColor = Color.green
         self.calendar.appearance.selectionColor = .clear
         self.calendar.appearance.titleSelectionColor = .black
-
+        
+        self.calendar.appearance.eventSelectionColor = Color.green
         self.calendar.appearance.eventDefaultColor = Color.green
     }
 
