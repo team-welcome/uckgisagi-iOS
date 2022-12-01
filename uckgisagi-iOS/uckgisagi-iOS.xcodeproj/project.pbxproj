@@ -56,6 +56,15 @@
 		DD25786929100DA800FB9BFD /* PostListReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD25786829100DA800FB9BFD /* PostListReactor.swift */; };
 		DD25786B291010C800FB9BFD /* PostListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD25786A291010C800FB9BFD /* PostListDataSource.swift */; };
 		DD25786D291022C800FB9BFD /* PostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD25786C291022C800FB9BFD /* PostDTO.swift */; };
+		DD2E61202938641000D656E5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E611F2938641000D656E5 /* SettingViewController.swift */; };
+		DD2E6122293865E500D656E5 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E6121293865E500D656E5 /* AlertViewController.swift */; };
+		DD2E6124293866B700D656E5 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E6123293866B700D656E5 /* UILabel+.swift */; };
+		DD2E61262938671000D656E5 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E61252938671000D656E5 /* SettingTableViewCell.swift */; };
+		DD2E61282938679D00D656E5 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E61272938679D00D656E5 /* UITableView+.swift */; };
+		DD2E612A2938680800D656E5 /* UIBundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E61292938680800D656E5 /* UIBundle+.swift */; };
+		DD2E612C2938697F00D656E5 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E612B2938697F00D656E5 /* String+.swift */; };
+		DD2E612E293869C700D656E5 /* URLConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E612D293869C700D656E5 /* URLConstant.swift */; };
+		DD2E6130293871A400D656E5 /* TeamInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2E612F293871A400D656E5 /* TeamInfoViewController.swift */; };
 		DD319918290D416300070383 /* FeedMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD319917290D416300070383 /* FeedMainViewController.swift */; };
 		DD31991A290D443600070383 /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD319919290D443600070383 /* PostListViewController.swift */; };
 		DD31991E290D444500070383 /* PostListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD31991D290D444500070383 /* PostListView.swift */; };
@@ -183,6 +192,15 @@
 		DD25786829100DA800FB9BFD /* PostListReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListReactor.swift; sourceTree = "<group>"; };
 		DD25786A291010C800FB9BFD /* PostListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListDataSource.swift; sourceTree = "<group>"; };
 		DD25786C291022C800FB9BFD /* PostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDTO.swift; sourceTree = "<group>"; };
+		DD2E611F2938641000D656E5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		DD2E6121293865E500D656E5 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		DD2E6123293866B700D656E5 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		DD2E61252938671000D656E5 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		DD2E61272938679D00D656E5 /* UITableView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
+		DD2E61292938680800D656E5 /* UIBundle+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBundle+.swift"; sourceTree = "<group>"; };
+		DD2E612B2938697F00D656E5 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		DD2E612D293869C700D656E5 /* URLConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstant.swift; sourceTree = "<group>"; };
+		DD2E612F293871A400D656E5 /* TeamInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamInfoViewController.swift; sourceTree = "<group>"; };
 		DD319917290D416300070383 /* FeedMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedMainViewController.swift; sourceTree = "<group>"; };
 		DD319919290D443600070383 /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 		DD31991D290D444500070383 /* PostListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListView.swift; sourceTree = "<group>"; };
@@ -356,6 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				DD0CCA5D290C0F5000264543 /* SearchBar.swift */,
+				DD2E6121293865E500D656E5 /* AlertViewController.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -417,6 +436,16 @@
 			path = Shop;
 			sourceTree = "<group>";
 		};
+		DD2E611E293863F400D656E5 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				DD2E611F2938641000D656E5 /* SettingViewController.swift */,
+				DD2E61252938671000D656E5 /* SettingTableViewCell.swift */,
+				DD2E612F293871A400D656E5 /* TeamInfoViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		DD319916290D413C00070383 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
@@ -470,6 +499,10 @@
 				DD98FD35290AC667002EAB2A /* UIViewController+.swift */,
 				DD98FD39290AC6FE002EAB2A /* UIImageView+Kingfisher.swift */,
 				DD98FD3E290AC79F002EAB2A /* UIStackView+.swift */,
+				DD2E6123293866B700D656E5 /* UILabel+.swift */,
+				DD2E61272938679D00D656E5 /* UITableView+.swift */,
+				DD2E61292938680800D656E5 /* UIBundle+.swift */,
+				DD2E612B2938697F00D656E5 /* String+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -618,6 +651,7 @@
 				DD9ACC9A28F6DA5100B13E9C /* Assets.xcassets */,
 				DD0CCA58290C0BF100264543 /* Color.swift */,
 				DD0CCA60290C12D700264543 /* Image.swift */,
+				DD2E612D293869C700D656E5 /* URLConstant.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -632,6 +666,7 @@
 				DD0CCA62290C14DC00264543 /* User */,
 				DD319916290D413C00070383 /* Feed */,
 				DD059A0D291A37CE004E9F02 /* Post */,
+				DD2E611E293863F400D656E5 /* Setting */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -906,6 +941,7 @@
 				DDD1DBEB2923B25400FE2E2B /* Environment.swift in Sources */,
 				23ED137D292A081800CA0608 /* PostTableViewCellReactor.swift in Sources */,
 				DD31992A2910081A00070383 /* PostCollectionViewCell.swift in Sources */,
+				DD2E612E293869C700D656E5 /* URLConstant.swift in Sources */,
 				DD98FD44290AC811002EAB2A /* UserDefaultHandler.swift in Sources */,
 				DDD1DBF22923B4BE00FE2E2B /* BaseTargetType.swift in Sources */,
 				DDEDEB35292546A800B0ACAA /* AuthRouter.swift in Sources */,
@@ -924,11 +960,13 @@
 				DD98FD36290AC667002EAB2A /* UIViewController+.swift in Sources */,
 				DD0CCA67290C151400264543 /* BaseViewController.swift in Sources */,
 				DDD1DBF52923B81900FE2E2B /* PostService.swift in Sources */,
+				DD2E612A2938680800D656E5 /* UIBundle+.swift in Sources */,
 				DD31991E290D444500070383 /* PostListView.swift in Sources */,
 				DDEDEB3F29254FD400B0ACAA /* GradeDTO.swift in Sources */,
 				DD319918290D416300070383 /* FeedMainViewController.swift in Sources */,
 				DD98FD32290AC63E002EAB2A /* UIView+Rx.swift in Sources */,
 				23ED13682928F75700CA0608 /* HomeService.swift in Sources */,
+				DD2E61262938671000D656E5 /* SettingTableViewCell.swift in Sources */,
 				DD9ACC9228F6DA5000B13E9C /* AppDelegate.swift in Sources */,
 				DD98FD4A290AC876002EAB2A /* KeyChainHandler.swift in Sources */,
 				DD25786929100DA800FB9BFD /* PostListReactor.swift in Sources */,
@@ -940,6 +978,7 @@
 				DD98CE542911687C000EBDB3 /* StoreDTO.swift in Sources */,
 				DD98FD4F290AC99A002EAB2A /* MoyaLoggingPlugin.swift in Sources */,
 				DD98FD58290ACA64002EAB2A /* BaseArrayResponse.swift in Sources */,
+				DD2E6130293871A400D656E5 /* TeamInfoViewController.swift in Sources */,
 				DD0CCA6E290C221600264543 /* UserDTO.swift in Sources */,
 				DD98CE562911693D000EBDB3 /* ShopListDataSource.swift in Sources */,
 				237546B129116229001C3E8B /* UserPostTableViewHeader.swift in Sources */,
@@ -950,15 +989,19 @@
 				2360875B290C45140069493F /* LoginReactor.swift in Sources */,
 				DD98FD52290AC9CC002EAB2A /* StatusHandler.swift in Sources */,
 				DD98FD29290AC4F5002EAB2A /* Then.swift in Sources */,
+				DD2E612C2938697F00D656E5 /* String+.swift in Sources */,
 				DD0210AA291A53490048F86B /* PostDetailViewController.swift in Sources */,
 				DD0BC2DA29255CED00C96FAB /* SearchUserReactor.swift in Sources */,
 				DD9ACC9428F6DA5000B13E9C /* SceneDelegate.swift in Sources */,
 				23608759290C359B0069493F /* LoginViewController.swift in Sources */,
+				DD2E61282938679D00D656E5 /* UITableView+.swift in Sources */,
 				DD0CCA59290C0BF100264543 /* Color.swift in Sources */,
 				DD98FD4C290AC8AD002EAB2A /* RootSwitcher.swift in Sources */,
 				23282981291114D000ABB272 /* UserProfileTableViewHeader.swift in Sources */,
 				DD059A0F291A38B1004E9F02 /* WritingView.swift in Sources */,
+				DD2E6124293866B700D656E5 /* UILabel+.swift in Sources */,
 				23ED1379292A07C400CA0608 /* EmptyPostTableViewCellReactor.swift in Sources */,
+				DD2E6122293865E500D656E5 /* AlertViewController.swift in Sources */,
 				DD98FD3F290AC79F002EAB2A /* UIStackView+.swift in Sources */,
 				DD98CE5829116D7C000EBDB3 /* ShopListReactor.swift in Sources */,
 				DD0CCA61290C12D700264543 /* Image.swift in Sources */,
@@ -985,6 +1028,7 @@
 				DD0CCA64290C14EC00264543 /* SearchUserViewController.swift in Sources */,
 				DD98FD56290ACA52002EAB2A /* BaseResponse.swift in Sources */,
 				DD5CE4A1292A6DB000AE1027 /* PostDetailReactor.swift in Sources */,
+				DD2E61202938641000D656E5 /* SettingViewController.swift in Sources */,
 				2332D0A22925012700BB3C0F /* LoginDTO.swift in Sources */,
 				DD98FD5A290ACA74002EAB2A /* NullResponse.swift in Sources */,
 				DD059A11291A3D63004E9F02 /* WritingViewController.swift in Sources */,

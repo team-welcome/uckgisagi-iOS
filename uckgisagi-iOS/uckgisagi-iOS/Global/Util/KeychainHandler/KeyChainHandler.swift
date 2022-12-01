@@ -47,7 +47,6 @@ struct KeychainHandler {
     mutating func removeAll() {
         accessToken = ""
         refreshToken = ""
-        fcmToken = ""
     }
 
 }

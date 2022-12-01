@@ -36,9 +36,12 @@ enum Image {
     // MARK: - Navigation
     static let imgAddUser = UIImage(named: "img.addUser")!
 
+    // MARK: - Image
+    static let imgTeamInfo = UIImage(named: "Team_Info")!
+
     // MARK: - Dummy
     static let postTestImage = UIImage(named: "postTestImage")!
-    static let imgDummy2 = UIImage(named: "img.dummy2")!
-    static let imgDummy3 = UIImage(named: "img.dummy3")!
-    static let imgDummy4 = UIImage(named: "img.dummy4")!
+    static let imgDummy2 = UIImage(named: "imgDummy")!
+    static let imgDummy3 = UIImage(named: "imgDummy")!
+    static let imgDummy4 = UIImage(named: "imgDummy")!
 }
