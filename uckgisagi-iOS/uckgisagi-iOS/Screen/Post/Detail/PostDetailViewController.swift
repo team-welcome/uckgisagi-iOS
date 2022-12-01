@@ -53,6 +53,12 @@ final class PostDetailViewController: BaseViewController, View {
                 self.navigationController?.popViewController(animated: true)
             }
             .disposed(by: disposeBag)
+        
+        detailView.backButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
     }
  
     private func setActionSheet() {
