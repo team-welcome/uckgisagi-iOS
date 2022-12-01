@@ -14,7 +14,9 @@ class EmptyPostTableViewCellReactor: Reactor {
         case my
     }
     
-    enum Action {}
+    enum Action {
+        case tap
+    }
     
     enum Mutation {}
     
@@ -30,5 +32,11 @@ class EmptyPostTableViewCellReactor: Reactor {
 }
 
 extension EmptyPostTableViewCellReactor {
-    
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case .tap:
+            NetworkService.shared.home.event.onNext(.pushButtonDidTap)
+            return .empty()
+        }
+    }
 }

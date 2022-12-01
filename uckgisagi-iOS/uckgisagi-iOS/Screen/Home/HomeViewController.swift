@@ -39,14 +39,17 @@ class HomeViewController: BaseViewController, View {
         case let .calendar(reactor):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CalendarTableViewCell.self), for: indexPath) as? CalendarTableViewCell else { return .init() }
             cell.reactor = reactor
+            cell.selectionStyle = .none
             return cell
         case let .post(reactor):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self), for: indexPath) as? PostTableViewCell else { return .init() }
             cell.reactor = reactor
+            cell.selectionStyle = .none
             return cell
         case let .emptyPost(reactor):
             guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: EmptyPostTableViewCell.self), for: indexPath) as? EmptyPostTableViewCell else { return .init() }
             cell.reactor = reactor
+            cell.selectionStyle = .none
             return cell
         }
     }
@@ -110,7 +113,16 @@ class HomeViewController: BaseViewController, View {
         view.addSubviews(navigationView, tableView, indicatorView, surroundButton)
 
         ukgisagiLogo.image = Image.bigLogo
-        surroundButton.setImage(Image.icFloatingSurround, for: .normal)
+        
+        surroundButton.do {
+            $0.setImage(Image.icFloatingSurround, for: .normal)
+            $0.layer.shadowColor = UIColor.black.cgColor
+            $0.layer.masksToBounds = false
+            $0.layer.shadowOffset = CGSize(width: 0, height: 2)
+            $0.layer.shadowRadius = 5
+            $0.layer.shadowOpacity = 0.3
+        }
+        
         tableView.separatorStyle = .none
         profileButton.setImage(Image.icHamburgerMenu, for: .normal)
         
@@ -172,16 +184,19 @@ class HomeViewController: BaseViewController, View {
             .disposed(by: disposeBag)
         
         NetworkService.shared.home.event
-            .subscribe(onNext: { this in
-                guard case let .select(date) = this else { return }
-                print(date)
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd"
+            .bind { this in
+                switch this {
+                case let .select(date):
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd"
 
-                let dateString:String = dateFormatter.string(from: date)
-                
-                reactor.action.onNext(.updateMyPost(dateString))
-            })
+                    let dateString:String = dateFormatter.string(from: date)
+                    
+                    reactor.action.onNext(.updateMyPost(dateString))
+                case .pushButtonDidTap:
+                    print("찌르기 버튼 클릭됨")
+                }
+            }
             .disposed(by: disposeBag)
     }
 }

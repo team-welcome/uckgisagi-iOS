@@ -6,8 +6,10 @@
 //
 
 import UIKit
+
 import ReactorKit
 import SnapKit
+import RxSwift
 
 class EmptyPostTableViewCell: UITableViewCell, View {
     typealias Reactor = EmptyPostTableViewCellReactor
@@ -40,7 +42,7 @@ class EmptyPostTableViewCell: UITableViewCell, View {
     
     private func setProperties() {
         stackView.addArrangedSubviews(icHuk, noticeLabel, pushButton)
-        addSubview(stackView)
+        contentView.addSubview(stackView)
         
         icHuk.image = Image.icHuk
         pushButton.setImage(Image.btnPush, for: .normal)
@@ -85,5 +87,11 @@ class EmptyPostTableViewCell: UITableViewCell, View {
                 $0.height.equalTo(250)
             }
         }
+    
+        pushButton.rx.tap
+            .bind {
+                reactor.action.onNext(.tap)
+            }
+            .disposed(by: disposeBag)
     }
 }
