@@ -17,8 +17,8 @@ enum ScrapRouter {
 extension ScrapRouter: BaseTargetType {
     var path: String {
         switch self {
-        case .postScrap:
-            return "/scrap"
+        case let .postScrap(postId):
+            return "/scrap/\(postId)"
         case let .deleteScrap(postID):
             return "/scrap/\(postID)"
         }
@@ -34,12 +34,7 @@ extension ScrapRouter: BaseTargetType {
     }
 
     var task: Task {
-        switch self {
-        case let .postScrap(postID):
-            return .requestParameters(parameters: ["postId" : postID], encoding: JSONEncoding.default)
-        case .deleteScrap:
-            return .requestPlain
-        }
+        return .requestPlain
     }
 
 }
