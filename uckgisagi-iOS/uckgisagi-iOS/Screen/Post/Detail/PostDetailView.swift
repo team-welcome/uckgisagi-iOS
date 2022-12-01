@@ -8,6 +8,11 @@
 import UIKit
 
 import SnapKit
+import RxSwift
+
+protocol PostDetailViewDelegate: AnyObject {
+    func presentAlertController()
+}
 
 final class PostDetailView: UIView {
     private let navigationBar = UIView()
@@ -20,14 +25,19 @@ final class PostDetailView: UIView {
     private let imageView = UIImageView()
     private let userInfoView = UIView()
     private let usernameLabel = UILabel()
+    private let updateTimeLabel = UILabel()
     private let profileImageView = UIImageView()
     private let contentLabel = BasePaddingLabel()
-
+    private let moreButton = UIButton()
+    
+    weak var delegate: PostDetailViewDelegate?
+    var disposeBag = DisposeBag()
+    
     init() {
         super.init(frame: .zero)
         setProperties()
         setLayouts()
-
+        setBind()
     }
 
     @available(*, unavailable)
@@ -37,7 +47,8 @@ final class PostDetailView: UIView {
 
     func configure(imageURL: String, username: String, timestamp: String, content: String) {
         imageView.image(url: imageURL)
-        usernameLabel.text = "\(username) \(timestamp)"
+        updateTimeLabel.text = getDate(str: timestamp)
+        usernameLabel.text = "\(username)"
         contentLabel.text = content
     }
     
@@ -71,9 +82,9 @@ final class PostDetailView: UIView {
         imageView.snp.makeConstraints {
             $0.height.equalTo(imageView.snp.width).multipliedBy(0.8).priority(.high)
         }
-        userInfoView.addSubviews(profileImageView, usernameLabel)
+        userInfoView.addSubviews(profileImageView, usernameLabel, updateTimeLabel, moreButton)
         userInfoView.snp.makeConstraints {
-            $0.height.equalTo(45).priority(.high)
+            $0.height.equalTo(55).priority(.high)
         }
         profileImageView.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(16)
@@ -82,7 +93,15 @@ final class PostDetailView: UIView {
         }
         usernameLabel.snp.makeConstraints {
             $0.leading.equalTo(profileImageView.snp.trailing).offset(8)
-            $0.trailing.equalToSuperview().inset(16)
+            $0.centerY.equalToSuperview()
+        }
+        updateTimeLabel.snp.makeConstraints {
+            $0.leading.equalTo(usernameLabel.snp.leading)
+            $0.top.equalTo(usernameLabel.snp.bottom).offset(3)
+        }
+        moreButton.snp.makeConstraints {
+            $0.leading.equalTo(usernameLabel.snp.trailing)
+            $0.trailing.equalToSuperview().inset(10)
             $0.centerY.equalToSuperview()
         }
     }
@@ -113,6 +132,35 @@ final class PostDetailView: UIView {
             $0.axis = .vertical
             $0.spacing = 4
         }
+        moreButton.do {
+            $0.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+            $0.tintColor = .lightGray
+        }
+        updateTimeLabel.do {
+            $0.font = .systemFont(ofSize: 12)
+        }
+    }
+    
+    private func setBind() {
+        moreButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { _ in
+                self.delegate?.presentAlertController()
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func getDate(str: String) -> String {
+        let formatter = Foundation.DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        let date = formatter.date(from: str)!
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "a hh:mm"
+        let finalDate = dateFormatter.string(from: date)
+
+        return finalDate
     }
 }
 

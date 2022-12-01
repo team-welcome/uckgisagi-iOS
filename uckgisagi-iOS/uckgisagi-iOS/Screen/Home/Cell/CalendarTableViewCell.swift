@@ -13,6 +13,11 @@ import FSCalendar
 import RxSwift
 
 class CalendarTableViewCell: UITableViewCell, View {
+    enum DateType {
+        case defaultDate
+        case selectedDate
+    }
+    
     typealias Reactor = CalendarTableViewCellReactor
     
     var disposeBag = DisposeBag()
@@ -20,6 +25,7 @@ class CalendarTableViewCell: UITableViewCell, View {
     static let identifier = "CalendarTableViewCell"
     let monthLabel = UILabel()
     let calendar = FSCalendar(frame: .zero)
+    var dates: [String] = .init()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -56,22 +62,29 @@ class CalendarTableViewCell: UITableViewCell, View {
     func setProperties() {
         contentView.addSubviews(monthLabel, calendar)
         
-        monthLabel.text = dateformat()
+        monthLabel.text = dateformat(type: .defaultDate, date: Date())
         monthLabel.font = .systemFont(ofSize: 15, weight: UIFont.Weight(rawValue: 500))
         monthLabel.textColor = Color.mediumGray
     }
     
     func bind(reactor: Reactor) {
-        calendar.reloadData()
+        self.dates = reactor.currentState.dates
     }
 }
 
 extension CalendarTableViewCell {
-    func dateformat() -> String {
+    func dateformat(type: DateType, date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy년 MM월"
-        let dateString = formatter.string(from: Date())
-        return dateString
+        switch type {
+        case .defaultDate:
+            formatter.dateFormat = "yyyy년 MM월"
+            let dateString = formatter.string(from: date)
+            return dateString
+        case .selectedDate:
+            formatter.dateFormat = "yyyy년 MM월 dd일"
+            let dateString:String = formatter.string(from: date)
+            return dateString
+        }
     }
 }
 
@@ -90,36 +103,39 @@ extension CalendarTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FSCal
         self.calendar.appearance.todayColor = Color.green
         self.calendar.appearance.selectionColor = .clear
         self.calendar.appearance.titleSelectionColor = .black
-
+        
+        self.calendar.appearance.eventSelectionColor = Color.green
         self.calendar.appearance.eventDefaultColor = Color.green
     }
 
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         // MARK: - 터치시 이벤트
+        guard let date = Calendar.current.date(byAdding: .hour, value: 9, to: date) else { return }
         reactor?.action.onNext(.selectDate(date))
+        
+        monthLabel.text = dateformat(type: .selectedDate, date: date)
     }
 
     func setupCalendarEvents(dates: [String]) -> [Date?] {
         let dateFormatter = DateFormatter()
         var eventDate: [Date?] = .init()
         dateFormatter.locale = Locale(identifier: "ko_KR")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
 
         dates.forEach { date in
             eventDate.append(dateFormatter.date(from: date) ?? nil)
         }
         return eventDate
     }
-
+    
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         var events: [Date?]
-        
         if let dates = reactor?.currentState.dates {
             events = setupCalendarEvents(dates: dates)
         } else {
             events = setupCalendarEvents(dates: [])
         }
-        
+
         if events.contains(date) {
             return 1
         } else {

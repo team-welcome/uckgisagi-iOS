@@ -55,9 +55,18 @@ class HomeViewController: BaseViewController, View {
     private let navigationView = UIView()
     private let ukgisagiLogo = UIImageView()
     private let surroundButton = UIButton()
+    private let profileButton = UIButton()
     private let userProfileHeaderView = UserProfileTableViewHeader()
     private let tableView = UITableView()
     private var postType: PostCase?
+    private var isPresentSearchUserVC: Bool = false
+    private lazy var indicatorView: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.center = self.splitViewController?.view.center ?? CGPoint()
+        activityIndicator.style = UIActivityIndicatorView.Style.large
+        activityIndicator.isHidden = false
+        return activityIndicator
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,10 +87,15 @@ class HomeViewController: BaseViewController, View {
             $0.centerY.equalToSuperview()
         }
         
-        surroundButton.snp.makeConstraints {
-            $0.width.height.equalTo(28)
-            $0.trailing.equalToSuperview().inset(11)
+        profileButton.snp.makeConstraints {
+            $0.width.height.equalTo(24)
+            $0.trailing.equalToSuperview().inset(23)
             $0.centerY.equalToSuperview()
+        }
+        
+        surroundButton.snp.makeConstraints {
+            $0.width.height.equalTo(56)
+            $0.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(24)
         }
         
         tableView.snp.makeConstraints {
@@ -92,12 +106,13 @@ class HomeViewController: BaseViewController, View {
     }
     
     override func setProperties() {
-        navigationView.addSubviews(ukgisagiLogo, surroundButton)
-        view.addSubviews(navigationView, tableView)
+        navigationView.addSubviews(ukgisagiLogo, profileButton)
+        view.addSubviews(navigationView, tableView, indicatorView, surroundButton)
 
         ukgisagiLogo.image = Image.bigLogo
-        surroundButton.setImage(Image.icSurround, for: .normal)
+        surroundButton.setImage(Image.icFloatingSurround, for: .normal)
         tableView.separatorStyle = .none
+        profileButton.setImage(Image.icHamburgerMenu, for: .normal)
         
         if #available(iOS 15, *) {
             tableView.sectionHeaderTopPadding = 0
@@ -117,6 +132,12 @@ class HomeViewController: BaseViewController, View {
             })
             .disposed(by: disposeBag)
         
+        profileButton.rx.tap
+            .subscribe(onNext: { _ in
+                print("프로필 버튼 여기티비")
+            })
+            .disposed(by: disposeBag)
+        
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
         
         reactor.state
@@ -125,13 +146,42 @@ class HomeViewController: BaseViewController, View {
             .disposed(by: disposeBag)
         
         reactor.state
+            .map(\.isPresentSearchUserVC)
+            .withUnretained(self)
+            .bind { this, status in
+                self.isPresentSearchUserVC = status
+            }
+            .disposed(by: disposeBag)
+        
+        reactor.state
             .compactMap(\.searchUserReactor)
             .withUnretained(self)
             .bind { this, reactor in
-                let viewController = SearchUserViewController()
-                viewController.reactor = reactor
-                this.navigationController?.pushViewController(viewController, animated: true)
+                if self.isPresentSearchUserVC {
+                    let viewController = SearchUserViewController()
+                    viewController.reactor = reactor
+                    this.navigationController?.pushViewController(viewController, animated: true)
+                }
             }
+            .disposed(by: disposeBag)
+        
+        reactor.state
+            .map(\.isLoading)
+            .distinctUntilChanged()
+            .bind(to: indicatorView.rx.isAnimating)
+            .disposed(by: disposeBag)
+        
+        NetworkService.shared.home.event
+            .subscribe(onNext: { this in
+                guard case let .select(date) = this else { return }
+                print(date)
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+
+                let dateString:String = dateFormatter.string(from: date)
+                
+                reactor.action.onNext(.updateMyPost(dateString))
+            })
             .disposed(by: disposeBag)
     }
 }
@@ -169,6 +219,20 @@ extension HomeViewController: UITableViewDelegate {
         case 1:
             guard let headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "UserPostTableViewHeader") as? UserPostTableViewHeader else { return UIView() }
             headerCell.delegate = self
+            
+            reactor?.state
+                .map(\.userType)
+                .withUnretained(self)
+                .bind { this, type in
+                    switch type {
+                    case .my:
+                        headerCell.postButton.isHidden = false
+                    case .friend, .plus:
+                        headerCell.postButton.isHidden = true
+                    }
+                }
+                .disposed(by: headerCell.disposeBag)
+            
             return headerCell
         default:
             return UIView()
@@ -192,18 +256,12 @@ extension HomeViewController: UITableViewDelegate {
     }
 }
 
-extension HomeViewController: UserProfileTableViewHeaderDelegate, UserPostTableViewHeaderDelegate {
+extension HomeViewController: UserPostTableViewHeaderDelegate {
     func writeButtonDidTap(_ header: UserPostTableViewHeader) {
         let writingVC = WritingViewController()
         writingVC.reactor = WritingReactor()
         writingVC.modalPresentationStyle = .fullScreen
         present(writingVC, animated: true)
-    }
-    
-    func addButtonDidTap(_ header: UserProfileTableViewHeader) {
-        let searchVC = SearchUserViewController()
-        searchVC.reactor = SearchUserReactor()
-        self.navigationController?.pushViewController(searchVC, animated: true)
     }
 }
 

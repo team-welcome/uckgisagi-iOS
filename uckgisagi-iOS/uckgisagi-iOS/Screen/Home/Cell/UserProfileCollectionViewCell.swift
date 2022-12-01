@@ -76,16 +76,19 @@ class UserProfileCollectionViewCell: UICollectionViewCell, View {
     }
     
     func bind(reactor: Reactor) {
+        var selectedState = reactor.currentState.isSelected
+        profileImage.image = selectedState ? Image.icCircleTap : Image.icCircle
+        
         switch reactor.currentState.type {
         case .my:
             guard let info = reactor.currentState.info else { break }
             profileNameLabel.text = "\(info.nickname.prefix(1))"
-            profileImage.image = Image.icCircleTap
+//            profileImage.image = Image.icCircleTap
             plusImage.isHidden = true
         case .friend:
             guard let info = reactor.currentState.info else { break }
             profileNameLabel.text = "\(info.nickname.prefix(1))"
-            profileImage.image = Image.icCircle
+//            profileImage.image = Image.icCircle
             plusImage.isHidden = true
         case .plus:
             profileNameLabel.text = ""
