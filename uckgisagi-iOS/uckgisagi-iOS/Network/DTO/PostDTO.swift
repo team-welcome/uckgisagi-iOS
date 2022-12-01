@@ -7,6 +7,7 @@
 
 struct PostDTO: Decodable {
     let id: Int
+    let userId: Int?
     let content, imageURL: String
     let nickname: String?
     var scrapStatus: Status
@@ -17,6 +18,7 @@ struct PostDTO: Decodable {
         case imageURL = "imageUrl"
         case nickname
         case id = "postId"
+        case userId = "userId"
         case scrapStatus, updatedAt
     }
 }

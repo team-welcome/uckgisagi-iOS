@@ -16,7 +16,7 @@ protocol PostDetailViewDelegate: AnyObject {
 
 final class PostDetailView: UIView {
     private let navigationBar = UIView()
-    private let backButton = UIButton()
+    private(set) lazy var backButton = UIButton()
     private let titleLabel = UILabel()
 
     private let scrollView = UIScrollView()

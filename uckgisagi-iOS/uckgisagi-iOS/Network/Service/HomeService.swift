@@ -12,6 +12,7 @@ import RxSwift
 
 enum HomeEvent {
     case select(Date)
+    case pushButtonDidTap
 }
 
 protocol HomeServiceType {
@@ -61,5 +62,4 @@ class HomeService: HomeServiceType {
             .map(BaseArrayResponse<Post>.self)
             .asObservable()
     }
-    
 }

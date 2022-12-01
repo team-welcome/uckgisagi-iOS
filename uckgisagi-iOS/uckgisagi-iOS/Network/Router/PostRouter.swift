@@ -21,6 +21,10 @@ enum PostRouter {
     case getScrapDetail(postID: Int)
     /// 유저가 스크랩한 챌린지 글 상세
     case getScrapList
+    /// 게시글 신고
+    case accusePost(postId: Int)
+    /// 유저 차단
+    case blockUserPost(userid: Int)
 }
 
 extension PostRouter: BaseTargetType {
@@ -36,12 +40,16 @@ extension PostRouter: BaseTargetType {
             return "/post/scrap\(postID)"
         case .getScrapList:
             return "/post/scrap"
+        case .accusePost(_):
+            return "/post/accuse"
+        case .blockUserPost(_):
+            return "/block"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .postWriting:
+        case .postWriting, .accusePost(_), .blockUserPost(_):
             return .post
         case .getPostDetail, .getPostList, .getScrapDetail, .getScrapList:
             return .get
@@ -54,6 +62,14 @@ extension PostRouter: BaseTargetType {
             return .uploadMultipart(createMultipartFormDataList(image, content))
         case .getPostDetail(_), .getPostList, .getScrapDetail(_), .getScrapList:
             return .requestPlain
+        case let .accusePost(postId):
+            return .requestParameters(parameters: [
+                "postId": postId
+            ], encoding: JSONEncoding.default)
+        case let .blockUserPost(userId):
+            return .requestParameters(parameters: [
+                "blockUserId": userId
+            ], encoding: JSONEncoding.default)
         }
     }
 }
