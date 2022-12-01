@@ -46,7 +46,7 @@ final class PostDetailViewController: BaseViewController, View {
             .disposed(by: disposeBag)
         
         reactor.state
-            .compactMap { $0.isAccusing }
+            .compactMap { $0.isAccusing || $0.isBlocking }
             .filter { $0 }
             .withUnretained(self)
             .bind { _ in
@@ -61,10 +61,10 @@ final class PostDetailViewController: BaseViewController, View {
         }
         let cancelAction = UIAlertAction(title: "취소하기", style: UIAlertAction.Style.cancel) { _ in
             print("취소하기")
-            self.navigationController?.popViewController(animated: true)
         }
         let blockAction = UIAlertAction(title: "차단하기", style: UIAlertAction.Style.destructive){(_) in
             print("차단하기")
+            self.reactor?.action.onNext(.blockUserPost)
         }
         
         alert.addAction(accuseAction)

@@ -23,6 +23,8 @@ enum PostRouter {
     case getScrapList
     /// 게시글 신고
     case accusePost(postId: Int)
+    /// 유저 차단
+    case blockUserPost(userid: Int)
 }
 
 extension PostRouter: BaseTargetType {
@@ -40,12 +42,14 @@ extension PostRouter: BaseTargetType {
             return "/post/scrap"
         case .accusePost(_):
             return "/post/accuse"
+        case .blockUserPost(_):
+            return "/block"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .postWriting, .accusePost(_):
+        case .postWriting, .accusePost(_), .blockUserPost(_):
             return .post
         case .getPostDetail, .getPostList, .getScrapDetail, .getScrapList:
             return .get
@@ -61,6 +65,10 @@ extension PostRouter: BaseTargetType {
         case let .accusePost(postId):
             return .requestParameters(parameters: [
                 "postId": postId
+            ], encoding: JSONEncoding.default)
+        case let .blockUserPost(userId):
+            return .requestParameters(parameters: [
+                "blockUserId": userId
             ], encoding: JSONEncoding.default)
         }
     }
