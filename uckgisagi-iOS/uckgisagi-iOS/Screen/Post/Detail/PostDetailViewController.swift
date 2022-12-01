@@ -45,18 +45,31 @@ final class PostDetailViewController: BaseViewController, View {
             }
             .disposed(by: disposeBag)
         
+        reactor.state
+            .compactMap { $0.isAccusing }
+            .filter { $0 }
+            .withUnretained(self)
+            .bind { _ in
+                self.navigationController?.popViewController(animated: true)
+            }
+            .disposed(by: disposeBag)
     }
  
     private func setActionSheet() {
-        let defaultAction =  UIAlertAction(title: "신고하기", style: UIAlertAction.Style.default)
-        let cancelAction = UIAlertAction(title: "취소하기", style: UIAlertAction.Style.cancel, handler: nil)
-        let destructiveAction = UIAlertAction(title: "차단하기", style: UIAlertAction.Style.destructive){(_) in
-            
+        let accuseAction =  UIAlertAction(title: "신고하기", style: UIAlertAction.Style.default) { _ in
+            self.reactor?.action.onNext(.accusePost)
+        }
+        let cancelAction = UIAlertAction(title: "취소하기", style: UIAlertAction.Style.cancel) { _ in
+            print("취소하기")
+            self.navigationController?.popViewController(animated: true)
+        }
+        let blockAction = UIAlertAction(title: "차단하기", style: UIAlertAction.Style.destructive){(_) in
+            print("차단하기")
         }
         
-        alert.addAction(defaultAction)
+        alert.addAction(accuseAction)
         alert.addAction(cancelAction)
-        alert.addAction(destructiveAction)
+        alert.addAction(blockAction)
         
         self.present(alert, animated: false)
     }

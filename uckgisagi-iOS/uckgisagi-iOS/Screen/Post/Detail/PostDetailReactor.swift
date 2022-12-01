@@ -10,20 +10,26 @@ import UIKit
 import ReactorKit
 
 final class PostDetailReactor: Reactor {
+    
     private let postID: Int
 
     struct State {
         var isLoading: Bool = true
         var post: PostDTO?
+        var isAccusing: Bool = false
+        var isBlocking: Bool = false
     }
 
     enum Action {
         case viewWillAppear
+        case accusePost
     }
 
     enum Mutation {
         case setLoading(Bool)
         case setPost(PostDTO)
+        case setPostAccusing(Bool)
+        case setPostBlocking(Bool)
     }
 
     let initialState: State
@@ -43,6 +49,13 @@ final class PostDetailReactor: Reactor {
                     .map { Mutation.setPost($0) },
                 Observable.just(.setLoading(false))
             ])
+        case .accusePost:
+            return Observable.concat([
+                NetworkService.shared.post.accusePost(postId: postID)
+                    .compactMap { $0.data }
+                    .map { .setPostAccusing(true) },
+                Observable.just(.setPostAccusing(false))
+            ])
         }
     }
 
@@ -53,6 +66,10 @@ final class PostDetailReactor: Reactor {
             newState.isLoading = isLoading
         case let .setPost(post):
             newState.post = post
+        case let .setPostAccusing(isAccusing):
+            newState.isAccusing = isAccusing
+        case let .setPostBlocking(isBlocking):
+            newState.isBlocking = isBlocking
         }
         return newState
     }

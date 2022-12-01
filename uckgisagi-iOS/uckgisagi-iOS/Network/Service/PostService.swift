@@ -16,6 +16,7 @@ protocol PostServiceType {
     func getPostList() -> Observable<BaseArrayResponse<PostDTO>>
     func getScrapDetail(postID: Int) -> Observable<BaseResponse<PostDTO>>
     func getScrapList() -> Observable<BaseArrayResponse<PostDTO>>
+    func accusePost(postId: Int) -> Observable<BaseResponse<PostAccuseDTO>>
 }
 
 final class PostService: PostServiceType {
@@ -55,4 +56,9 @@ final class PostService: PostServiceType {
             .asObservable()
     }
 
+    func accusePost(postId: Int) -> RxSwift.Observable<BaseResponse<PostAccuseDTO>> {
+        return router.rx.request(.accusePost(postId: postId))
+            .map(BaseResponse<PostAccuseDTO>.self)
+            .asObservable()
+    }
 }
