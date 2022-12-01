@@ -169,6 +169,7 @@ class HomeViewController: BaseViewController, View {
                 
                 reactor.action.onNext(.updateMyPost(dateString))
             })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -205,6 +206,20 @@ extension HomeViewController: UITableViewDelegate {
         case 1:
             guard let headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "UserPostTableViewHeader") as? UserPostTableViewHeader else { return UIView() }
             headerCell.delegate = self
+            
+            reactor?.state
+                .map(\.userType)
+                .withUnretained(self)
+                .bind { this, type in
+                    switch type {
+                    case .my:
+                        headerCell.postButton.isHidden = false
+                    case .friend, .plus:
+                        headerCell.postButton.isHidden = true
+                    }
+                }
+                .disposed(by: headerCell.disposeBag)
+            
             return headerCell
         default:
             return UIView()

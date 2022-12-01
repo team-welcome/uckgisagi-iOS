@@ -24,6 +24,8 @@ class HomeReactor: Reactor {
         case updateUserProfileSections([UserProfileItem], IndexPath)
         case updatePostSections([HomeItem])
         case setIsPresentSearchUserVC(Bool)
+        case setUserType(UserProfileCellType)
+        case setFriendId(Int)
     }
     
     struct State {
@@ -35,6 +37,8 @@ class HomeReactor: Reactor {
         var selectedUserProfileCellIndexPath: IndexPath?
         var searchUserReactor: SearchUserReactor?
         var isPresentSearchUserVC: Bool = false
+        var userType: UserProfileCellType = .my
+        var friendId: Int?
     }
     
     let initialState: State
@@ -84,22 +88,44 @@ extension HomeReactor {
             
         case let .updatePostSections(items):
             newState.homeSections[1].items = items
+            
+        case let .setUserType(type):
+            newState.userType = type
+            
+        case let .setFriendId(id):
+            newState.friendId = id
         }
         
         return newState
     }
     
     private func updatePostMutation(date: String) -> Observable<Mutation> {
-        let updateSectionsMutation: Observable<Mutation> =
-        NetworkService.shared.home.getMyPostByDate(date: date)
-            .compactMap { $0.data }
-            .withUnretained(self)
-            .map { this, data in
-                print(data)
-                return .setHomeSections(this.updateSections(from: data))
-//                return .updatePostSections(this.updatePostSection(from: data))
-            }
-
+        var updateSectionsMutation: Observable<Mutation> = .empty()
+        
+        switch currentState.userType {
+        case .my:
+            updateSectionsMutation = NetworkService.shared.home.getMyPostByDate(date: date)
+                .compactMap { $0.data }
+                .withUnretained(self)
+                .map { this, data in
+                    print(data)
+                    return .setHomeSections(this.updateSections(from: data))
+                    //                return .updatePostSections(this.updatePostSection(from: data))
+                }
+        case .friend:
+            guard let friendId = currentState.friendId else { return .empty() }
+            updateSectionsMutation = NetworkService.shared.home.getFriendPostByDate(friendId: friendId, date: date)
+                .compactMap { $0.data }
+                .withUnretained(self)
+                .map { this, data in
+                    print(data)
+                    return .setHomeSections(this.updateSections(from: data))
+                    //                return .updatePostSections(this.updatePostSection(from: data))
+                }
+        case .plus:
+            break
+        }
+        
         return updateSectionsMutation
     }
     
@@ -165,7 +191,7 @@ extension HomeReactor {
         
         updateUserProfileSelectedMutation = .just(.updateUserProfileSections(items, indexPath))
         
-        return Observable.of(.just(.setSelectedUserProfileCellIndexPath(indexPath)), setMyPostSectionsMutation, updateUserProfileSelectedMutation, setSearchUserReactorMutation).merge()
+        return Observable.of(.just(.setSelectedUserProfileCellIndexPath(indexPath)), setMyPostSectionsMutation, updateUserProfileSelectedMutation, setSearchUserReactorMutation, .just(.setFriendId(reactor.currentState.info?.userID ?? 0)), .just(.setUserType(reactor.currentState.type))).merge()
     }
     
     private func makeSections(from data: FriendListDTO) -> [UserProfileSectionModel] {

@@ -17,7 +17,8 @@ protocol UserPostTableViewHeaderDelegate: AnyObject {
 class UserPostTableViewHeader: UITableViewHeaderFooterView {
     weak var delegate: UserPostTableViewHeaderDelegate?
     private let headerNoticeLabel = UILabel()
-    private let postButton = UIButton()
+    let postButton = UIButton()
+    var disposeBag = DisposeBag()
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)

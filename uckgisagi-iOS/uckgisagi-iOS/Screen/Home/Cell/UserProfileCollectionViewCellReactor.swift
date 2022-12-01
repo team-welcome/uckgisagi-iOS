@@ -8,13 +8,13 @@
 import Foundation
 import ReactorKit
 
+enum UserProfileCellType {
+    case my
+    case friend
+    case plus
+}
+
 class UserProfileCollectionViewCellReactor: Reactor {
-    enum UserProfileCellType {
-        case my
-        case friend
-        case plus
-    }
-    
     enum Action {
         case tap
         case update
