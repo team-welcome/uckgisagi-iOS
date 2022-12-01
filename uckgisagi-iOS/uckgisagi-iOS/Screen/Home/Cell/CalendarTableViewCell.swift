@@ -13,6 +13,11 @@ import FSCalendar
 import RxSwift
 
 class CalendarTableViewCell: UITableViewCell, View {
+    enum DateType {
+        case defaultDate
+        case selectedDate
+    }
+    
     typealias Reactor = CalendarTableViewCellReactor
     
     var disposeBag = DisposeBag()
@@ -57,7 +62,7 @@ class CalendarTableViewCell: UITableViewCell, View {
     func setProperties() {
         contentView.addSubviews(monthLabel, calendar)
         
-        monthLabel.text = dateformat()
+        monthLabel.text = dateformat(type: .defaultDate, date: Date())
         monthLabel.font = .systemFont(ofSize: 15, weight: UIFont.Weight(rawValue: 500))
         monthLabel.textColor = Color.mediumGray
     }
@@ -68,11 +73,18 @@ class CalendarTableViewCell: UITableViewCell, View {
 }
 
 extension CalendarTableViewCell {
-    func dateformat() -> String {
+    func dateformat(type: DateType, date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy년 MM월"
-        let dateString = formatter.string(from: Date())
-        return dateString
+        switch type {
+        case .defaultDate:
+            formatter.dateFormat = "yyyy년 MM월"
+            let dateString = formatter.string(from: date)
+            return dateString
+        case .selectedDate:
+            formatter.dateFormat = "yyyy년 MM월 dd일"
+            let dateString:String = formatter.string(from: date)
+            return dateString
+        }
     }
 }
 
@@ -99,6 +111,8 @@ extension CalendarTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FSCal
         // MARK: - 터치시 이벤트
         guard let date = Calendar.current.date(byAdding: .hour, value: 9, to: date) else { return }
         reactor?.action.onNext(.selectDate(date))
+        
+        monthLabel.text = dateformat(type: .selectedDate, date: date)
     }
 
     func setupCalendarEvents(dates: [String]) -> [Date?] {
