@@ -133,8 +133,8 @@ class HomeViewController: BaseViewController, View {
             .disposed(by: disposeBag)
         
         profileButton.rx.tap
-            .subscribe(onNext: { _ in
-                print("프로필 버튼 여기티비")
+            .subscribe(onNext: { [weak self] _ in
+                self?.navigationController?.pushViewController(SettingViewController(), animated: true)
             })
             .disposed(by: disposeBag)
         
