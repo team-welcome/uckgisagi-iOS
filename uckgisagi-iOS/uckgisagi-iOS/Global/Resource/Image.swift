@@ -20,6 +20,8 @@ enum Image {
     static let icBack = UIImage(named: "ic.back")!
     static let icMark = UIImage(named: "ic.mark")!
     static let icDefaultImage = UIImage(named: "icDefaultImage")!
+    static let icFloatingSurround = UIImage(named: "ic.floating.surround")
+    static let icHamburgerMenu = UIImage(named: "ic.hamburger.menu")
 
     // MARK: - Btn
     static let btnFollow = UIImage(named: "btn.follow")!

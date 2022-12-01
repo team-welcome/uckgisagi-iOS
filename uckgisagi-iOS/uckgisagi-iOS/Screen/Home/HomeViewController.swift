@@ -55,6 +55,7 @@ class HomeViewController: BaseViewController, View {
     private let navigationView = UIView()
     private let ukgisagiLogo = UIImageView()
     private let surroundButton = UIButton()
+    private let profileButton = UIButton()
     private let userProfileHeaderView = UserProfileTableViewHeader()
     private let tableView = UITableView()
     private var postType: PostCase?
@@ -86,10 +87,15 @@ class HomeViewController: BaseViewController, View {
             $0.centerY.equalToSuperview()
         }
         
-        surroundButton.snp.makeConstraints {
-            $0.width.height.equalTo(28)
-            $0.trailing.equalToSuperview().inset(11)
+        profileButton.snp.makeConstraints {
+            $0.width.height.equalTo(24)
+            $0.trailing.equalToSuperview().inset(23)
             $0.centerY.equalToSuperview()
+        }
+        
+        surroundButton.snp.makeConstraints {
+            $0.width.height.equalTo(56)
+            $0.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(24)
         }
         
         tableView.snp.makeConstraints {
@@ -100,12 +106,13 @@ class HomeViewController: BaseViewController, View {
     }
     
     override func setProperties() {
-        navigationView.addSubviews(ukgisagiLogo, surroundButton)
-        view.addSubviews(navigationView, tableView, indicatorView)
+        navigationView.addSubviews(ukgisagiLogo, profileButton)
+        view.addSubviews(navigationView, tableView, indicatorView, surroundButton)
 
         ukgisagiLogo.image = Image.bigLogo
-        surroundButton.setImage(Image.icSurround, for: .normal)
+        surroundButton.setImage(Image.icFloatingSurround, for: .normal)
         tableView.separatorStyle = .none
+        profileButton.setImage(Image.icHamburgerMenu, for: .normal)
         
         if #available(iOS 15, *) {
             tableView.sectionHeaderTopPadding = 0
@@ -122,6 +129,12 @@ class HomeViewController: BaseViewController, View {
             .subscribe(onNext: { [weak self] _ in
                 let feedMainVC = FeedMainViewController()
                 self?.navigationController?.pushViewController(feedMainVC, animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        profileButton.rx.tap
+            .subscribe(onNext: { _ in
+                print("프로필 버튼 여기티비")
             })
             .disposed(by: disposeBag)
         
