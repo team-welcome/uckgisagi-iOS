@@ -106,13 +106,14 @@ extension CalendarTableViewCell: FSCalendarDelegate, FSCalendarDataSource, FSCal
         
         self.calendar.appearance.eventSelectionColor = Color.green
         self.calendar.appearance.eventDefaultColor = Color.green
+        self.calendar.appearance.borderSelectionColor = Color.green
+        self.calendar.appearance.titleSelectionColor = Color.green
     }
 
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         // MARK: - 터치시 이벤트
         guard let date = Calendar.current.date(byAdding: .hour, value: 9, to: date) else { return }
         reactor?.action.onNext(.selectDate(date))
-        
         monthLabel.text = dateformat(type: .selectedDate, date: date)
     }
 
