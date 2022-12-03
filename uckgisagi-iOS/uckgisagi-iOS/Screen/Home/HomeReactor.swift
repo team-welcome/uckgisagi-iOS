@@ -26,6 +26,7 @@ class HomeReactor: Reactor {
         case setIsPresentSearchUserVC(Bool)
         case setUserType(UserProfileCellType)
         case setFriendId(Int)
+        case setPostDateList([String?])
     }
     
     struct State {
@@ -39,6 +40,7 @@ class HomeReactor: Reactor {
         var isPresentSearchUserVC: Bool = false
         var userType: UserProfileCellType = .my
         var friendId: Int?
+        var postDateList: [String?] = []
     }
     
     let initialState: State
@@ -53,13 +55,27 @@ extension HomeReactor {
         switch action {
         case .refesh:
             return refreshMutation()
-            
         case let .userProfileCellTap(indexPath):
             return tapCellMutation(indexPath)
         case let .updateMyPost(date):
             return updatePostMutation(date: date)
         }
     }
+    
+    func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+        let eventMutation = NetworkService.shared.home.event.withUnretained(self).flatMap { (this, event) -> Observable<Mutation> in
+            switch event {
+            case let .select(date):
+                let dateToString = date.dateToString()
+                return this.updatePostMutation(date: dateToString)
+            case .pushButtonDidTap:
+                print("찌르기 버튼 이벤트 여기요 여기")
+                return .empty()
+            }
+        }
+        return Observable.merge(mutation, eventMutation)
+    }
+    
 
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
@@ -94,6 +110,9 @@ extension HomeReactor {
             
         case let .setFriendId(id):
             newState.friendId = id
+            
+        case let .setPostDateList(dateList):
+            newState.postDateList = dateList
         }
         
         return newState
