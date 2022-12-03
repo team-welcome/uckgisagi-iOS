@@ -182,22 +182,6 @@ class HomeViewController: BaseViewController, View {
             .distinctUntilChanged()
             .bind(to: indicatorView.rx.isAnimating)
             .disposed(by: disposeBag)
-        
-        NetworkService.shared.home.event
-            .bind { this in
-                switch this {
-                case let .select(date):
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd"
-
-                    let dateString:String = dateFormatter.string(from: date)
-                    
-                    reactor.action.onNext(.updateMyPost(dateString))
-                case .pushButtonDidTap:
-                    print("찌르기 버튼 클릭됨")
-                }
-            }
-            .disposed(by: disposeBag)
     }
 }
 

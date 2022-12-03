@@ -149,6 +149,7 @@ extension HomeReactor {
     }
     
     private func refreshMutation() -> Observable<Mutation> {
+        var setDateListMutation: Observable<Mutation> = .empty()
         let setUserProfileSectionsMutation: Observable<Mutation> = NetworkService.shared.home.getFriendList()
             .compactMap { $0.data }
             .withUnretained(self)
@@ -156,15 +157,20 @@ extension HomeReactor {
                 return .setUserProfileSections(this.makeSections(from: data))
             }
         
-        let setMyPostSectionsMutation: Observable<Mutation> = NetworkService.shared.home.getMyPost()
-            .compactMap { $0.data }
-            .withUnretained(self)
-            .map { this, data in
-                return .setHomeSections(this.makeSections(from: data))
-            }
-        print("[D] 리프레시 뮤테이션")
-        print(currentState.homeSections)
-        return Observable.of(.just(.setLoading(true)) , setUserProfileSectionsMutation, setMyPostSectionsMutation, .just(.setLoading(false))).merge()
+        // MARK: - 추후 api 수정
+        let setMyPostSectionsMutation : Observable<Mutation> = Observable.create { (observer) in
+            let _ = NetworkService.shared.home.getMyPost()
+                .compactMap { $0.data }
+                .withUnretained(self)
+                .subscribe(onNext: { `self`, data in
+                        observer.onNext(.setPostDateList(data.postDates))
+                        observer.onNext(.setHomeSections(self.makeSections(from: data)))
+                        observer.onCompleted()
+                })
+            return Disposables.create()
+        }
+        
+        return Observable.of(.just(.setLoading(true)) , setUserProfileSectionsMutation, setMyPostSectionsMutation, .just(.setLoading(false)), setDateListMutation, .just(.setUserType(.my))).merge()
     }
     
     private func tapCellMutation(_ indexPath: IndexPath) -> Observable<Mutation> {
@@ -195,9 +201,8 @@ extension HomeReactor {
             setSearchUserReactorMutation = .concat([.just(.setSearchUserReactor(SearchUserReactor())), .just(.setIsPresentSearchUserVC(true)), .just(.setIsPresentSearchUserVC(false))])
             break
         }
-        print("[D] another button")
         
-        var items = currentState.userProfileSections[indexPath.section].items.enumerated().map({ (index, item) -> UserProfileItem in
+        let items = currentState.userProfileSections[indexPath.section].items.enumerated().map({ (index, item) -> UserProfileItem in
             guard case let .userProfile(reactor) = item else { return .userProfile(.init(state: .init(type: .my)))}
             var state = reactor.currentState
             if (index == indexPath.item) {
@@ -261,15 +266,10 @@ extension HomeReactor {
     }
     
     private func updateSections(from data: [Post?]) -> [HomeSectionModel] {
-        // TODO: - calendar 부분은 처음 정보 get할때 받아온 정보를 넣어두고, post 부분만 새롭게 넣어주고 싶은데 잘 안되는 모습. homeSection이 비어있는 경우 발생
-        
-//        print("[D] update post section")
-//        print(currentState.homeSections)
-//        var currentData = currentState.homeSections[0].items
+        var currentData = currentState.postDateList
         var calendarItems: [HomeItem] = []
-        calendarItems.append(.calendar(CalendarTableViewCellReactor(data: [])))
+        calendarItems.append(.calendar(CalendarTableViewCellReactor(data: currentData)))
         
-//        let calendarSection: HomeSectionModel = .init(model: .calendar(currentData), items: currentData)
         let calendarSection: HomeSectionModel = .init(model: .calendar(calendarItems), items: calendarItems)
         
         var postItems: [HomeItem] = []
@@ -281,6 +281,8 @@ extension HomeReactor {
                     postItems.append(.emptyPost(EmptyPostTableViewCellReactor(type: .my)))
                 case .friend:
                     postItems.append(.emptyPost(EmptyPostTableViewCellReactor(type: .friend)))
+                case .plus:
+                    postItems.append(.emptyPost(EmptyPostTableViewCellReactor(type: .my)))
                 default:
                     break
                 }
