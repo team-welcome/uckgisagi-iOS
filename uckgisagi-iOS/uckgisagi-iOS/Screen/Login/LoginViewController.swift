@@ -50,10 +50,12 @@ class LoginViewController: BaseViewController {
         contentLabel.snp.makeConstraints {
             $0.top.equalTo(appleLoginButton.snp.bottom).offset(16)
             $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(20)
         }
         agreementLabel.snp.makeConstraints {
             $0.top.equalTo(contentLabel.snp.bottom).offset(8)
             $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(20)
         }
     }
     
@@ -70,8 +72,8 @@ class LoginViewController: BaseViewController {
             $0.textAlignment = .center
             $0.textColor = Color.black
         }
-        contentLabel.text = "계속 진행하면 억지사지 서비스 약관에 동의하고"
-        agreementLabel.text = "개인정보 보호정책과 EULA를 읽었음을 인정하는 것으로 간주됩니다."
+        contentLabel.text = "계속 진행하면 억지사지 서비스 약관 에 동의하고"
+        agreementLabel.text = "개인정보 보호정책과 EULA 를 읽었음을 인정하는 것으로 간주됩니다."
         setUnderLineAttributes()
     }
     
@@ -113,12 +115,13 @@ class LoginViewController: BaseViewController {
         let ranges: [NSRange] = [
             (content as NSString).range(of: "억지사지 서비스 약관")
         ]
+        dump(ranges)
 
         let tapLocation = sender.location(in: contentLabel)
         let index = contentLabel.indexOfAttributedTextCharacterAtPoint(point: tapLocation)
 
         for range in ranges {
-            if range.checkTargetWordSelectedRange(contain: index) {
+//            if range.checkTargetWordSelectedRange(contain: index) {
                 guard let target = ranges.firstIndex(of: range) else { return }
                 let scheme = termsURL[target]
                 guard
@@ -128,7 +131,7 @@ class LoginViewController: BaseViewController {
 
                 let safariViewController = SFSafariViewController(url: url)
                 present(safariViewController, animated: true)
-            }
+//            }
         }
     }
 
@@ -137,7 +140,7 @@ class LoginViewController: BaseViewController {
         guard let content = agreementLabel.text else { return }
 
         let termsURL = [
-            URLConstant.term,
+            URLConstant.policy,
             URLConstant.eula
         ]
 
@@ -145,10 +148,11 @@ class LoginViewController: BaseViewController {
             (content as NSString).range(of: "개인정보 보호정책"),
             (content as NSString).range(of: "EULA")
         ]
+        dump(ranges)
 
         let tapLocation = sender.location(in: agreementLabel)
         let index = agreementLabel.indexOfAttributedTextCharacterAtPoint(point: tapLocation)
-
+        dump(index)
         for range in ranges {
             if range.checkTargetWordSelectedRange(contain: index) {
                 guard let target = ranges.firstIndex(of: range) else { return }
@@ -247,6 +251,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
 
 extension NSRange {
     func checkTargetWordSelectedRange(contain index: Int) -> Bool {
-        return index > location && index < location + length
+        return index > location && index < location + length + 4
     }
 }
