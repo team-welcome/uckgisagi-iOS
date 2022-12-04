@@ -11,13 +11,13 @@ struct UserDefaultHandler {
     private init() {}
 
     enum Key: String {
-        case example = "example"
+        case nickname = "nickname"
     }
 
-    @UserDefault(key: Key.example.rawValue, defaultValue: "")
-    var example: String
+    @UserDefault(key: Key.nickname.rawValue, defaultValue: "")
+    var nickname: String
 
     func removeAll() {
-        _example.reset()
+        _nickname.reset()
     }
 }
