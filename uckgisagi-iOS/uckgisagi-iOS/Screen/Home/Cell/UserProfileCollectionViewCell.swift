@@ -20,7 +20,8 @@ class UserProfileCollectionViewCell: UICollectionViewCell, View {
     private var profileNameLabel = UILabel()
     private var profileImage = UIImageView()
     private let plusImage = UIImageView()
-    private var userNameLabel = UILabel()
+    
+    var name: String?
 
     // MARK: - Initailize
     override init(frame: CGRect) {
@@ -40,7 +41,6 @@ class UserProfileCollectionViewCell: UICollectionViewCell, View {
         
         profileNameLabel.text = nil
         profileImage.image = Image.icCircle
-        userNameLabel.text = nil
     }
 
     private func setProperties() {
@@ -56,18 +56,12 @@ class UserProfileCollectionViewCell: UICollectionViewCell, View {
         plusImage.do {
             $0.image = Image.icPlus
         }
-        
-        userNameLabel.do {
-            $0.font = .systemFont(ofSize: 9)
-            $0.lineBreakMode = .byTruncatingTail
-        }
     }
 
     private func setLayouts() {
         contentView.addSubview(profileImage)
         contentView.addSubview(profileNameLabel)
         contentView.addSubview(plusImage)
-        contentView.addSubview(userNameLabel)
         
         profileImage.snp.makeConstraints {
             $0.width.equalTo(40)
@@ -82,27 +76,23 @@ class UserProfileCollectionViewCell: UICollectionViewCell, View {
             $0.width.height.equalTo(24)
             $0.centerX.centerY.equalTo(profileImage)
         }
-        userNameLabel.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(4)
-            $0.bottom.equalToSuperview().inset(2)
-        }
     }
     
     func bind(reactor: Reactor) {
         var selectedState = reactor.currentState.isSelected
         profileImage.image = selectedState ? Image.icCircleTap : Image.icCircle
-        
+    
         switch reactor.currentState.type {
         case .my:
             guard let info = reactor.currentState.info else { break }
             profileNameLabel.text = "\(info.nickname.prefix(1))"
-            userNameLabel.text = "\(info.nickname)"
             plusImage.isHidden = true
+            name = info.nickname
         case .friend:
             guard let info = reactor.currentState.info else { break }
             profileNameLabel.text = "\(info.nickname.prefix(1))"
-            userNameLabel.text = "\(info.nickname)"
             plusImage.isHidden = true
+            name = info.nickname
         case .plus:
             profileNameLabel.text = ""
             profileImage.image = Image.icCircleTap

@@ -210,7 +210,12 @@ extension HomeViewController: UITableViewDelegate {
             headerCell.collectionView.rx.itemSelected
                 .withUnretained(self)
                 .bind { this, indexPath in
+                    guard
+                        let cell = headerCell.collectionView.cellForItem(at: indexPath) as? UserProfileCollectionViewCell,
+                        let name = cell.name
+                    else { return }
                     this.reactor?.action.onNext(.userProfileCellTap(indexPath))
+                    headerCell.configure(name: name)
                 }
                 .disposed(by: headerCell.disposeBag)
 
@@ -247,7 +252,7 @@ extension HomeViewController: UITableViewDelegate {
         // TODO: - 수정
         switch indexPath.section {
         case 0:
-            return 278
+            return 295
         case 1:
             return 278
         default:
@@ -256,7 +261,7 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? 63 : 50
+        return section == 0 ? 90 : 50
     }
 }
 

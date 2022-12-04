@@ -186,7 +186,6 @@ extension HomeReactor {
             
             return Disposables.create()
         }
-        
         return Observable.of(.just(.setLoading(true)) , setUserProfileSectionsMutation, setMyPostSectionsMutation, .just(.setLoading(false)), .just(.setUserType(.my))).merge()
     }
     

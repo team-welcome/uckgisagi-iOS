@@ -8,12 +8,12 @@
 import Foundation
 
 enum NotificationCenterManager: NotificationCenterHandler {
-    case example
+    case tapUserProfile
 
     var name: Notification.Name {
         switch self {
-        case .example:
-            return Notification.Name("NotificationCenterManager.example")
+        case .tapUserProfile:
+            return Notification.Name("NotificationCenterManager.tapUserProfile")
         }
     }
 }
