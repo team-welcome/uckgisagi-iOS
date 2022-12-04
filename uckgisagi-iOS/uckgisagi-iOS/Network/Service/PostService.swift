@@ -18,6 +18,7 @@ protocol PostServiceType {
     func getScrapList() -> Observable<BaseArrayResponse<PostDTO>>
     func accusePost(postId: Int) -> Observable<BaseResponse<NullResponse>>
     func blockUserPost(userId: Int) -> Observable<BaseResponse<NullResponse>>
+    func delete(postID: Int) -> Observable<BaseResponse<NullResponse>>
 }
 
 final class PostService: PostServiceType {
@@ -65,6 +66,12 @@ final class PostService: PostServiceType {
     
     func blockUserPost(userId: Int) -> Observable<BaseResponse<NullResponse>> {
         return router.rx.request(.blockUserPost(userid: userId))
+            .map(BaseResponse<NullResponse>.self)
+            .asObservable()
+    }
+
+    func delete(postID: Int) -> Observable<BaseResponse<NullResponse>> {
+        return router.rx.request(.delete(postID: postID))
             .map(BaseResponse<NullResponse>.self)
             .asObservable()
     }

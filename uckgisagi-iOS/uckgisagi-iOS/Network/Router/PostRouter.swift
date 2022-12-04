@@ -25,6 +25,8 @@ enum PostRouter {
     case accusePost(postId: Int)
     /// 유저 차단
     case blockUserPost(userid: Int)
+    /// 삭제
+    case delete(postID: Int)
 }
 
 extension PostRouter: BaseTargetType {
@@ -44,6 +46,8 @@ extension PostRouter: BaseTargetType {
             return "/post/accuse"
         case .blockUserPost(_):
             return "/block"
+        case let .delete(postID):
+            return "/post/delete"
         }
     }
 
@@ -53,6 +57,8 @@ extension PostRouter: BaseTargetType {
             return .post
         case .getPostDetail, .getPostList, .getScrapDetail, .getScrapList:
             return .get
+        case .delete:
+            return .delete
         }
     }
 
@@ -70,6 +76,11 @@ extension PostRouter: BaseTargetType {
             return .requestParameters(parameters: [
                 "blockUserId": userId
             ], encoding: JSONEncoding.default)
+        case let .delete(postID):
+            return .requestParameters(
+                parameters: ["postId": postID],
+                encoding: URLEncoding.default
+            )
         }
     }
 }

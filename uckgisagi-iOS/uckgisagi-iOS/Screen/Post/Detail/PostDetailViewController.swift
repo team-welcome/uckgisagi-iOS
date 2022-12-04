@@ -18,7 +18,8 @@ final class PostDetailViewController: BaseViewController, View {
         super.init()
         setActionSheet()
     }
-    
+    private var postID: Int?
+
     override func loadView() {
         view = detailView
         detailView.delegate = self
@@ -72,7 +73,7 @@ final class PostDetailViewController: BaseViewController, View {
             print("차단하기")
             self.reactor?.action.onNext(.blockUserPost)
         }
-        
+
         alert.addAction(accuseAction)
         alert.addAction(cancelAction)
         alert.addAction(blockAction)

@@ -26,7 +26,6 @@ final class PostListViewController: BaseViewController, View {
 
     func bind(reactor: PostListReactor) {
         rx.viewWillAppear
-            .take(1)
             .map { _ in Reactor.Action.viewWillAppear }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)

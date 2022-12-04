@@ -76,6 +76,9 @@
 		DD5CE499292A530E00AE1027 /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5CE498292A530E00AE1027 /* Interceptor.swift */; };
 		DD5CE4A1292A6DB000AE1027 /* PostDetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5CE4A0292A6DB000AE1027 /* PostDetailReactor.swift */; };
 		DD6DA4E329117A8400BA3291 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6DA4E229117A8400BA3291 /* SplashViewController.swift */; };
+		DD8737A1293C9D3600869D7A /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8737A0293C9D3600869D7A /* NotificationService.swift */; };
+		DD8737A3293C9D4300869D7A /* NotificationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8737A2293C9D4300869D7A /* NotificationRouter.swift */; };
+		DD8737A5293CA1EA00869D7A /* WindowToaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8737A4293CA1EA00869D7A /* WindowToaster.swift */; };
 		DD896C512933D30E00E72E8D /* ScrapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD896C502933D30E00E72E8D /* ScrapService.swift */; };
 		DD896C532933D31600E72E8D /* ScrapRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD896C522933D31600E72E8D /* ScrapRouter.swift */; };
 		DD92E9B1290BC63F00D1A03D /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = DD92E9B0290BC63F00D1A03D /* ReactorKit */; };
@@ -213,6 +216,9 @@
 		DD5CE498292A530E00AE1027 /* Interceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
 		DD5CE4A0292A6DB000AE1027 /* PostDetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailReactor.swift; sourceTree = "<group>"; };
 		DD6DA4E229117A8400BA3291 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		DD8737A0293C9D3600869D7A /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		DD8737A2293C9D4300869D7A /* NotificationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRouter.swift; sourceTree = "<group>"; };
+		DD8737A4293CA1EA00869D7A /* WindowToaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowToaster.swift; sourceTree = "<group>"; };
 		DD896C502933D30E00E72E8D /* ScrapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapService.swift; sourceTree = "<group>"; };
 		DD896C522933D31600E72E8D /* ScrapRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapRouter.swift; sourceTree = "<group>"; };
 		DD98CE4B29115E6C000EBDB3 /* ShopInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopInfoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -377,6 +383,7 @@
 			children = (
 				DD0CCA5D290C0F5000264543 /* SearchBar.swift */,
 				DD2E6121293865E500D656E5 /* AlertViewController.swift */,
+				DD8737A4293CA1EA00869D7A /* WindowToaster.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -755,6 +762,7 @@
 				DD400A5729267C1600CD0224 /* FollowRouter.swift */,
 				23ED13652928F54200CA0608 /* HomeRouter.swift */,
 				DD896C522933D31600E72E8D /* ScrapRouter.swift */,
+				DD8737A2293C9D4300869D7A /* NotificationRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -769,6 +777,7 @@
 				DD400A5529267C0700CD0224 /* FollowService.swift */,
 				23ED13672928F75700CA0608 /* HomeService.swift */,
 				DD896C502933D30E00E72E8D /* ScrapService.swift */,
+				DD8737A0293C9D3600869D7A /* NotificationService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -943,6 +952,7 @@
 				DDEDEB3D292548BC00B0ACAA /* TokenDTO.swift in Sources */,
 				DDD1DBEB2923B25400FE2E2B /* Environment.swift in Sources */,
 				23ED137D292A081800CA0608 /* PostTableViewCellReactor.swift in Sources */,
+				DD8737A3293C9D4300869D7A /* NotificationRouter.swift in Sources */,
 				DD31992A2910081A00070383 /* PostCollectionViewCell.swift in Sources */,
 				DD2E612E293869C700D656E5 /* URLConstant.swift in Sources */,
 				DD98FD44290AC811002EAB2A /* UserDefaultHandler.swift in Sources */,
@@ -975,6 +985,7 @@
 				DD98FD4A290AC876002EAB2A /* KeyChainHandler.swift in Sources */,
 				DD25786929100DA800FB9BFD /* PostListReactor.swift in Sources */,
 				DDEDEB372925478B00B0ACAA /* AuthService.swift in Sources */,
+				DD8737A5293CA1EA00869D7A /* WindowToaster.swift in Sources */,
 				DD0BC2DE2925607F00C96FAB /* UserService.swift in Sources */,
 				DD400A5829267C1600CD0224 /* FollowRouter.swift in Sources */,
 				DD98FD3A290AC6FE002EAB2A /* UIImageView+Kingfisher.swift in Sources */,
@@ -1030,6 +1041,7 @@
 				DD98CE4C29115E6C000EBDB3 /* ShopInfoCollectionViewCell.swift in Sources */,
 				DD98CE5029115F96000EBDB3 /* ShopHeaderView.swift in Sources */,
 				DD0CCA64290C14EC00264543 /* SearchUserViewController.swift in Sources */,
+				DD8737A1293C9D3600869D7A /* NotificationService.swift in Sources */,
 				DD98FD56290ACA52002EAB2A /* BaseResponse.swift in Sources */,
 				DD5CE4A1292A6DB000AE1027 /* PostDetailReactor.swift in Sources */,
 				DD2E61202938641000D656E5 /* SettingViewController.swift in Sources */,

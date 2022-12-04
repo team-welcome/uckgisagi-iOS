@@ -182,6 +182,11 @@ class HomeViewController: BaseViewController, View {
             .distinctUntilChanged()
             .bind(to: indicatorView.rx.isAnimating)
             .disposed(by: disposeBag)
+
+        reactor.state
+            .compactMap { $0.isSuccessPoke }
+            .bind { _ in }
+            .disposed(by: disposeBag)
     }
 }
 
