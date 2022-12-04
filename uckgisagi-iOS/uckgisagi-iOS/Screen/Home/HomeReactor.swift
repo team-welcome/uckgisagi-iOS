@@ -120,16 +120,14 @@ extension HomeReactor {
     
     private func updatePostMutation(date: String) -> Observable<Mutation> {
         var updateSectionsMutation: Observable<Mutation> = .empty()
-        
+
         switch currentState.userType {
         case .my:
             updateSectionsMutation = NetworkService.shared.home.getMyPostByDate(date: date)
                 .compactMap { $0.data }
                 .withUnretained(self)
                 .map { this, data in
-                    print(data)
                     return .setHomeSections(this.updateSections(from: data))
-                    //                return .updatePostSections(this.updatePostSection(from: data))
                 }
         case .friend:
             guard let friendId = currentState.friendId else { return .empty() }
@@ -139,17 +137,15 @@ extension HomeReactor {
                 .map { this, data in
                     print(data)
                     return .setHomeSections(this.updateSections(from: data))
-                    //                return .updatePostSections(this.updatePostSection(from: data))
                 }
         case .plus:
             break
         }
-        
+
         return updateSectionsMutation
     }
     
     private func refreshMutation() -> Observable<Mutation> {
-        var setDateListMutation: Observable<Mutation> = .empty()
         let setUserProfileSectionsMutation: Observable<Mutation> = NetworkService.shared.home.getFriendList()
             .compactMap { $0.data }
             .withUnretained(self)
@@ -157,51 +153,85 @@ extension HomeReactor {
                 return .setUserProfileSections(this.makeSections(from: data))
             }
         
-        // MARK: - 추후 api 수정
         let setMyPostSectionsMutation : Observable<Mutation> = Observable.create { (observer) in
             let _ = NetworkService.shared.home.getMyPost()
                 .compactMap { $0.data }
                 .withUnretained(self)
-                .subscribe(onNext: { `self`, data in
-                        observer.onNext(.setPostDateList(data.postDates))
-                        observer.onNext(.setHomeSections(self.makeSections(from: data)))
-                        observer.onCompleted()
+                .subscribe(onNext: { this, data in
+                    observer.onNext(.setHomeSections(this.makeSections(from: data, isRefresh: true)))
+                    observer.onNext(.setPostDateList(data.postDates))
+                    
+                    let _ = NetworkService.shared.home.getMyPostByDate(date: Date().dateToString())
+                        .compactMap { $0.data }
+                        .withUnretained(self)
+                        .subscribe { this, data in
+                            observer.onNext(.setHomeSections(this.updateSections(from: data)))
+                            observer.onCompleted()
+                        }
                 })
+            
             return Disposables.create()
         }
         
-        return Observable.of(.just(.setLoading(true)) , setUserProfileSectionsMutation, setMyPostSectionsMutation, .just(.setLoading(false)), setDateListMutation, .just(.setUserType(.my))).merge()
+        return Observable.of(.just(.setLoading(true)) , setUserProfileSectionsMutation, setMyPostSectionsMutation, .just(.setLoading(false)), .just(.setUserType(.my))).merge()
     }
     
     private func tapCellMutation(_ indexPath: IndexPath) -> Observable<Mutation> {
         var setSearchUserReactorMutation: Observable<Mutation> = .empty()
-        var setMyPostSectionsMutation: Observable<Mutation> = .empty()
+        var setHomeSectionsMutation: Observable<Mutation> = .empty()
         var updateUserProfileSelectedMutation: Observable<Mutation> = .empty()
-        
+
         guard case let .userProfile(reactor) = currentState.userProfileSections[indexPath.section].items[indexPath.item] else { return .empty() }
         switch reactor.currentState.type {
         case .my:
-            setMyPostSectionsMutation = NetworkService.shared.home.getMyPost()
-                .compactMap { $0.data }
-                .withUnretained(self)
-                .map { this, data in
-                    return .setHomeSections(this.makeSections(from: data))
-                }
+            setHomeSectionsMutation = Observable.create { (observer) in
+                let _ = NetworkService.shared.home.getMyPost()
+                    .compactMap { $0.data }
+                    .withUnretained(self)
+                    .subscribe(onNext: { this, data in
+                        observer.onNext(.setPostDateList(data.postDates))
+                        observer.onNext(.setHomeSections(this.makeSections(from: data, isRefresh: true)))
+                        
+                        let _ = NetworkService.shared.home.getMyPostByDate(date: Date().dateToString())
+                            .compactMap { $0.data }
+                            .withUnretained(self)
+                            .subscribe { this, data in
+                                observer.onNext(.setHomeSections(this.updateSections(from: data)))
+                                observer.onCompleted()
+                            }
+                    })
+                
+                return Disposables.create()
+            }
             break
         case .friend:
             guard let id = reactor.currentState.info?.userID else { return .empty() }
-            setMyPostSectionsMutation = NetworkService.shared.home.getFriendPost(friendId: id)
-                .compactMap { $0.data }
-                .withUnretained(self)
-                .map { this, data in
-                    return .setHomeSections(this.makeSections(from: data))
-                }
+            setHomeSectionsMutation = Observable.create { (observer) in
+                let _ = NetworkService.shared.home.getFriendPost(friendId: id)
+                    .compactMap { $0.data }
+                    .withUnretained(self)
+                    .subscribe(onNext: { this, data in
+                        observer.onNext(.setPostDateList(data.postDates))
+                        observer.onNext(.setHomeSections(this.makeSections(from: data, isRefresh: true)))
+                        
+                        
+                        let _ = NetworkService.shared.home.getFriendPostByDate(friendId: id, date: Date().dateToString())
+                            .compactMap { $0.data }
+                            .withUnretained(self)
+                            .subscribe { this, data in
+                                observer.onNext(.setHomeSections(this.updateSections(from: data)))
+                                observer.onCompleted()
+                            }
+                    })
+
+                return Disposables.create()
+            }
             break
         case .plus:
             setSearchUserReactorMutation = .concat([.just(.setSearchUserReactor(SearchUserReactor())), .just(.setIsPresentSearchUserVC(true)), .just(.setIsPresentSearchUserVC(false))])
             break
         }
-        
+
         let items = currentState.userProfileSections[indexPath.section].items.enumerated().map({ (index, item) -> UserProfileItem in
             guard case let .userProfile(reactor) = item else { return .userProfile(.init(state: .init(type: .my)))}
             var state = reactor.currentState
@@ -212,10 +242,10 @@ extension HomeReactor {
             }
             return .userProfile(.init(state: state))
         })
-        
+
         updateUserProfileSelectedMutation = .just(.updateUserProfileSections(items, indexPath))
-        
-        return Observable.of(.just(.setSelectedUserProfileCellIndexPath(indexPath)), setMyPostSectionsMutation, updateUserProfileSelectedMutation, setSearchUserReactorMutation, .just(.setFriendId(reactor.currentState.info?.userID ?? 0)), .just(.setUserType(reactor.currentState.type))).merge()
+
+        return Observable.of(.just(.setSelectedUserProfileCellIndexPath(indexPath)), setHomeSectionsMutation, updateUserProfileSelectedMutation, setSearchUserReactorMutation, .just(.setFriendId(reactor.currentState.info?.userID ?? 0)), .just(.setUserType(reactor.currentState.type))).merge()
     }
     
     private func makeSections(from data: FriendListDTO) -> [UserProfileSectionModel] {
@@ -233,7 +263,7 @@ extension HomeReactor {
         return [section]
     }
     
-    private func makeSections(from data: ChallengePostDTO) -> [HomeSectionModel] {
+    private func makeSections(from data: ChallengePostDTO, isRefresh: Bool) -> [HomeSectionModel] {
         var calendarItems: [HomeItem] = []
         calendarItems.append(.calendar(CalendarTableViewCellReactor(data: data.postDates)))
         
@@ -260,18 +290,20 @@ extension HomeReactor {
             }
         }
         
-        let postSection: HomeSectionModel = .init(model: .post(postItems), items: postItems)
+        let postSection: HomeSectionModel = isRefresh
+        ? .init(model: .post([]), items: [])
+        : .init(model: .post(postItems), items: postItems)
         
         return [calendarSection, postSection]
     }
     
     private func updateSections(from data: [Post?]) -> [HomeSectionModel] {
-        var currentData = currentState.postDateList
+        let currentData = currentState.postDateList
         var calendarItems: [HomeItem] = []
         calendarItems.append(.calendar(CalendarTableViewCellReactor(data: currentData)))
-        
+
         let calendarSection: HomeSectionModel = .init(model: .calendar(calendarItems), items: calendarItems)
-        
+
         var postItems: [HomeItem] = []
         if data.isEmpty {
             if let indexPath = currentState.selectedUserProfileCellIndexPath {
@@ -283,8 +315,6 @@ extension HomeReactor {
                     postItems.append(.emptyPost(EmptyPostTableViewCellReactor(type: .friend)))
                 case .plus:
                     postItems.append(.emptyPost(EmptyPostTableViewCellReactor(type: .my)))
-                default:
-                    break
                 }
             } else {
                 postItems.append(.emptyPost(EmptyPostTableViewCellReactor(type: .my)))
@@ -294,9 +324,9 @@ extension HomeReactor {
                 postItems.append(.post(.init(challengePost: post!)))
             }
         }
-        
+
         let postSection: HomeSectionModel = .init(model: .post(postItems), items: postItems)
-        
+
         return [calendarSection, postSection]
     }
     
