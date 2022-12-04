@@ -12,6 +12,7 @@ import ReactorKit
 final class WritingReactor: Reactor {
     struct State {
         var isLoading: Bool = true
+        var isUpdated: Bool = false
     }
 
     enum Action {
@@ -20,6 +21,7 @@ final class WritingReactor: Reactor {
 
     enum Mutation {
         case setLoading(Bool)
+        case setUpdated(Bool)
     }
 
     let initialState: State
@@ -35,7 +37,8 @@ final class WritingReactor: Reactor {
                 Observable.just(.setLoading(true)),
                 NetworkService.shared.post.postWriting(image: image, content: text)
                     .compactMap { $0.data }
-                    .map { _ in Mutation.setLoading(false)}
+                    .map { _ in Mutation.setLoading(false)},
+                Observable.just(.setUpdated(true))
             ])
         }
     }
@@ -45,6 +48,8 @@ final class WritingReactor: Reactor {
         switch mutation {
         case let .setLoading(isLoading):
             newState.isLoading = isLoading
+        case let .setUpdated(isUpdated):
+            newState.isUpdated = isUpdated
         }
         return newState
     }

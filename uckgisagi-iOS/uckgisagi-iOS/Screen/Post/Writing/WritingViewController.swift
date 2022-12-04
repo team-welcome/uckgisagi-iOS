@@ -84,6 +84,14 @@ final class WritingViewController: BaseViewController, View {
                 owner.dismiss(animated: true)
             }
             .disposed(by: disposeBag)
+        
+        reactor.state
+            .compactMap { $0.isUpdated }
+            .withUnretained(self)
+            .bind { this in
+                NetworkService.shared.home.event.onNext(.refreshPost)
+            }
+            .disposed(by: disposeBag)
     }
 
     override func keyboardWillShowAnimation(height: CGFloat, bottomPadding: CGFloat) {
