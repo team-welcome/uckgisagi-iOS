@@ -63,15 +63,17 @@ extension HomeReactor {
     }
     
     func transform(mutation: Observable<Mutation>) -> Observable<Mutation> {
+        let dateToString = Date().dateToString()
         let eventMutation = NetworkService.shared.home.event.withUnretained(self).flatMap { (this, event) -> Observable<Mutation> in
             switch event {
             case let .select(date):
-                let dateToString = date.dateToString()
-                return this.updatePostMutation(date: dateToString)
+                return this.updatePostMutation(date: date.dateToString())
             case .pushButtonDidTap:
                 print(self.currentState.friendId)
                 print("찌르기 버튼 이벤트 여기요 여기")
                 return .empty()
+            case .refreshPost:
+                return this.updatePostMutation(date: dateToString)
             }
         }
         return Observable.merge(mutation, eventMutation)
