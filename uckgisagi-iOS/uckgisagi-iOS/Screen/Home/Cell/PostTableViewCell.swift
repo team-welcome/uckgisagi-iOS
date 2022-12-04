@@ -92,7 +92,7 @@ class PostTableViewCell: UITableViewCell, View {
     func getDate(str: String) -> String {
         let formatter = Foundation.DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        formatter.timeZone = TimeZone(identifier: "UTC")
+        formatter.timeZone = TimeZone(identifier: "KST")
         let date = formatter.date(from: str)!
         
         let dateFormatter = DateFormatter()

@@ -77,6 +77,10 @@ final class PostListDataSource {
             .forEach { self.posts[$0.id] = $0 }
         snapshot.appendItems(ids)
         dataSource.apply(snapshot, animatingDifferences: true)
+
+        posts
+            .filter {  self.posts.keys.contains($0.id) }
+            .forEach { self.reloadIfNeeded(item: $0) }
     }
 
     func reloadIfNeeded(item: PostDTO) {
