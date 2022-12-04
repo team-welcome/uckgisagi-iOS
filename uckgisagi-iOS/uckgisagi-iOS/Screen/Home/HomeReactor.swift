@@ -70,7 +70,6 @@ extension HomeReactor {
                 return this.updatePostMutation(date: date.dateToString())
             case .pushButtonDidTap:
                 print(self.currentState.friendId)
-                print("찌르기 버튼 이벤트 여기요 여기")
                 return .empty()
             case .refreshPost:
                 return this.updatePostMutation(date: dateToString)
@@ -175,7 +174,6 @@ extension HomeReactor {
             
             return Disposables.create()
         }
-        
         return Observable.of(.just(.setLoading(true)) , setUserProfileSectionsMutation, setMyPostSectionsMutation, .just(.setLoading(false)), .just(.setUserType(.my))).merge()
     }
     

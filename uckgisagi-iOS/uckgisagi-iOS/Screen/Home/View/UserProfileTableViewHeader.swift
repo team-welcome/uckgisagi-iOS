@@ -33,6 +33,7 @@ class UserProfileTableViewHeader: UITableViewHeaderFooterView {
     private let nameLabel = UILabel().then {
         $0.textColor = Color.black
         $0.font = .systemFont(ofSize: 22, weight: .light)
+        $0.text = UserDefaultHandler.shared.nickname
     }
     
     override init(reuseIdentifier: String?) {
@@ -52,8 +53,6 @@ class UserProfileTableViewHeader: UITableViewHeaderFooterView {
     }
     
     func configure(name: String) {
-        print("configure 함수")
-        print(name)
         nameLabel.text = name
     }
     

@@ -87,15 +87,11 @@ class UserProfileCollectionViewCell: UICollectionViewCell, View {
             guard let info = reactor.currentState.info else { break }
             profileNameLabel.text = "\(info.nickname.prefix(1))"
             plusImage.isHidden = true
-            print("아 왜 안돼")
-            dump(info.nickname)
             name = info.nickname
         case .friend:
             guard let info = reactor.currentState.info else { break }
             profileNameLabel.text = "\(info.nickname.prefix(1))"
             plusImage.isHidden = true
-            print("아 왜 안돼")
-            dump(info.nickname)
             name = info.nickname
         case .plus:
             profileNameLabel.text = ""
