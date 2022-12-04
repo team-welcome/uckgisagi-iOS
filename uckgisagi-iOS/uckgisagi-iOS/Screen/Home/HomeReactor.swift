@@ -69,6 +69,7 @@ extension HomeReactor {
                 let dateToString = date.dateToString()
                 return this.updatePostMutation(date: dateToString)
             case .pushButtonDidTap:
+                print(self.currentState.friendId)
                 print("찌르기 버튼 이벤트 여기요 여기")
                 return .empty()
             }
