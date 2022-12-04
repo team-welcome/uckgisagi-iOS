@@ -27,6 +27,7 @@ class HomeReactor: Reactor {
         case setUserType(UserProfileCellType)
         case setFriendId(Int)
         case setPostDateList([String?])
+        case setPokeStatus(Bool)
     }
     
     struct State {
@@ -41,6 +42,7 @@ class HomeReactor: Reactor {
         var userType: UserProfileCellType = .my
         var friendId: Int?
         var postDateList: [String?] = []
+        var isSuccessPoke: Bool?
     }
     
     let initialState: State
@@ -69,9 +71,7 @@ extension HomeReactor {
             case let .select(date):
                 return this.updatePostMutation(date: date.dateToString())
             case .pushButtonDidTap:
-                print(self.currentState.friendId)
-                print("찌르기 버튼 이벤트 여기요 여기")
-                return .empty()
+                return this.pushButtonTapMutation()
             case .refreshPost:
                 return this.updatePostMutation(date: dateToString)
             }
@@ -116,9 +116,20 @@ extension HomeReactor {
             
         case let .setPostDateList(dateList):
             newState.postDateList = dateList
+
+        case let .setPokeStatus(isSuccess):
+            newState.isSuccessPoke = isSuccess
         }
         
         return newState
+    }
+
+    private func pushButtonTapMutation() -> Observable<Mutation> {
+        guard let friendID = self.currentState.friendId else { return .empty() }
+        return NetworkService.shared.notification.poke(friendUserID: friendID)
+            .compactMap { $0.statusCode }
+            .map { Mutation.setPokeStatus($0 == .created) }
+            .do(onDispose:  { WindowToaster.shared.showToaster(text: "🍴 찌르기에 성공했어요!🍴") })
     }
     
     private func updatePostMutation(date: String) -> Observable<Mutation> {
