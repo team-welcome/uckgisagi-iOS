@@ -251,11 +251,11 @@ extension HomeReactor {
     private func makeSections(from data: FriendListDTO) -> [UserProfileSectionModel] {
         var items: [UserProfileItem] = []
         
-        items.append(UserProfileItem.userProfile(UserProfileCollectionViewCellReactor(state: .init(type: .my, info: data.myInfo))))
+        items.append(UserProfileItem.userProfile(UserProfileCollectionViewCellReactor(state: .init(type: .my, info: data.myInfo, isSelected: true))))
         data.friendInfo?.forEach({ (info) in
             items.append(UserProfileItem.userProfile(UserProfileCollectionViewCellReactor(state: .init(type: .friend, info: info))))
-            
         })
+        
         items.append(UserProfileItem.userProfile(UserProfileCollectionViewCellReactor(state: .init(type: .plus))))
         
         let section: UserProfileSectionModel = .init(model: .userProfile(items), items: items)
