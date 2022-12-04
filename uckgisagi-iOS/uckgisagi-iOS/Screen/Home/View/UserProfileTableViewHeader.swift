@@ -23,7 +23,7 @@ class UserProfileTableViewHeader: UITableViewHeaderFooterView {
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal
         layout.sectionInset = .zero
-        layout.itemSize = CGSize(width: 48, height: 54)
+        layout.itemSize = CGSize(width: 52, height: 63)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.contentInset = UIEdgeInsets(top: .zero, left: 20, bottom: .zero, right: .zero)

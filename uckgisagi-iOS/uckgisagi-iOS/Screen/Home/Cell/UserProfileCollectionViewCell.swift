@@ -20,6 +20,7 @@ class UserProfileCollectionViewCell: UICollectionViewCell, View {
     private var profileNameLabel = UILabel()
     private var profileImage = UIImageView()
     private let plusImage = UIImageView()
+    private var userNameLabel = UILabel()
 
     // MARK: - Initailize
     override init(frame: CGRect) {
@@ -39,11 +40,12 @@ class UserProfileCollectionViewCell: UICollectionViewCell, View {
         
         profileNameLabel.text = nil
         profileImage.image = Image.icCircle
+        userNameLabel.text = nil
     }
 
     private func setProperties() {
         profileNameLabel.do {
-            $0.font = .systemFont(ofSize: 16, weight: .medium)
+            $0.font = .systemFont(ofSize: 18, weight: .medium)
             $0.textColor = Color.mediumGray
         }
         
@@ -54,24 +56,35 @@ class UserProfileCollectionViewCell: UICollectionViewCell, View {
         plusImage.do {
             $0.image = Image.icPlus
         }
+        
+        userNameLabel.do {
+            $0.font = .systemFont(ofSize: 9)
+            $0.lineBreakMode = .byTruncatingTail
+        }
     }
 
     private func setLayouts() {
         contentView.addSubview(profileImage)
         contentView.addSubview(profileNameLabel)
         contentView.addSubview(plusImage)
+        contentView.addSubview(userNameLabel)
         
         profileImage.snp.makeConstraints {
-            $0.width.equalTo(36)
-            $0.height.equalTo(36)
-            $0.centerX.centerY.equalToSuperview()
+            $0.width.equalTo(40)
+            $0.height.equalTo(40)
+            $0.centerX.equalToSuperview()
+            $0.top.equalToSuperview().offset(5)
         }
         profileNameLabel.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
+            $0.centerX.centerY.equalTo(profileImage)
         }
         plusImage.snp.makeConstraints {
             $0.width.height.equalTo(24)
-            $0.centerX.centerY.equalToSuperview()
+            $0.centerX.centerY.equalTo(profileImage)
+        }
+        userNameLabel.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(4)
+            $0.bottom.equalToSuperview().inset(2)
         }
     }
     
@@ -83,12 +96,12 @@ class UserProfileCollectionViewCell: UICollectionViewCell, View {
         case .my:
             guard let info = reactor.currentState.info else { break }
             profileNameLabel.text = "\(info.nickname.prefix(1))"
-//            profileImage.image = Image.icCircleTap
+            userNameLabel.text = "\(info.nickname)"
             plusImage.isHidden = true
         case .friend:
             guard let info = reactor.currentState.info else { break }
             profileNameLabel.text = "\(info.nickname.prefix(1))"
-//            profileImage.image = Image.icCircle
+            userNameLabel.text = "\(info.nickname)"
             plusImage.isHidden = true
         case .plus:
             profileNameLabel.text = ""

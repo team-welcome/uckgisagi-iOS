@@ -13,6 +13,7 @@ import RxSwift
 enum HomeEvent {
     case select(Date)
     case pushButtonDidTap
+    case refreshPost
 }
 
 protocol HomeServiceType {
