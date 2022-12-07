@@ -34,50 +34,50 @@ final class SettingViewController: UIViewController {
         }
     }
 
-        enum InfoItem: String, CaseIterable {
-            case appVersion = "앱 버전"
-            case team = "UCKGISAGI TEAM"
+    enum InfoItem: String, CaseIterable {
+        case appVersion = "앱 버전"
+        case team = "UCKGISAGI TEAM"
 
-            init(rawValue: Int) {
-                switch rawValue {
-                case 0: self = .appVersion
-                case 1: self = .team
-                default:
-                    fatalError("유효하지 않은 item 값")
-                }
+        init(rawValue: Int) {
+            switch rawValue {
+            case 0: self = .appVersion
+            case 1: self = .team
+            default:
+                fatalError("유효하지 않은 item 값")
             }
         }
+    }
 
-        enum DocsItem: String, CaseIterable {
-            case policy = "개인정보 처리방침"
-            case term = "서비스 이용약관"
-            case eula = "EULA"
-            case contact = "문의하기"
+    enum DocsItem: String, CaseIterable {
+        case policy = "개인정보 처리방침"
+        case term = "서비스 이용약관"
+        case eula = "EULA"
+        case contact = "문의하기"
 
-            init(rawValue: Int) {
-                switch rawValue {
-                case 0: self = .policy
-                case 1: self = .term
-                case 2: self = .eula
-                case 3: self = .contact
-                default:
-                    fatalError("유효하지 않은 item 값")
-                }
+        init(rawValue: Int) {
+            switch rawValue {
+            case 0: self = .policy
+            case 1: self = .term
+            case 2: self = .eula
+            case 3: self = .contact
+            default:
+                fatalError("유효하지 않은 item 값")
             }
         }
+    }
 
-        enum AuthItem: String, CaseIterable {
-            case logout = "로그아웃"
-            case withdraw = "회원 탈퇴"
+    enum AuthItem: String, CaseIterable {
+        case logout = "로그아웃"
+        case withdraw = "회원 탈퇴"
 
-            init(rawValue: Int) {
-                switch rawValue {
-                case 0: self = .logout
-                case 1: self = .withdraw
-                default:
-                    fatalError("유효하지 않은 item 값")
-                }
+        init(rawValue: Int) {
+            switch rawValue {
+            case 0: self = .logout
+            case 1: self = .withdraw
+            default:
+                fatalError("유효하지 않은 item 값")
             }
+        }
     }
 
     private let disposeBag = DisposeBag()
@@ -155,22 +155,26 @@ extension SettingViewController: UITableViewDelegate {
             switch DocsItem(rawValue: indexPath.item) {
             case .policy:
                 guard
-                    let url = URL(string: URLConstant.policy)
+                    let encodingScheme = URLConstant.policy.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+                    let url = URL(string: encodingScheme.trimmingSpace()), UIApplication.shared.canOpenURL(url)
                 else { return }
                 let safariViewController = SFSafariViewController(url: url)
                 present(safariViewController, animated: true)
 
             case .eula:
                 guard
-                    let url = URL(string: URLConstant.eula)
+                    let encodingScheme = URLConstant.eula.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+                    let url = URL(string: encodingScheme.trimmingSpace()), UIApplication.shared.canOpenURL(url)
                 else { return }
                 let safariViewController = SFSafariViewController(url: url)
                 present(safariViewController, animated: true)
 
             case .term:
                 guard
-                    let url = URL(string: URLConstant.term)
+                    let encodingScheme = URLConstant.term.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+                    let url = URL(string: encodingScheme.trimmingSpace()), UIApplication.shared.canOpenURL(url)
                 else { return }
+                
                 let safariViewController = SFSafariViewController(url: url)
                 present(safariViewController, animated: true)
 
@@ -198,8 +202,8 @@ extension SettingViewController: UITableViewDelegate {
                     parentViewController: self,
                     viewType: .withdrawal
                 )
-//                .flatMap { _ in NetworkService.shared.user.withdraw() }
-//                .filter { $0.statusCase == .okay }
+                //                .flatMap { _ in NetworkService.shared.user.withdraw() }
+                //                .filter { $0.statusCase == .okay }
                 .bind { _ in
                     UserDefaultHandler.shared.removeAll()
                     KeychainHandler.shared.removeAll()
