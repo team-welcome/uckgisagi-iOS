@@ -265,6 +265,7 @@ extension HomeReactor {
         var items: [UserProfileItem] = []
         
         items.append(UserProfileItem.userProfile(UserProfileCollectionViewCellReactor(state: .init(type: .my, info: data.myInfo, isSelected: true))))
+        
         data.friendInfo?.forEach({ (info) in
             items.append(UserProfileItem.userProfile(UserProfileCollectionViewCellReactor(state: .init(type: .friend, info: info))))
         })

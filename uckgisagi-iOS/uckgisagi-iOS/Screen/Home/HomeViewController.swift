@@ -210,12 +210,11 @@ extension HomeViewController: UITableViewDelegate {
             headerCell.collectionView.rx.itemSelected
                 .withUnretained(self)
                 .bind { this, indexPath in
-                    guard
-                        let cell = headerCell.collectionView.cellForItem(at: indexPath) as? UserProfileCollectionViewCell,
-                        let name = cell.name
-                    else { return }
+                    if let cell = headerCell.collectionView.cellForItem(at: indexPath) as? UserProfileCollectionViewCell,
+                       let name = cell.name {
+                        headerCell.configure(name: name)
+                    }
                     this.reactor?.action.onNext(.userProfileCellTap(indexPath))
-                    headerCell.configure(name: name)
                 }
                 .disposed(by: headerCell.disposeBag)
 
