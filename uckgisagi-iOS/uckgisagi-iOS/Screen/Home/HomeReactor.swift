@@ -28,6 +28,8 @@ class HomeReactor: Reactor {
         case setFriendId(Int)
         case setPostDateList([String?])
         case setPokeStatus(Bool)
+        case setUserProfileSectionAndMyName([UserProfileSectionModel], String)
+        case setIsRefresh(Bool)
     }
     
     struct State {
@@ -43,6 +45,8 @@ class HomeReactor: Reactor {
         var friendId: Int?
         var postDateList: [String?] = []
         var isSuccessPoke: Bool?
+        var myName: String = ""
+        var isRefresh: Bool = false
     }
     
     let initialState: State
@@ -119,6 +123,13 @@ extension HomeReactor {
 
         case let .setPokeStatus(isSuccess):
             newState.isSuccessPoke = isSuccess
+            
+        case let .setUserProfileSectionAndMyName(section, myName):
+            newState.userProfileSections = section
+            newState.myName = myName
+            
+        case let .setIsRefresh(isRefresh):
+            newState.isRefresh = isRefresh
         }
         
         return newState
@@ -164,7 +175,7 @@ extension HomeReactor {
             .compactMap { $0.data }
             .withUnretained(self)
             .map { this, data in
-                return .setUserProfileSections(this.makeSections(from: data))
+                return .setUserProfileSectionAndMyName(this.makeSections(from: data), data.myInfo.nickname)
             }
         
         let setMyPostSectionsMutation : Observable<Mutation> = Observable.create { (observer) in
@@ -186,7 +197,7 @@ extension HomeReactor {
             
             return Disposables.create()
         }
-        return Observable.of(.just(.setLoading(true)) , setUserProfileSectionsMutation, setMyPostSectionsMutation, .just(.setLoading(false)), .just(.setUserType(.my))).merge()
+        return Observable.of(.just(.setLoading(true)) , setUserProfileSectionsMutation, setMyPostSectionsMutation, .just(.setLoading(false)), .just(.setUserType(.my)), .just(.setIsRefresh(true))).merge()
     }
     
     private func tapCellMutation(_ indexPath: IndexPath) -> Observable<Mutation> {
@@ -258,7 +269,7 @@ extension HomeReactor {
 
         updateUserProfileSelectedMutation = .just(.updateUserProfileSections(items, indexPath))
 
-        return Observable.of(.just(.setSelectedUserProfileCellIndexPath(indexPath)), setHomeSectionsMutation, updateUserProfileSelectedMutation, setSearchUserReactorMutation, .just(.setFriendId(reactor.currentState.info?.userID ?? 0)), .just(.setUserType(reactor.currentState.type))).merge()
+        return Observable.of(.just(.setIsRefresh(false)), .just(.setSelectedUserProfileCellIndexPath(indexPath)), setHomeSectionsMutation, updateUserProfileSelectedMutation, setSearchUserReactorMutation, .just(.setFriendId(reactor.currentState.info?.userID ?? 0)), .just(.setUserType(reactor.currentState.type))).merge()
     }
     
     private func makeSections(from data: FriendListDTO) -> [UserProfileSectionModel] {

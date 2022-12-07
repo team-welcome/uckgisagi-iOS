@@ -223,6 +223,17 @@ extension HomeViewController: UITableViewDelegate {
                 .bind(to: headerCell.collectionView.rx.items(dataSource: userProfileDataSource))
                 .disposed(by: headerCell.disposeBag)
             
+            reactor?.state
+                .map(\.isRefresh)
+                .filter { $0 }
+                .withUnretained(self)
+                .bind { this in
+                    if let name = self.reactor?.currentState.myName {
+                        headerCell.configure(name: name)
+                    }
+                }.disposed(by: headerCell.disposeBag)
+            
+            
             return headerCell
         case 1:
             guard let headerCell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "UserPostTableViewHeader") as? UserPostTableViewHeader else { return UIView() }
